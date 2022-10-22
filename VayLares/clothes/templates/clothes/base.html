@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>{{title}}</title>
+    <link type="text/css" href="{% static 'clothes/css/styles.css' %}" rel="stylesheet"/>
+</head>
+
+<body>
+{% block mainmenu %}
+		<div class="header">
+			<ul id="mainmenu" class="mainmenu">
+			<li class="logo"><a href="#"><div class="logo"></div></a></li>
+{% for m in menu %}
+	{% if not forloop.last %}
+			<li><a href="#">{{m.title}}</a></li>
+	{% else %}
+			<li class="last"><a href="#">{{m.title}}</a></li>
+	{% endif %}
+{% endfor %}
+			</ul>
+			<div class="clear"></div>
+		</div>
+{% endblock mainmenu %}
+
+{% block content %}
+{% endblock content %}
+
+<!-- Footer -->
+
+<footer class="footer-distributed">
+
+      <div class="footer-right">
+
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-linkedin"></i></a>
+        <a href="#"><i class="fa fa-github"></i></a>
+
+      </div>
+
+      <div class="footer-left">
+
+        <p class="footer-links">
+          <a class="link-1" href="#">Home</a>
+
+          <a href="#">About</a>
+
+          <a href="#">Faq</a>
+
+        </p>
+
+        <p>VayLares &copy; 2022</p>
+      </div>
+
+    </footer>
+<!-- Конец footer'а и страницы -->
+
+</body>
+</html>
