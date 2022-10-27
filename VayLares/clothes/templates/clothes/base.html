@@ -8,53 +8,78 @@
 
 <body>
 {% block mainmenu %}
-		<div class="header">
-			<ul id="mainmenu" class="mainmenu">
-			<li class="logo"><a href="{% url 'home' %}"><div class="logo"></div></a></li>
-{% for m in menu %}
-	{% if not forloop.last %}
-			<li><a href="{% url m.url_name %}">{{m.title}}</a></li>
-	{% else %}
-			<li class="last"><a href="{% url m.url_name %}">{{m.title}}</a></li>
-	{% endif %}
-{% endfor %}
-			</ul>
-			<div class="clear"></div>
-		</div>
+<div class="header">
+    <ul id="mainmenu" class="mainmenu">
+        <li class="logo"><a href="{% url 'home' %}">
+            <div class="logo"></div>
+        </a></li>
+        {% for m in menu %}
+        {% if not forloop.last %}
+        <li><a href="{% url m.url_name %}">{{m.title}}</a></li>
+        {% else %}
+        <li class="last"><a href="{% url m.url_name %}">{{m.title}}</a></li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+    <div class="clear"></div>
+</div>
 {% endblock mainmenu %}
 
-{% block content %}
-{% endblock content %}
+<table class="table-content" border=0 cellpadding="0" cellspacing="0">
+    <tr>
+        <!-- Sidebar слева -->
+        <td valign="top" class="left-chapters">
+            <ul id="leftchapters">
+                {% if cat_selected == 0 %}
+                <li class="selected">Все категории</li>
+                {% else %}
+                <li><a href="{% url 'home' %}">Все категории</a></li>
+                {% endif %}
 
-<!-- Footer -->
+                {% for c in cats %}
+                {% if c.pk == cat_selected %}
+                <li class="selected">{{c.category_name}}</li>
+                {% else %}
+                <li><a href="{{c.get_absolute_url}}">{{c.category_name}}</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </td>
+        <!-- Конец Sidebar'а -->
 
-<footer class="footer-distributed">
 
-      <div class="footer-right">
+        {% block content %}
+        {% endblock content %}
 
-        <a href="#"><i class="fa fa-facebook"></i></a>
-        <a href="#"><i class="fa fa-twitter"></i></a>
-        <a href="#"><i class="fa fa-linkedin"></i></a>
-        <a href="#"><i class="fa fa-github"></i></a>
+        <!-- Footer -->
 
-      </div>
+        <footer class="footer-distributed">
 
-      <div class="footer-left">
+            <div class="footer-right">
 
-        <p class="footer-links">
-          <a class="link-1" href="#">Home</a>
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+                <a href="#"><i class="fa fa-github"></i></a>
 
-          <a href="#">About</a>
+            </div>
 
-          <a href="#">Faq</a>
+            <div class="footer-left">
 
-        </p>
+                <p class="footer-links">
+                    <a class="link-1" href="#">Home</a>
 
-        <p>VayLares &copy; 2022</p>
-      </div>
+                    <a href="#">About</a>
 
-    </footer>
-<!-- Конец footer'а и страницы -->
+                    <a href="#">Faq</a>
+
+                </p>
+
+                <p>VayLares &copy; 2022</p>
+            </div>
+
+        </footer>
+        <!-- Конец footer'а и страницы -->
 
 </body>
 </html>

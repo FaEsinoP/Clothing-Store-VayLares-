@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Brand(models.Model):
@@ -13,6 +14,9 @@ class Category(models.Model):
 
     def __str__(self):
         return self.category_name
+
+    def get_absolute_url(self):
+        return reverse('category', kwargs={'category_id': self.pk})
 
 
 class Subcategory(models.Model):
@@ -29,6 +33,12 @@ class Clothes(models.Model):
     price = models.IntegerField()
     photo = models.ImageField(upload_to='pictures/%y/%m/%d/')
     time_create = models.DateTimeField(auto_now_add=True)
+    gender = models.CharField(max_length=255, null=True)
     is_published = models.BooleanField(default=True)
     brand = models.ForeignKey(Brand, on_delete=models.PROTECT)
     subcategory = models.ForeignKey(Subcategory, on_delete=models.PROTECT, null=True)
+    category = models.ForeignKey(Category, on_delete=models.PROTECT, null=True)
+
+    def __str__(self):
+        return self.title
+
