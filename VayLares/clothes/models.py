@@ -8,6 +8,11 @@ class Brand(models.Model):
     def __str__(self):
         return self.brand_name
 
+    class Meta:
+        verbose_name = 'Брэнды'
+        verbose_name_plural = 'Брэнды'
+        ordering = ['id']
+
 
 class Category(models.Model):
     category_name = models.CharField(max_length=100, db_index=True)
@@ -18,6 +23,11 @@ class Category(models.Model):
     def get_absolute_url(self):
         return reverse('category', kwargs={'category_id': self.pk})
 
+    class Meta:
+        verbose_name = 'Категории'
+        verbose_name_plural = 'Категории'
+        ordering = ['id']
+
 
 class Subcategory(models.Model):
     subcategory_name = models.CharField(max_length=100, db_index=True)
@@ -25,6 +35,11 @@ class Subcategory(models.Model):
 
     def __str__(self):
         return self.subcategory_name
+
+    class Meta:
+        verbose_name = 'Подкатегории'
+        verbose_name_plural = 'Подкатегории'
+        ordering = ['id']
 
 
 class Clothes(models.Model):
@@ -42,3 +57,10 @@ class Clothes(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name = 'Вещи'
+        verbose_name_plural = 'Вещи'
+        ordering = ['title']
+
+    def get_absolute_url(self):
+        return reverse('product', kwargs={'product_id': self.pk})

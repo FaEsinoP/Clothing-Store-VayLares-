@@ -1,6 +1,16 @@
 {% extends 'clothes/base.html' %}
 
 {% block content %}
-<h1> {{title}}</h1>
+<ul class="list-articles">
+    {% for g in goods %}
+    <li>
+        {% if g.photo %}
+        <a href="{{g.get_absolute_url}}"><img src="{{g.photo.url}}"></a>
+        {% endif %}
+        <h3>{{g.price}}</h3>
+        <p>{{g.brand}} {{g.title}}</p>
+    </li>
+    {% endfor %}
+</ul>
 
 {% endblock content %}

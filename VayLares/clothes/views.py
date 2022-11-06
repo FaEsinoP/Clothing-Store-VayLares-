@@ -27,11 +27,29 @@ def index(request):
 
 def for_man(request):
     goods = Clothes.objects.filter(gender='All')
-    return render(request, 'clothes/man.html', {'goods': goods, 'title': 'Для мужчин', 'menu': menu})
+    cats = Category.objects.all()
+
+    context = {
+        'goods': goods,
+        'cats': cats,
+        'menu': menu,
+        'title': 'Для мущжчин',
+        'cat_selected': 0,
+    }
+    return render(request, 'clothes/man.html', context=context)
 
 
 def for_woman(request):
-    return render(request, 'clothes/woman.html', {'title': 'Для женщин', 'menu': menu})
+    goods = Clothes.objects.filter(gender='Woman')
+    cats = Category.objects.all()
+    context = {
+        'goods': goods,
+        'cats': cats,
+        'menu': menu,
+        'title': 'Для женщин',
+        'cat_selected': 0,
+    }
+    return render(request, 'clothes/woman.html', context=context)
 
 
 def about(request):
@@ -53,8 +71,12 @@ def show_category(request, category_id):
         'goods': goods,
         'cats': cats,
         'menu': menu,
-        'title': 'Главная страница',
+        'title': 'Категория',
         'cat_selected': category_id,
     }
 
     return render(request, 'clothes/index.html', context=context)
+
+
+def show_product(request, product_id):
+    return HttpResponse(f'Товар №{product_id}')
