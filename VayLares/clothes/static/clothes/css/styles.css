@@ -168,6 +168,18 @@ ul.list-articles li {
 	border-bottom: 1px solid #ccc;
 }
 
+img.img-article-left {
+	max-width: 300px;
+	height: auto;
+	float: left;
+	padding: 0 10px 10px 0;
+}
+
+img.img-article-left.thumb {
+	max-width: 150px;
+	height: auto;
+}
+
 
 
 #footer

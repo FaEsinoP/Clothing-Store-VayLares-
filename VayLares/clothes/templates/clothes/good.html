@@ -1,0 +1,14 @@
+{% extends 'clothes/base.html' %}
+
+{% block content %}
+<h1>{{good.brand}} {{good.title}}</h1>
+
+{% if good.photo %}
+<p><img class="img-article-left" src="{{good.photo.url}}"></p>
+{% endif %}
+
+{{good.content}}
+
+<h3>{{good.price}} руб.</h3>
+{% endblock %}
+

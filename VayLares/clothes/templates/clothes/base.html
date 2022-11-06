@@ -1,4 +1,5 @@
 {% load static %}
+{% load clothes_tags %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -37,13 +38,7 @@
                 <li><a href="{% url 'home' %}">Все категории</a></li>
                 {% endif %}
 
-                {% for c in cats %}
-                {% if c.pk == cat_selected %}
-                <li class="selected">{{c.category_name}}</li>
-                {% else %}
-                <li><a href="{{c.get_absolute_url}}">{{c.category_name}}</a></li>
-                {% endif %}
-                {% endfor %}
+                {% show_categories cat_selected %}
             </ul>
         </td>
         <!-- Конец Sidebar'а -->
@@ -69,7 +64,7 @@
         <a href="#"><i class="fa fa-facebook"></i></a>
         <a href="#"><i class="fa fa-twitter"></i></a>
         <a href="#"><i class="fa fa-linkedin"></i></a>
-        <a href="#"><i class="fa fa-github"></i></a>
+        <a href="https://github.com/FaEsinoP"><i class="fa fa-github"></i></a>
 
     </div>
 

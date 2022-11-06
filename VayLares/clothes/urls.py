@@ -9,6 +9,6 @@ urlpatterns = [
     path('about/', about, name='about'),
     path('add/', add, name='add'),
     path('login/', login, name='login'),
-    path('category/<int:category_id>/', show_category, name='category'),
-    path('product/<int:product_id>/', show_product, name='product'),
+    path('category/<slug:category_slug>/', show_category, name='category'),
+    path('product/<slug:product_slug>/', show_product, name='product'),
 ]

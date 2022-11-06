@@ -4,6 +4,7 @@ from django.urls import reverse
 
 class Brand(models.Model):
     brand_name = models.CharField(max_length=100, db_index=True)
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL", null=True)
 
     def __str__(self):
         return self.brand_name
@@ -16,12 +17,13 @@ class Brand(models.Model):
 
 class Category(models.Model):
     category_name = models.CharField(max_length=100, db_index=True)
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL", null=True)
 
     def __str__(self):
         return self.category_name
 
     def get_absolute_url(self):
-        return reverse('category', kwargs={'category_id': self.pk})
+        return reverse('category', kwargs={'category_slug': self.slug})
 
     class Meta:
         verbose_name = 'Категории'
@@ -31,6 +33,7 @@ class Category(models.Model):
 
 class Subcategory(models.Model):
     subcategory_name = models.CharField(max_length=100, db_index=True)
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL", null=True)
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
 
     def __str__(self):
@@ -44,6 +47,7 @@ class Subcategory(models.Model):
 
 class Clothes(models.Model):
     title = models.CharField(max_length=255)
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL", null=True)
     content = models.TextField()
     price = models.IntegerField()
     photo = models.ImageField(upload_to='pictures/%y/%m/%d/')
@@ -63,4 +67,4 @@ class Clothes(models.Model):
         ordering = ['title']
 
     def get_absolute_url(self):
-        return reverse('product', kwargs={'product_id': self.pk})
+        return reverse('product', kwargs={'product_slug': self.slug})

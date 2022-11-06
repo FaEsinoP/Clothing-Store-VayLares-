@@ -9,25 +9,28 @@ class ClothesAdmin(admin.ModelAdmin):
     search_fields = ('title', 'gender', 'category')
     list_editable = ('is_published',)
     list_filter = ('gender', 'category', 'subcategory')
+    prepopulated_fields = {"slug": ("title",)}
 
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('id', 'category_name')
     list_display_links = ('id', 'category_name')
     search_fields = ('category_name',)
+    prepopulated_fields = {"slug": ("category_name",)}
 
 
 class SubcategoryAdmin(admin.ModelAdmin):
     list_display = ('id', 'subcategory_name', 'category')
     list_display_links = ('id', 'subcategory_name')
     search_fields = ('subcategory_name',)
+    prepopulated_fields = {"slug": ("subcategory_name",)}
 
 
 class BrandAdmin(admin.ModelAdmin):
     list_display = ('id', 'brand_name')
     list_display_links = ('id', 'brand_name')
     search_fields = ('brand_name',)
-
+    prepopulated_fields = {"slug": ("brand_name",)}
 
 admin.site.register(Clothes, ClothesAdmin)
 admin.site.register(Category, CategoryAdmin)
