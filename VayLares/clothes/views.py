@@ -1,13 +1,13 @@
 from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
-from clothes.models import Clothes, Category
+from .forms import *
+from .models import *
 
 menu = [{'title': "Для мужчин", 'url_name': 'man'},
         {'title': "Для женщин", 'url_name': 'woman'},
         {'title': "Добавить позицию", 'url_name': 'add'},
         {'title': "Войти", 'url_name': 'login'},
-        {'title': "О сайте", 'url_name': 'about'},
         ]
 
 
@@ -49,13 +49,23 @@ def for_woman(request):
 def about(request):
     return render(request, 'clothes/about.html', {'title': 'О сайте', 'menu': menu})
 
+def faq(request):
+    return HttpResponse("Частый вопросы")
 
 def login(request):
     return HttpResponse("Авторизаtion")
 
 
 def add(request):
-    return HttpResponse("Добавление позиции")
+    if request.method == 'POST':
+        form = AddGoodForm(request.POST, request.FILES)
+        if form.is_valid():
+            # print(form.cleaned_data)
+            form.save()
+            return redirect('home')
+    else:
+        form = AddGoodForm()
+    return render(request, 'clothes/addgood.html', {'form': form, 'title': 'Добавление товара', 'menu': menu})
 
 
 def show_category(request, category_slug):
