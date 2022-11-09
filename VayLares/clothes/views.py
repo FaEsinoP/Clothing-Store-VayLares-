@@ -34,16 +34,21 @@ class ClothesHome(DataMixin, ListView):
         return Clothes.objects.filter(is_published=True)
 
 
-def for_man(request):
-    goods = Clothes.objects.filter(gender='All')
+class ForMan(DataMixin, ListView):
+    paginate_by = 3
+    model = Clothes
+    template_name = 'clothes/man.html'
+    context_object_name = 'goods'  # Для отображения товаров
 
-    context = {
-        'goods': goods,
-        'menu': menu,
-        'title': 'Для мущжчин',
-        'cat_selected': 0,
-    }
-    return render(request, 'clothes/man.html', context=context)
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title='Для мужчин')
+        return dict(list(context.items()) + list(c_def.items()))
+
+    def get_queryset(self):  # Указываем, что именно выбирать из модели
+        return Clothes.objects.filter(gender='All', is_published=True)
+
+
 
 
 def for_woman(request):

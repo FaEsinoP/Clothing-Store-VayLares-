@@ -40,7 +40,6 @@ ul.mainmenu {
 	margin: 0;
 	padding: 0;
 	height: 60px;
-	color: #fdc073;
 	font-size: 20px;
 	overflow: hidden;
 }
@@ -313,4 +312,52 @@ img {max-width: 150px; height: auto;}
     min-width: 200px;
     font-size: 16px;
 
+}
+
+
+
+
+/* pagination */
+
+.pagination\:container {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 5%;
+  margin-bottom: -5%;
+  width: 10%;
+}
+
+.arrow\:text {
+  display: block;
+  vertical-align: middle;
+  font-size: 13px;
+  vertical-align: middle;
+}
+
+.pagination\:number {
+  --size: 32px;
+  --margin: 6px;
+  margin: 0 var(--margin);
+  border-radius: 6px;
+  background: #e0e0e0;
+  max-width: auto;
+  min-width: var(--size);
+  height: var(--size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0 6px;
+}
+
+.pagination\:active {
+  background: #f2f2f2;
+  position: relative;
+  border: 1px solid #757575
+}
+
+.pagination\:container a {
+	text-decoration: none;
+	text-align:center
 }

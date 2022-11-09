@@ -13,5 +13,18 @@
     </li>
     {% endfor %}
 </ul>
+{% if page_obj.has_other_pages %}
+<div class="pagination:container">
+    {% for p in paginator.page_range %}
+    {% if page_obj.number == p %}
+    <div class="pagination:number pagination:active">{{ p }}</div>
+    {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2  %}
+    <div class="pagination:number">
+        <a href="?page={{ p }}">{{ p }}</a>
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+</div>
 
 {% endblock content %}
