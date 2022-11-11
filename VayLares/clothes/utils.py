@@ -4,8 +4,7 @@ from .models import *
 
 menu = [{'title': "Для мужчин", 'url_name': 'man'},
         {'title': "Для женщин", 'url_name': 'woman'},
-        {'title': "Добавить позицию", 'url_name': 'add'},
-        {'title': "Войти", 'url_name': 'login'}
+        {'title': "Добавить позицию", 'url_name': 'add'}
         ]
 
 

@@ -48,7 +48,13 @@ ul.mainmenu li {
 	margin: 18px 40px 0 30px;
 }
 ul.mainmenu li.logo {margin: 0;}
-ul.mainmenu li.last {float: right;}
+ul.mainmenu li.last {
+    float: right;
+    color: #ffffff;
+}
+ul.mainmenu li.last text{
+    text-decoration: underline;
+}
 
 ul.mainmenu li a {
 	color: #ffffff;
