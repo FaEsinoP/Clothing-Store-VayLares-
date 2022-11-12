@@ -21,8 +21,8 @@ class ClothesHome(DataMixin, ListView):
         c_def = self.get_user_context(title='Главная страница')
         return dict(list(context.items()) + list(c_def.items()))
 
-    def get_queryset(self):  # Указываем, что именно выбирать из модели
-        return Clothes.objects.filter(is_published=True)
+    def get_queryset(self):
+        return Clothes.objects.filter(is_published=True).select_related('category', 'brand')
 
 
 class ForMan(DataMixin, ListView):
@@ -37,7 +37,7 @@ class ForMan(DataMixin, ListView):
         return dict(list(context.items()) + list(c_def.items()))
 
     def get_queryset(self):  # Указываем, что именно выбирать из модели
-        return Clothes.objects.filter(gender='All', is_published=True)
+        return Clothes.objects.filter(gender='All', is_published=True).select_related('brand')
 
 
 class ForWoman(DataMixin, ListView):
@@ -52,7 +52,7 @@ class ForWoman(DataMixin, ListView):
         return dict(list(context.items()) + list(c_def.items()))
 
     def get_queryset(self):  # Указываем, что именно выбирать из модели
-        return Clothes.objects.filter(gender='Woman', is_published=True)
+        return Clothes.objects.filter(gender='Woman', is_published=True).select_related('brand')
 
 
 def about(request):
@@ -95,12 +95,14 @@ class ClothesCategory(DataMixin, ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(title='Категория - ' + str(context['goods'][0].category),
-                                      cat_selected=context['goods'][0].category_id)
+        c = Category.objects.get(slug=self.kwargs['category_slug'])
+        c_def = self.get_user_context(title='Категория - ' + str(c.category_name),
+                                      cat_selected=c.pk)
         return dict(list(context.items()) + list(c_def.items()))
 
     def get_queryset(self):  # Указываем, что именно выбирать из модели
-        return Clothes.objects.filter(category__slug=self.kwargs['category_slug'], is_published=True)
+        return Clothes.objects.filter(category__slug=self.kwargs['category_slug'], is_published=True).select_related(
+            'category', 'brand')
 
 
 class ShowProduct(DataMixin, DetailView):
