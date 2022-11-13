@@ -1,15 +1,14 @@
 {% extends 'clothes/base.html' %}
 {% block content %}
-<ul class="list-articles">
+<div class="flex-container">
     {% for g in goods %}
-    <li>
+    <div class="flex-item item-{{g.pk}}">
         {% if g.photo %}
         <a class="img-article thumb" href="{{g.get_absolute_url}}"><img src="{{g.photo.url}}"></a>
         {% endif %}
         <h3>{{g.price}}</h3>
         <p>{{g.brand}} {{g.title}}</p>
-    </li>
+    </div>
     {% endfor %}
-</ul>
-
+</div>
 {% endblock content %}

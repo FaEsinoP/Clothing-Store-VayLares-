@@ -64,7 +64,7 @@ class Clothes(models.Model):
     class Meta:
         verbose_name = 'Вещи'
         verbose_name_plural = 'Вещи'
-        ordering = ['title']
+        ordering = ['time_create']
 
     def get_absolute_url(self):
         return reverse('product', kwargs={'product_slug': self.slug})

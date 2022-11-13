@@ -1,15 +1,28 @@
 from django.contrib import admin
+from django.utils.safestring import mark_safe
 
 from .models import *
 
 
 class ClothesAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'gender', 'category', 'subcategory', 'photo', 'is_published')
+    list_display = ('id', 'title', 'gender', 'category', 'subcategory', 'get_html_photo', 'is_published')
     list_display_links = ('id', 'title')
     search_fields = ('title', 'gender', 'category')
     list_editable = ('is_published',)
     list_filter = ('gender', 'category', 'subcategory')
     prepopulated_fields = {"slug": ("title",)}
+    fields = (
+        'title', 'slug', 'gender', 'category', 'subcategory', 'content', 'get_html_photo', 'is_published',
+        'time_create')
+    readonly_fields = ('time_create', 'get_html_photo')
+
+    def get_html_photo(self, object):
+        if object.photo:
+            return mark_safe(f"<img src='{object.photo.url}' width=70>")
+        else:
+            return "Нет фото"
+
+    get_html_photo.short_description = "Photo"
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -31,6 +44,7 @@ class BrandAdmin(admin.ModelAdmin):
     list_display_links = ('id', 'brand_name')
     search_fields = ('brand_name',)
     prepopulated_fields = {"slug": ("brand_name",)}
+
 
 admin.site.register(Clothes, ClothesAdmin)
 admin.site.register(Category, CategoryAdmin)

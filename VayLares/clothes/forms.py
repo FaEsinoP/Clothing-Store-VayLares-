@@ -19,7 +19,7 @@ class AddGoodForm(forms.ModelForm):
                   'subcategory']
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-input'}),
-            'content': forms.Textarea(attrs={'cols': 60, 'rows': 10}),
+            'content': forms.Textarea(attrs={'cols': 50, 'rows': 5}),
         }
 
     # def clean_title(self):
