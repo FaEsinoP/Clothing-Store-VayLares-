@@ -15,6 +15,7 @@ class ClothesHome(DataMixin, ListView):
     model = Clothes
     template_name = 'clothes/index.html'
     context_object_name = 'goods'  # Для отображения товаров
+    gender_select = None
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -26,33 +27,35 @@ class ClothesHome(DataMixin, ListView):
 
 
 class ForMan(DataMixin, ListView):
-    paginate_by = 3
+    paginate_by = 6
     model = Clothes
     template_name = 'clothes/man.html'
     context_object_name = 'goods'  # Для отображения товаров
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(title='Для мужчин')
+        c_def = self.get_user_context(title='Для мужчин', gender_selected='Для мужчин')
         return dict(list(context.items()) + list(c_def.items()))
 
     def get_queryset(self):  # Указываем, что именно выбирать из модели
-        return Clothes.objects.filter(gender='All', is_published=True).select_related('brand')
+        return Clothes.objects.filter(gender='Man', is_published=True).select_related('brand') | Clothes.objects.filter(
+            gender='All', is_published=True).select_related('brand')
 
 
 class ForWoman(DataMixin, ListView):
-    paginate_by = 3
+    paginate_by = 9
     model = Clothes
     template_name = 'clothes/woman.html'
     context_object_name = 'goods'  # Для отображения товаров
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(title='Для женщин')
+        c_def = self.get_user_context(title='Для женщин', gender_selected='Для женщин')
         return dict(list(context.items()) + list(c_def.items()))
 
     def get_queryset(self):  # Указываем, что именно выбирать из модели
-        return Clothes.objects.filter(gender='Woman', is_published=True).select_related('brand')
+        return Clothes.objects.filter(gender='Woman', is_published=True).select_related(
+            'brand') | Clothes.objects.filter(gender='All', is_published=True).select_related('brand')
 
 
 def about(request):
@@ -76,17 +79,6 @@ class AddProduct(LoginRequiredMixin, DataMixin, CreateView):
         return dict(list(context.items()) + list(c_def.items()))
 
 
-# def show_category(request, category_slug):
-#     goods = Clothes.objects.filter(category__slug=category_slug)
-#     context = {
-#         'goods': goods,
-#         'menu': menu,
-#         'title': 'Категория',
-#         'cat_selected': category_slug,
-#     }
-#
-#     return render(request, 'clothes/index.html', context=context)
-
 class ClothesCategory(DataMixin, ListView):
     model = Clothes
     template_name = 'clothes/index.html'
@@ -101,8 +93,8 @@ class ClothesCategory(DataMixin, ListView):
         return dict(list(context.items()) + list(c_def.items()))
 
     def get_queryset(self):  # Указываем, что именно выбирать из модели
-        return Clothes.objects.filter(category__slug=self.kwargs['category_slug'], is_published=True).select_related(
-            'category', 'brand')
+        return Clothes.objects.filter(category__slug=self.kwargs['category_slug'],
+                                      is_published=True).select_related('category', 'brand')
 
 
 class ShowProduct(DataMixin, DetailView):

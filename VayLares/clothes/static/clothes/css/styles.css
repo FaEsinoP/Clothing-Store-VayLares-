@@ -161,6 +161,12 @@ ul.lang-list li a {
 	box-shadow: none;
 }
 
+.gender-selected{
+    border-bottom: 3px solid #f9dd94;
+    display: inline;
+    color:#ffffff;
+}
+
 ul.list-articles {
 	list-style: none;
 	margin: 0;

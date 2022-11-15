@@ -25,5 +25,4 @@ class DataMixin:
         context['cats'] = cats
         if 'cat_selected' not in context:
             context['cat_selected'] = 0
-        print(context)
         return context

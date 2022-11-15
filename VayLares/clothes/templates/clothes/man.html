@@ -2,23 +2,23 @@
 {% load clothes_tags %}
 
 {% block content %}
-<ul class="list-articles">
+<div class="flex-container">
     {% for g in goods %}
-    <li>
+    <div class="flex-item">
         {% if g.photo %}
         <a class="img-article thumb" href="{{g.get_absolute_url}}"><img src="{{g.photo.url}}"></a>
         {% endif %}
         <h3>{{g.price}}</h3>
         <p>{{g.brand}} {{g.title}}</p>
-    </li>
+    </div>
     {% endfor %}
-</ul>
+</div>
 {% if page_obj.has_other_pages %}
 <div class="pagination:container">
     {% for p in paginator.page_range %}
     {% if page_obj.number == p %}
     <div class="pagination:number pagination:active">{{ p }}</div>
-    {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2  %}
+    {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
     <div class="pagination:number">
         <a href="?page={{ p }}">{{ p }}</a>
     </div>

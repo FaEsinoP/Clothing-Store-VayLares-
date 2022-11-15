@@ -2,7 +2,7 @@
 {% block content %}
 <div class="flex-container">
     {% for g in goods %}
-    <div class="flex-item item-{{g.pk}}">
+    <div class="flex-item">
         {% if g.photo %}
         <a class="img-article thumb" href="{{g.get_absolute_url}}"><img src="{{g.photo.url}}"></a>
         {% endif %}
