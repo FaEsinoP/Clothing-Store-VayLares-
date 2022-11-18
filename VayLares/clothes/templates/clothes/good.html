@@ -1,14 +1,21 @@
 {% extends 'clothes/base.html' %}
 
 {% block content %}
-<h1>{{good.brand}} {{good.title}}</h1>
+<div class="flex-container">
+    <div class="review-flex-item">
+        {% if good.alternative_photo %}
+        <p><img class="img-article-left" src="{{good.alternative_photo.url}}"></p>
+        {% elif good.photo %}
+        <p><img class="img-article-left" src="{{good.photo.url}}"></p>
+        {% endif %}
+    </div>
+    <div class="review-flex-item">
+        <h1>{{good.brand}} {{good.title}}</h1>
 
-{% if good.photo %}
-<p><img class="img-article-left" src="{{good.photo.url}}"></p>
-{% endif %}
+        <p>{{good.content}}</p>
 
-{{good.content}}
-
-<h3>{{good.price}} руб.</h3>
+        <h3>{{good.price}} ₽</h3>
+        <button>Добавить к заказу</button>
+    </div>
+</div>
 {% endblock %}
-

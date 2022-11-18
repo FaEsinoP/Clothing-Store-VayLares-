@@ -51,6 +51,7 @@ class Clothes(models.Model):
     content = models.TextField()
     price = models.IntegerField()
     photo = models.ImageField(upload_to='pictures/%y/%m/%d/')
+    alternative_photo = models.ImageField(upload_to='alternative-pictures/%y/%m/%d/', null=True)
     time_create = models.DateTimeField(auto_now_add=True)
     gender = models.CharField(max_length=255, null=True)
     is_published = models.BooleanField(default=True)

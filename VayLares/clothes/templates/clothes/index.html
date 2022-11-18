@@ -6,7 +6,7 @@
         {% if g.photo %}
         <a class="img-article thumb" href="{{g.get_absolute_url}}"><img src="{{g.photo.url}}"></a>
         {% endif %}
-        <h3>{{g.price}}</h3>
+        <h3>{{g.price}} ₽</h3>
         <p>{{g.brand}} {{g.title}}</p>
     </div>
     {% endfor %}

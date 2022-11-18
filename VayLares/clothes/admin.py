@@ -5,15 +5,18 @@ from .models import *
 
 
 class ClothesAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'gender', 'category', 'subcategory', 'get_html_photo', 'is_published')
+    list_display = (
+        'id', 'title', 'gender', 'category', 'subcategory', 'get_html_photo', 'get_html_alternative_photo',
+        'is_published')
     list_display_links = ('id', 'title')
     search_fields = ('title', 'gender', 'category')
     list_editable = ('is_published',)
     list_filter = ('gender', 'category', 'subcategory')
     prepopulated_fields = {"slug": ("title",)}
     fields = (
-        'title', 'slug', 'gender', 'price', 'brand', 'category', 'subcategory', 'content', 'photo', 'is_published',)
-    readonly_fields = ('time_create', 'get_html_photo')
+        'title', 'slug', 'gender', 'price', 'brand', 'category', 'subcategory', 'content', 'photo', 'alternative_photo',
+        'is_published',)
+    readonly_fields = ('time_create', 'get_html_photo', 'get_html_alternative_photo')
 
     def get_html_photo(self, object):
         if object.photo:
@@ -22,6 +25,14 @@ class ClothesAdmin(admin.ModelAdmin):
             return "Нет фото"
 
     get_html_photo.short_description = "Photo"
+
+    def get_html_alternative_photo(self, object):
+        if object.alternative_photo:
+            return mark_safe(f"<img src='{object.alternative_photo.url}' width=70>")
+        else:
+            return "Нет фото"
+
+    get_html_alternative_photo.short_description = "Alternative_Photo"
 
 
 class CategoryAdmin(admin.ModelAdmin):
