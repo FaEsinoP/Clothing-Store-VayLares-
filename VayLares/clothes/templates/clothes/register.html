@@ -1,15 +1,45 @@
 {% extends 'clothes/base.html' %}
 
 {% block content %}
-<h1>{{title}}</h1>
 
-<form method="post">
-    {% csrf_token %}
-    {% for f in form %}
-    <p><label class="form-label" for="{{ f.id_for_label }}">{{f.label}}: </label>{{ f }}</p>
-    <div class="form-error">{{ f.errors }}</div>
-    {% endfor %}
-    <button type="submit">Регистрация</button>
-</form>
+
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        <div class="login-wrapper">
+            <div class="login-header">
+                <div class="login-header__text">Регистрация</div>
+            </div>
+            <div class="login-content">
+                <div class="form-error">{{ form.non_field_errors }}</div>
+                <div class="form-group row">
+                    <label for="username" class="col-sm-2 col-form-label">Логин</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="username" name="username" placeholder="Введите логин">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="password1" class="col-sm-2 col-form-label">Пароль</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="password1" name="password1"
+                               placeholder="Введите пароль">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="password2" class="col-sm-2 col-form-label">Повтор пароля</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="password2" name="password2"
+                               placeholder="Повторите пароль">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="'col-sm-10'">
+                        <button type="submit" class="button-form">Войти</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
 
 {% endblock %}
