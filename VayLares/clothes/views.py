@@ -97,6 +97,25 @@ class ClothesCategory(DataMixin, ListView):
                                       is_published=True).select_related('category', 'brand')
 
 
+class ClothesSubCategory(DataMixin, ListView):
+    model = Clothes
+    template_name = 'clothes/index.html'
+    context_object_name = 'goods'  # Для отображения товаров
+    allow_empty = False
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c = Category.objects.get(slug=self.kwargs['category_slug'])
+        sc = Subcategory.objects.get(slug=self.kwargs['subcategory_slug'])
+        c_def = self.get_user_context(title='Подкатегория - ' + str(sc.subcategory_name),
+                                      cat_selected=c.pk, subcat_selected=sc.pk)
+        return dict(list(context.items()) + list(c_def.items()))
+
+    def get_queryset(self):  # Указываем, что именно выбирать из модели
+        return Clothes.objects.filter(subcategory__slug=self.kwargs['subcategory_slug'],
+                                      is_published=True).select_related('subcategory', 'brand')
+
+
 class ShowProduct(DataMixin, DetailView):
     model = Clothes
     template_name = 'clothes/good.html'
@@ -141,3 +160,15 @@ class LoginUser(DataMixin, LoginView):
 def logout_user(request):
     logout(request)
     return redirect('login')
+
+
+class Basket(DataMixin, ListView):
+    model = Clothes
+    template_name = 'clothes/basket.html'
+    context_object_name = 'goods'  # Для отображения товаров
+    allow_empty = False
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title='Корзина')
+        return dict(list(context.items()) + list(c_def.items()))

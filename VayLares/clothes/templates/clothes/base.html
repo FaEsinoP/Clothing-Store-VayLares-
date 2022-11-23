@@ -23,9 +23,11 @@
         {% endif %}
         {% endfor %}
         {% if request.user.is_authenticated %}
-        <li class="last"> {{user.username}} | <a href="{% url 'logout' %}">Выйти</a></li>
+        <li class="last"><a href="{% url 'basket' %}">&#128722 </a> {{user.username}} | <a href="{% url 'logout' %}">Выйти</a>
+        </li>
         {% else %}
-        <li class="last"><a href="{% url 'register' %}">Регистрация</a> | <a href="{% url 'login' %}">Войти</a></li>
+        <li class="last"><a href="{% url 'basket' %}">&#128722 </a><a href="{% url 'register' %}">Регистрация</a> | <a
+                href="{% url 'login' %}">Войти</a></li>
         {% endif %}
     </ul>
     <div class="clear"></div>
@@ -37,11 +39,19 @@
         <!-- Sidebar слева -->
         <td valign="top" class="left-chapters">
             <ul id="leftchapters">
-
                 {% for c in cats %}
                 {% if c.clothes__count > 0 %}
                 {% if c.pk == cat_selected %}
                 <li class="selected">{{c.category_name}}</li>
+                {% for sc in subcats %}
+                {% if sc.category_id == c.pk %}
+                {% if sc.pk == subcat_selected %}
+                <li class="subselected">{{sc.subcategory_name}}</li>
+                {% else %}
+                <li><a class="subcat" href="{{ sc.get_absolute_url }}">{{sc.subcategory_name}}</a></li>
+                {% endif %}
+                {% endif %}
+                {% endfor %}
                 {% else %}
                 <li><a href="{{ c.get_absolute_url }}">{{c.category_name}}</a></li>
                 {% endif %}
@@ -70,7 +80,7 @@
 
         <a href="https://vk.com/lex_faesinop"><i class="fa fa-vk"></i></a>
         <a href="https://t.me/A1exander7"><i class="fa fa-telegram"></i></a>
-        <a href="#"><i class="fa fa-mm"></i></a>
+        <a href="https://www.twitter.com"><i class="fa fa-twitter"></i></a>
         <a href="https://github.com/FaEsinoP"><i class="fa fa-github"></i></a>
 
     </div>

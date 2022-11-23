@@ -16,6 +16,8 @@ class DataMixin:
             cats = Category.objects.annotate(Count('clothes'))
             cache.set('cats', cats, 60)
 
+        subcats = Subcategory.objects.annotate(Count('clothes'))
+
         user_menu = menu.copy()
         if not self.request.user.is_authenticated:
             user_menu.pop(2)
@@ -23,6 +25,9 @@ class DataMixin:
         context['menu'] = user_menu
 
         context['cats'] = cats
+        context['subcats'] = subcats
         if 'cat_selected' not in context:
             context['cat_selected'] = 0
+        if 'subcat_selected' not in context:
+            context['subcat_selected'] = 0
         return context
