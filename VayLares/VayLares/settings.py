@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'clothes.apps.ClothesConfig',
     'debug_toolbar',
-    'captcha'
+    'captcha',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -104,7 +105,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
@@ -135,4 +136,11 @@ CACHES = {
         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
         'LOCATION': os.path.join(BASE_DIR, 'vaylares_cache'),
     }
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        # 'rest_framework.renderers.BrowsableAPIRenderer',
+    ]
 }

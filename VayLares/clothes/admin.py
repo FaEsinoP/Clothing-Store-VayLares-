@@ -14,8 +14,8 @@ class ClothesAdmin(admin.ModelAdmin):
     list_filter = ('gender', 'category', 'subcategory')
     prepopulated_fields = {"slug": ("title",)}
     fields = (
-        'title', 'slug', 'gender', 'price', 'brand', 'category', 'subcategory', 'content', 'photo', 'alternative_photo',
-        'is_published',)
+        'title', 'slug', 'gender', 'price', 'brand', 'category', 'subcategory', 'content', 'photo', 'get_html_photo',
+        'alternative_photo', 'get_html_alternative_photo', 'is_published',)
     readonly_fields = ('time_create', 'get_html_photo', 'get_html_alternative_photo')
 
     def get_html_photo(self, object):

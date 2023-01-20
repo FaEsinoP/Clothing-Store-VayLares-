@@ -3,14 +3,13 @@
 {% block content %}
 
 <div class="container">
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="login-wrapper">
             <div class="login-header-add">
                 <div class="login-header__text">Добавление товара</div>
             </div>
             <div class="login-content">
-                <div class="form-error">{{ form.non_field_errors }}</div>
                 {% for f in form %}
                 <div class="form-group row">
                     <label for="{{ f.id_for_label }}" class="col-sm-2 col-form-label">{{f.label}}</label>

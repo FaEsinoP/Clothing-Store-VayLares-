@@ -3,12 +3,14 @@ from django.contrib import admin
 from django.urls import path, include
 
 from VayLares import settings
+from clothes.views import PageNotFound
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('clothes.urls')),
     path('captcha/', include('captcha.urls')),
 ]
+handler404 = PageNotFound
 
 if settings.DEBUG:
     import debug_toolbar

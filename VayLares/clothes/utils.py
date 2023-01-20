@@ -11,12 +11,13 @@ menu = [{'title': "Для мужчин", 'url_name': 'man'},
 class DataMixin:
     def get_user_context(self, **kwargs):
         context = kwargs
+
         cats = cache.get('cats')
         if not cats:
             cats = Category.objects.annotate(Count('clothes'))
             cache.set('cats', cats, 60)
 
-        subcats = Subcategory.objects.annotate(Count('clothes'))
+        subcats = Subcategory.objects.all()
 
         user_menu = menu.copy()
         if not self.request.user.is_authenticated:

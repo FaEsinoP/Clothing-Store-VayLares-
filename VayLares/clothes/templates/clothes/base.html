@@ -1,13 +1,14 @@
 {% load static %}
-{% load clothes_tags %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <title>{{title}}</title>
     <link type="text/css" href="{% static 'clothes/css/styles.css' %}" rel="stylesheet"/>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet"/>
+    <link rel="shortcut icon" href="{% static 'clothes/images/main.ico' %}" type="image/x-icon"/>
+    {% block styles %}
+    {% endblock %}
 </head>
-
 <body>
 {% block header %}
 <div class="header">
@@ -43,6 +44,7 @@
                 {% if c.clothes__count > 0 %}
                 {% if c.pk == cat_selected %}
                 <li class="selected">{{c.category_name}}</li>
+
                 {% for sc in subcats %}
                 {% if sc.category_id == c.pk %}
                 {% if sc.pk == subcat_selected %}
@@ -52,6 +54,7 @@
                 {% endif %}
                 {% endif %}
                 {% endfor %}
+
                 {% else %}
                 <li><a href="{{ c.get_absolute_url }}">{{c.category_name}}</a></li>
                 {% endif %}

@@ -1,20 +1,26 @@
-from django.urls import path
+from django.urls import path, include
 from django.views.decorators.cache import cache_page
 from .views import *
+from rest_framework import routers
+
+router = routers.SimpleRouter()
+router.register(r'clothes', ClothesViewSet)
 
 urlpatterns = [
+    # path('api/v1/clotheslist', ClothesViewSet.as_view({'get': 'list'})),
+    # path('api/v1/clotheslist/<int:pk>/', ClothesViewSet.as_view({'put': 'update'})),
+    path('api/v1/', include(router.urls)),
     path('', ClothesHome.as_view(), name='home'),
     path('man/', ForMan.as_view(), name='man'),
     path('woman/', ForWoman.as_view(), name='woman'),
-    path('about/', about, name='about'),
-    path('faq/', faq, name='faq'),
+    path('about/', About.as_view(), name='about'),
+    path('faq/', Faq.as_view(), name='faq'),
     path('add/', AddProduct.as_view(), name='add'),
     path('login/', LoginUser.as_view(), name='login'),
     path('basket/', Basket.as_view(), name='basket'),
     path('logout/', logout_user, name='logout'),
     path('register/', RegisterUser.as_view(), name='register'),
     path('category/<slug:category_slug>/', ClothesCategory.as_view(), name='category'),
-    path('category/<slug:category_slug>/subcategory/<slug:subcategory_slug>', ClothesSubCategory.as_view(),
-         name='subcategory'),
+    path('subcategory/<slug:subcategory_slug>', ClothesSubCategory.as_view(), name='subcategory'),
     path('product/<slug:product_slug>/', ShowProduct.as_view(), name='product'),
 ]

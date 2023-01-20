@@ -516,7 +516,7 @@ img {max-width: 150px;}
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     margin-right: 50px;
-    margin-left: 50px;
+    margin-left: 80px;
 }
 
 .col-form-label {
@@ -546,9 +546,8 @@ img {max-width: 150px;}
 
 .form-control {
     display: block;
-    width: 100%;
+    width: 80%;
     height: calc(1.5em + 0.75rem + 2px);
-    padding: 0.375rem 0.75rem;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
