@@ -1,5 +1,6 @@
 from django.contrib.auth import logout, login
 from django.contrib.auth.views import LoginView
+from django.db.models import Q
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
@@ -35,19 +36,21 @@ class ClothesHome(DataMixin, ListView):
     model = Clothes
     template_name = 'clothes/index.html'
     context_object_name = 'goods'  # Имя коллекции, которая используется в шаблоне
-    gender_select = None
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         c_def = self.get_user_context(title='Главная страница')
+        print(dict(list(context.items()) + list(c_def.items())))
         return dict(list(context.items()) + list(c_def.items()))
 
     def get_queryset(self):
-        return Clothes.objects.filter(is_published=True).select_related('category', 'brand')
+        search_request = self.request.GET.get('search', '').title()
+        if not search_request:
+            return Clothes.objects.filter(is_published=True).select_related('category', 'brand')
 
 
 class ForMan(DataMixin, ListView):
-    paginate_by = 6
+    paginate_by = 5
     model = Clothes
     template_name = 'clothes/man.html'
     context_object_name = 'goods'  # Имя коллекции, которая используется в шаблоне
@@ -55,6 +58,7 @@ class ForMan(DataMixin, ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         c_def = self.get_user_context(title='Для мужчин', gender_selected='Для мужчин')
+        print(dict(list(context.items()) + list(c_def.items())))
         return dict(list(context.items()) + list(c_def.items()))
 
     def get_queryset(self):  # Указываем, что именно выбирать из модели
@@ -141,7 +145,7 @@ class ClothesSubCategory(DataMixin, ListView):
         context = super().get_context_data(**kwargs)
         sc = Subcategory.objects.get(slug=self.kwargs['subcategory_slug'])
         c_def = self.get_user_context(title='Подкатегория - ' + str(sc.subcategory_name),
-                                      cat_selected=context['goods'][0]. category.pk, subcat_selected=sc.pk)
+                                      cat_selected=context['goods'][0].category.pk, subcat_selected=sc.pk)
         return dict(list(context.items()) + list(c_def.items()))
 
     def get_queryset(self):  # Указываем, что именно выбирать из модели

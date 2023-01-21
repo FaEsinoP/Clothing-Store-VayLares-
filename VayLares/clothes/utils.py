@@ -1,4 +1,4 @@
-from django.db.models import Count
+from django.db.models import Count, Q
 from django.core.cache import cache
 from .models import *
 
@@ -20,10 +20,22 @@ class DataMixin:
         subcats = Subcategory.objects.all()
 
         user_menu = menu.copy()
-        if not self.request.user.is_authenticated:
+
+        if not self.request.user.is_superuser:
             user_menu.pop(2)
 
         context['menu'] = user_menu
+
+        search_request = self.request.GET.get('search', '').title()
+        search_result = Clothes.objects.filter(Q(title__icontains=search_request) |
+                                               Q(brand__brand_name__icontains=search_request) |
+                                               Q(category__category_name__icontains=search_request) |
+                                               Q(subcategory__subcategory_name__icontains=search_request),
+                                               is_published=True).select_related('category', 'brand')
+        if search_request:
+            context['search_request'] = search_request
+            context['search_count'] = search_result.count()
+            context['goods'] = search_result
 
         context['cats'] = cats
         context['subcats'] = subcats
@@ -31,4 +43,6 @@ class DataMixin:
             context['cat_selected'] = 0
         if 'subcat_selected' not in context:
             context['subcat_selected'] = 0
+        if 'gender_selected' not in context:
+            context['gender_selected'] = ''
         return context

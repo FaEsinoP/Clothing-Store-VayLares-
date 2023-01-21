@@ -24,14 +24,22 @@
         {% endif %}
         {% endfor %}
         {% if request.user.is_authenticated %}
-        <li class="last"><a href="{% url 'basket' %}">&#128722 </a> {{user.username}} | <a href="{% url 'logout' %}">Выйти</a>
+        <li class="last"><a class="fa fa-shopping-basket" href="{% url 'basket' %}"></a> {{user.username}}
+            | <a href="{% url 'logout' %}">Выйти</a>
         </li>
         {% else %}
-        <li class="last"><a href="{% url 'basket' %}">&#128722 </a><a href="{% url 'register' %}">Регистрация</a> | <a
-                href="{% url 'login' %}">Войти</a></li>
+        <li class="last"><a class="fa fa-shopping-basket" href="{% url 'basket' %}"></a><a href="{% url 'register' %}">Регистрация</a>
+            | <a href="{% url 'login' %}">Войти</a></li>
         {% endif %}
+        <li>
+            <div class="search-box">
+                <form name="search" action="{% url 'home' %}">
+                    <button class="btn-search"><i class="fa fa-search"></i></button>
+                    <input type="text" class="input-search" placeholder="Поиск..." name="search">
+                </form>
+            </div>
+        </li>
     </ul>
-    <div class="clear"></div>
 </div>
 {% endblock header %}
 
@@ -44,7 +52,6 @@
                 {% if c.clothes__count > 0 %}
                 {% if c.pk == cat_selected %}
                 <li class="selected">{{c.category_name}}</li>
-
                 {% for sc in subcats %}
                 {% if sc.category_id == c.pk %}
                 {% if sc.pk == subcat_selected %}
@@ -69,7 +76,16 @@
             {% endblock %}
 
             <!-- Блок контента -->
-
+            {% if search_count > 0%}
+            <h1>
+                <span class="search_request"> Вот что мы нашли по запросу «{{search_request}}»</span>
+                <span class="search_count"> - 1000</span>
+            </h1>
+            {% elif search_request %}
+            <h1>
+                <span class="search_request"> По запросу «{{search_request}}» ничего не найдено!</span>
+            </h1>
+            {% endif %}
             {% block content %}
             {% endblock %}
         </td>
