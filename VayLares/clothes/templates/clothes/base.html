@@ -6,6 +6,8 @@
     <link type="text/css" href="{% static 'clothes/css/styles.css' %}" rel="stylesheet"/>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet"/>
     <link rel="shortcut icon" href="{% static 'clothes/images/main.ico' %}" type="image/x-icon"/>
+    <script src= {% static 'clothes/js/show-more.js' %}></script>
+
     {% block styles %}
     {% endblock %}
 </head>
@@ -79,7 +81,7 @@
             {% if search_count > 0%}
             <h1>
                 <span class="search_request"> Вот что мы нашли по запросу «{{search_request}}»</span>
-                <span class="search_count"> - 1000</span>
+                <span class="search_count"> - {{ search_count }}</span>
             </h1>
             {% elif search_request %}
             <h1>
@@ -88,6 +90,7 @@
             {% endif %}
             {% block content %}
             {% endblock %}
+
         </td>
     </tr>
 </table>

@@ -2,7 +2,7 @@
 {% block content %}
 <div class="flex-container">
     {% for g in goods %}
-    <div class="flex-item">
+    <div class="product-flex-item">
         {% if g.photo %}
         <a class="img-article thumb" href="{{g.get_absolute_url}}"><img src="{{g.photo.url}}"></a>
         {% endif %}
@@ -11,4 +11,7 @@
     </div>
     {% endfor %}
 </div>
+    <div class="btn-center">
+        <button class="show-more" style="display:none">Показать ещё</button>
+    </div>
 {% endblock content %}

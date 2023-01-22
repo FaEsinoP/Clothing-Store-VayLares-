@@ -54,7 +54,8 @@ class Clothes(models.Model):
     content = models.TextField(verbose_name='Описание')
     price = models.IntegerField(verbose_name='Цена')
     photo = models.ImageField(upload_to='pictures/%y/%m/%d/', verbose_name='Фото')
-    alternative_photo = models.ImageField(upload_to='alternative-pictures/%y/%m/%d/', null=True, verbose_name='Фото 2')
+    alternative_photo = models.ImageField(upload_to='alternative-pictures/%y/%m/%d/', blank=True, null=True,
+                                          verbose_name='Фото 2')
     time_create = models.DateTimeField(auto_now_add=True)
     gender = models.CharField(max_length=255, null=True, verbose_name='Пол')
     is_published = models.BooleanField(default=True, verbose_name='Опубликовано')
