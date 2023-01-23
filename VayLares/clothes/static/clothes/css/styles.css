@@ -368,10 +368,10 @@ img {max-width: 150px;}
 
 .pagination\:container a {
 	text-decoration: none;
-	text-align:center
+	text-align: center;
+	display: inline-block;  /* Строчно-блочный элемент */
+    padding: 5px 6px;      /* Поля вокруг текста */
 }
-
-
 
 
 /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
@@ -399,6 +399,7 @@ img {max-width: 150px;}
     flex: 1 0 32%;
     align-self: center;
     justify-content: center;
+    position: relative;
 }
 
 .review-flex-item img{
@@ -721,6 +722,7 @@ details summary{
     padding: 0.375rem 7rem;
     line-height: 1.2;
     border-radius: 0.5rem;
+    cursor: pointer;
 }
 
 .show-more:hover {
@@ -738,4 +740,66 @@ details summary{
 
 .product-flex-item.is-visible{
   display:block;
+}
+
+/*||||||||||||||||||| slider ||||||||||||||*/
+
+
+.slideshow-container{
+  max-width: 800px;
+  position: relative;
+  margin: auto;
+}
+
+.prev, .next{
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 15px;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+}
+
+.next{
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover{
+  background-color: rgba(0,0,0,0.15);
+}
+
+.dot{
+  cursor: pointer;
+  height: 13px;
+  width: 13px;
+  margin: 0 1px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, dot:hover{
+  background-color: #717171;
+}
+
+.fade{
+ -webkit-animation-name:fade;
+ -webkit-animation-duration:1.5s;
+ -animation-name:fade;
+ -animation-duration:1.5s;
+}
+
+@-webkit-keyframes fade{
+  from{opacity:.4}
+  to{opacity: 1}
+}
+@keyframes fade{
+  from{opacity:.4}
+  to{opacity: 1}
 }
