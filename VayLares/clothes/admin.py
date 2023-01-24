@@ -11,11 +11,12 @@ class ClothesAdmin(admin.ModelAdmin):
     list_display_links = ('id', 'title')
     search_fields = ('title', 'gender', 'category')
     list_editable = ('is_published',)
+    filter_horizontal = ('sizes',)
     list_filter = ('gender', 'category', 'subcategory')
     prepopulated_fields = {"slug": ("title",)}
     fields = (
         'title', 'slug', 'gender', 'price', 'brand', 'category', 'subcategory', 'content', 'photo', 'get_html_photo',
-        'alternative_photo', 'get_html_alternative_photo', 'is_published',)
+        'alternative_photo', 'get_html_alternative_photo', 'is_published', 'sizes')
     readonly_fields = ('time_create', 'get_html_photo', 'get_html_alternative_photo')
 
     def get_html_photo(self, object):
@@ -56,7 +57,15 @@ class BrandAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("brand_name",)}
 
 
+class SizeAdmin(admin.ModelAdmin):
+    list_display = ('id', 'size_title', 'size', 'count')
+    list_display_links = ('id', 'size_title')
+    search_fields = ('size_title',)
+    prepopulated_fields = {"slug": ("size_title",)}
+
+
 admin.site.register(Clothes, ClothesAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Subcategory, SubcategoryAdmin)
 admin.site.register(Brand, BrandAdmin)
+admin.site.register(Sizes, SizeAdmin)

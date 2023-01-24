@@ -48,7 +48,34 @@ class Subcategory(models.Model):
         ordering = ['id']
 
 
+class Sizes(models.Model):
+    size_title = models.CharField(max_length=100, db_index=True)
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
+    size = models.CharField(max_length=255)
+    count = models.IntegerField()
+
+    def __str__(self):
+        return self.size_title
+
+    # def get_absolute_url(self):
+    #     return reverse('size', kwargs={'size_slug': self.slug})
+
+    class Meta:  # Используется в админ-панели
+        verbose_name = 'Размеры'
+        verbose_name_plural = 'Размеры'
+        ordering = ['id']
+
+
 class Clothes(models.Model):
+    Man = 'Man'
+    Woman = 'Woman'
+    All = 'All'
+    GENDERS = [
+        (Man, 'Для мужчин'),
+        (Woman, 'Для женщин'),
+        (All, 'Унисекс'),
+    ]
+
     title = models.CharField(max_length=255, verbose_name='Заголовок')
     slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL", null=True)
     content = models.TextField(verbose_name='Описание')
@@ -57,11 +84,12 @@ class Clothes(models.Model):
     alternative_photo = models.ImageField(upload_to='alternative-pictures/%y/%m/%d/', blank=True, null=True,
                                           verbose_name='Фото 2')
     time_create = models.DateTimeField(auto_now_add=True)
-    gender = models.CharField(max_length=255, null=True, verbose_name='Пол')
+    gender = models.CharField(max_length=5, choices=GENDERS, default=All, verbose_name='Пол')
     is_published = models.BooleanField(default=True, verbose_name='Опубликовано')
     brand = models.ForeignKey(Brand, on_delete=models.PROTECT, verbose_name='Брэнд')
     subcategory = models.ForeignKey(Subcategory, on_delete=models.PROTECT, null=True, verbose_name='Подкатегория')
     category = models.ForeignKey(Category, on_delete=models.PROTECT, null=True, verbose_name='Категория')
+    sizes = models.ManyToManyField(Sizes)
 
     def __str__(self):
         return self.title
