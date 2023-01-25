@@ -803,3 +803,45 @@ details summary{
   from{opacity:.4}
   to{opacity: 1}
 }
+
+/*||||||||||||||||||| select box ||||||||||||||*/
+.styled-select {
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 3px;
+  margin-bottom: 15px;
+  overflow: hidden;
+  position: relative;
+}
+.styled-select, .styled-select select { width: 240px;}
+select:focus { outline: none; }
+.styled-select select {
+  height: 34px;
+  padding: 5px 0 5px 5px;
+  background: transparent;
+  border: none;
+
+  /*hide default down arrow in webkit */
+  -webkit-appearance: none;
+}
+
+@-moz-document url-prefix(){
+  .styled-select select { width: 110%; }
+}
+
+.fa-sort-desc {
+  position: absolute;
+  top: 0;
+  right: 12px;
+}
+
+ select::-ms-expand { display: none; } /* hide default down arrow in IE10*/
+
+/* hack to fall back in opera */
+_:-o-prefocus, .selector {
+  .styled-select { background: none; }
+  }
+
+option{
+  font-size: 15px;
+}

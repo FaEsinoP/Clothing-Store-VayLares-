@@ -28,16 +28,18 @@
         <h1>{{good.brand}} {{good.title}}</h1>
 
         <p>{{good.content}}</p>
-
-        <select>
-            <option selected disabled>Выберите размер</option>
-            {% for size in sizes %}
-            {% if size.count > 0%}
-            <option value={{size.size}}>{{size.size}}</option>
-            {% endif %}
-            {% endfor %}
-        </select>
-
+        <div class="styled-select">
+            <select>
+                <option selected disabled>Выберите размер</option>
+                {% for size in sizes %}
+                {% if size.count > 0%}
+                <option value={{size.size}}>{{size.size}}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+            <span class="fa fa-sort-desc" style="font-size: 24px"></span>
+        </div>
+        <div class="review-flex-item">
         <h3>{{good.price}} ₽</h3>
         <button>Добавить к заказу</button>
     </div>
