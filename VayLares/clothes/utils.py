@@ -43,6 +43,4 @@ class DataMixin:
             context['cat_selected'] = 0
         if 'subcat_selected' not in context:
             context['subcat_selected'] = 0
-        if 'gender_selected' not in context:
-            context['gender_selected'] = ''
         return context

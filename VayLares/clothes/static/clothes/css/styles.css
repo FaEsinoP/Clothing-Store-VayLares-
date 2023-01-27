@@ -664,7 +664,7 @@ img {max-width: 150px;}
 
 
 .box{
-   width: 320px;
+   width: 430px;
    background: #fff;
    border-radius: 7px;
    box-shadow: 1px 2px 4px rgba(0,0,0,.3);
@@ -701,6 +701,10 @@ details{
 
 details summary{
    outline: none;
+}
+
+.text{
+   margin-top: 15px;
 }
 
 .btn-center{
@@ -836,11 +840,6 @@ select:focus { outline: none; }
 }
 
  select::-ms-expand { display: none; } /* hide default down arrow in IE10*/
-
-/* hack to fall back in opera */
-_:-o-prefocus, .selector {
-  .styled-select { background: none; }
-  }
 
 option{
   font-size: 15px;

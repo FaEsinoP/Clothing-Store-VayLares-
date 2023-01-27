@@ -146,8 +146,8 @@ class ClothesSubCategory(DataMixin, ListView):
         context = super().get_context_data(**kwargs)
         sc = Subcategory.objects.get(slug=self.kwargs['subcategory_slug'])
         c_def = self.get_user_context(title='Подкатегория - ' + str(sc.subcategory_name),
-                                      cat_selected=context['goods'][0].category.pk, subcat_selected=sc.pk)
-        return dict(list(context.items()) + list(c_def.items()))
+                                      cat_selected=context['goods'].category.pk, subcat_selected=sc.pk)
+        return dict(list(context.items()) + list(c_def.items()))[0]
 
     def get_queryset(self):  # Указываем, что именно выбирать из модели
         return Clothes.objects.filter(subcategory__slug=self.kwargs['subcategory_slug'],
