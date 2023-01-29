@@ -1,6 +1,59 @@
-{% extends 'clothes/base.html' %}
+{% extends "clothes/base.html" %}
+{% load static %}
 
+<title>{{title}}</title>
 {% block content %}
-<h1> {{title}}</h1>
 
-{% endblock content %}
+<div class="flex-container">
+    <div class="cart-flex-item1">
+        <h4 class="h4-cart">Ваш заказ</h4>
+        {% for item in cart %}
+        {% with product=item.product %}
+
+        <div class="item">
+            <div>
+                <a href="{{ product.get_absolute_url }}">
+                    <img class="img" src="{{ product.photo.url }}">
+                </a>
+            </div>
+
+            <div class="description">
+                <span>{{ product.brand }}</span>
+                <span>{{ product.title }}</span>
+                <span>размер М</span>
+            </div>
+
+            <div>
+                <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                    <input type="submit" value="Обновить">
+                    {% csrf_token %}
+                </form>
+            </div>
+
+            <div>
+                <a href="{% url 'cart:cart_remove' product.id %}">Удалить</a>
+            </div>
+
+            <div>{{ item.quantity }} шт. {{ item.total_price }} ₽</div>
+
+        </div>
+        {% endwith %}
+        {% endfor %}
+    </div>
+    <div class="cart-flex-item2">
+        <h4 class="h4-cart">Сумма заказа</h4>
+        <div class="item">
+            <div class="total">
+                <div>Общая стоимость: <b>{{ cart.get_total_price }} ₽</b></div>
+            </div>
+        </div>
+        <div class="item" style="border-top: none">
+            <form action="" method="post">
+                {% csrf_token %}
+                <button class='buy-button' type="submit">Оформить заказ</button>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

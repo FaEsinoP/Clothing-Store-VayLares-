@@ -20,6 +20,7 @@ class Cart:
             cart[str(product.id)]['product'] = product
 
         for item in cart.values():
+            item['price'] = int(item['price'])
             item['total_price'] = item['price'] * item['quantity']
             yield item
 

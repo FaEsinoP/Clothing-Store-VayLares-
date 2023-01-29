@@ -26,11 +26,11 @@
         {% endif %}
         {% endfor %}
         {% if request.user.is_authenticated %}
-        <li class="last"><a class="fa fa-shopping-basket" href="{% url 'basket' %}"></a> {{user.username}}
+        <li class="last"><a class="fa fa-shopping-basket" href="{% url 'cart:cart_detail' %}"></a> {{user.username}}
             | <a href="{% url 'logout' %}">Выйти</a>
         </li>
         {% else %}
-        <li class="last"><a class="fa fa-shopping-basket" href="{% url 'basket' %}"></a><a href="{% url 'register' %}">Регистрация</a>
+        <li class="last"><a class="fa fa-shopping-basket" href="{% url 'cart:cart_detail' %}"></a><a href="{% url 'register' %}">Регистрация</a>
             | <a href="{% url 'login' %}">Войти</a></li>
         {% endif %}
         <li>

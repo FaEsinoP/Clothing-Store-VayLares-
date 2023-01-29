@@ -40,8 +40,12 @@
             <span class="fa fa-sort-desc" style="font-size: 24px"></span>
         </div>
         <div class="review-flex-item">
-        <h3>{{good.price}} ₽</h3>
-        <button>Добавить к заказу</button>
+            <h3>{{good.price}} ₽</h3>
+        </div>
+        <form action="{% url 'cart:cart_add' good.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Добавить к заказу</button>
+        </form>
     </div>
 </div>
 {% endblock %}
