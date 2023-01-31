@@ -159,7 +159,7 @@ class ShowProduct(DataMixin, DetailView):
     form_class = CartAddProductForm
     template_name = 'clothes/good.html'
     slug_url_kwarg = 'product_slug'
-    context_object_name = 'good'  # Имя переменной, которая используется в шаблоне
+    context_object_name = 'good'
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)

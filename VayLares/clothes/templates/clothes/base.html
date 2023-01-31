@@ -25,14 +25,21 @@
         <li><a href="{% url m.url_name %}">{{m.title}}</a></li>
         {% endif %}
         {% endfor %}
-        {% if request.user.is_authenticated %}
-        <li class="last"><a class="fa fa-shopping-basket" href="{% url 'cart:cart_detail' %}"></a> {{user.username}}
-            | <a href="{% url 'logout' %}">Выйти</a>
+        {% with total_items=cart|length %}
+        <li class="last">
+            <span class="cart-icon">
+                <span class="null">
+                    <span class="cart-counter">{{ total_items }}</span>
+                </span>
+                    <a class="fa fa-shopping-basket" href="{% url 'cart:cart_detail' %}"></a>
+            </span>
+            {% if request.user.is_authenticated %}
+            {{user.username}} | <a href="{% url 'logout' %}">Выйти</a>
+            {% else %}
+            <a href="{% url 'register' %}">Регистрация</a>| <a href="{% url 'login' %}">Войти</a>
+            {% endif %}
         </li>
-        {% else %}
-        <li class="last"><a class="fa fa-shopping-basket" href="{% url 'cart:cart_detail' %}"></a><a href="{% url 'register' %}">Регистрация</a>
-            | <a href="{% url 'login' %}">Войти</a></li>
-        {% endif %}
+        {% endwith %}
         <li>
             <div class="search-box">
                 <form name="search" action="{% url 'home' %}">

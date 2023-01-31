@@ -11,6 +11,9 @@
         {% with product=item.product %}
 
         <div class="item">
+            <div class="trash">
+                <a class="fa fa-trash-o" href="{% url 'cart:cart_remove' product.id %}"></a>
+            </div>
             <div>
                 <a href="{{ product.get_absolute_url }}">
                     <img class="img" src="{{ product.photo.url }}">
@@ -20,21 +23,19 @@
             <div class="description">
                 <span>{{ product.brand }}</span>
                 <span>{{ product.title }}</span>
-                <span>размер М</span>
+                <span>размер {{ product.sizes }}</span>
             </div>
 
             <div>
                 <form action="{% url 'cart:cart_add' product.id %}" method="post">
-                    <input type="submit" value="Обновить">
                     {% csrf_token %}
+                    {{ item.update_quantity_form.quantity }} шт.
+                    {{ item.update_quantity_form.update }}
+                    <input type="submit" value="Обновить">
                 </form>
             </div>
 
-            <div>
-                <a href="{% url 'cart:cart_remove' product.id %}">Удалить</a>
-            </div>
-
-            <div>{{ item.quantity }} шт. {{ item.total_price }} ₽</div>
+            <div>{{ item.total_price }} ₽</div>
 
         </div>
         {% endwith %}
@@ -48,7 +49,7 @@
             </div>
         </div>
         <div class="item" style="border-top: none">
-            <form action="" method="post">
+            <form action="{% url 'home' %}" method="post">
                 {% csrf_token %}
                 <button class='buy-button' type="submit">Оформить заказ</button>
             </form>
@@ -57,3 +58,4 @@
 </div>
 </div>
 {% endblock %}
+action="{% url 'cart:cart_add' good.id %}"

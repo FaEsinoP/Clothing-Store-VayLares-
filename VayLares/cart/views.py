@@ -1,7 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse_lazy
 from django.views.decorators.http import require_POST
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView, CreateView
 
 from clothes.models import Clothes
 from clothes.utils import DataMixin
@@ -14,7 +15,11 @@ def cart_add(request, product_id):
     cart = Cart(request)
     product = get_object_or_404(Clothes, id=product_id)
     form = CartAddProductForm(request.POST)
-    cart.add(product=product, quantity=1, update_quantity=False)
+    if form.is_valid():
+        cd = form.cleaned_data
+        cart.add(product=product, quantity=cd['quantity'], update_quantity=cd['update'])
+    else:
+        cart.add(product=product, quantity=1, update_quantity=False)
     return redirect('cart:cart_detail')
 
 
@@ -28,7 +33,6 @@ def cart_remove(request, product_id):
 class Basket(DataMixin, ListView):
     model = Clothes
     template_name = 'clothes/basket.html'
-    context_object_name = 'goods'
     allow_empty = False
 
     def get_context_data(self, *, object_list=None, **kwargs):
