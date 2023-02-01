@@ -19,6 +19,7 @@ class DataMixin:
 
         subcats = Subcategory.objects.all()
 
+
         user_menu = menu.copy()
 
         if not self.request.user.is_superuser:
@@ -39,6 +40,7 @@ class DataMixin:
 
         context['cats'] = cats
         context['subcats'] = subcats
+
         if 'cat_selected' not in context:
             context['cat_selected'] = 0
         if 'subcat_selected' not in context:

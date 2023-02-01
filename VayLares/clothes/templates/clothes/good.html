@@ -32,9 +32,7 @@
             <select>
                 <option selected disabled>Выберите размер</option>
                 {% for size in sizes %}
-                {% if size.count > 0%}
                 <option value={{size.size}}>{{size.size}}</option>
-                {% endif %}
                 {% endfor %}
             </select>
             <span class="fa fa-sort-desc" style="font-size: 24px"></span>

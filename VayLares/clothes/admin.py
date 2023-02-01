@@ -4,6 +4,10 @@ from django.utils.safestring import mark_safe
 from .models import *
 
 
+class SizeInlineAdmin(admin.TabularInline):
+    model = Clothes.sizes.through
+
+
 class ClothesAdmin(admin.ModelAdmin):
     list_display = (
         'id', 'title', 'gender', 'category', 'subcategory', 'get_html_photo', 'get_html_alternative_photo',
@@ -16,8 +20,9 @@ class ClothesAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
     fields = (
         'title', 'slug', 'gender', 'price', 'brand', 'category', 'subcategory', 'content', 'photo', 'get_html_photo',
-        'alternative_photo', 'get_html_alternative_photo', 'is_published', 'sizes')
+        'alternative_photo', 'get_html_alternative_photo', 'is_published')
     readonly_fields = ('time_create', 'get_html_photo', 'get_html_alternative_photo')
+    inlines = (SizeInlineAdmin,)
 
     def get_html_photo(self, object):
         if object.photo:
@@ -58,10 +63,15 @@ class BrandAdmin(admin.ModelAdmin):
 
 
 class SizeAdmin(admin.ModelAdmin):
-    list_display = ('id', 'size_title', 'size', 'count')
+    list_display = ('id', 'size_title', 'size')
     list_display_links = ('id', 'size_title')
     search_fields = ('size_title',)
     prepopulated_fields = {"slug": ("size_title",)}
+
+
+class Sizes_of_ClothesAdmin(admin.ModelAdmin):
+    list_display = ('id', 'id_clothes', 'id_size')
+    list_display_links = ('id',)
 
 
 admin.site.register(Clothes, ClothesAdmin)
@@ -69,3 +79,4 @@ admin.site.register(Category, CategoryAdmin)
 admin.site.register(Subcategory, SubcategoryAdmin)
 admin.site.register(Brand, BrandAdmin)
 admin.site.register(Sizes, SizeAdmin)
+admin.site.register(Sizes_of_Clothes, Sizes_of_ClothesAdmin)

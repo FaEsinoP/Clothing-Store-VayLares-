@@ -52,7 +52,6 @@ class Sizes(models.Model):
     size_title = models.CharField(max_length=100, db_index=True)
     slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
     size = models.CharField(max_length=255)
-    count = models.IntegerField()
 
     def __str__(self):
         return self.size_title
@@ -89,15 +88,26 @@ class Clothes(models.Model):
     brand = models.ForeignKey(Brand, on_delete=models.PROTECT, verbose_name='Брэнд')
     subcategory = models.ForeignKey(Subcategory, on_delete=models.PROTECT, null=True, verbose_name='Подкатегория')
     category = models.ForeignKey(Category, on_delete=models.PROTECT, null=True, verbose_name='Категория')
-    sizes = models.ManyToManyField(Sizes)
+    sizes = models.ManyToManyField(Sizes, through='Sizes_of_Clothes')
 
     def __str__(self):
         return self.title
 
-    class Meta:  # Используется в админ-панели
+    class Meta:
         verbose_name = 'Вещи'
         verbose_name_plural = 'Вещи'
         ordering = ['id']
 
     def get_absolute_url(self):
         return reverse('product', kwargs={'product_slug': self.slug})
+
+
+class Sizes_of_Clothes(models.Model):
+    id_clothes = models.ForeignKey(Clothes, on_delete=models.PROTECT, verbose_name='id товара')
+    id_size = models.ForeignKey(Sizes, on_delete=models.PROTECT, verbose_name='id размера')
+    count = models.IntegerField()
+
+    class Meta:
+        verbose_name = 'Размеры вещей'
+        verbose_name_plural = 'Размеры вещей'
+        ordering = ['id']
