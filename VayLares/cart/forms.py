@@ -1,6 +1,6 @@
 from django import forms
 
-VARIANTS = [(i, str(i)) for i in range(1, 21)]
+VARIANTS = [(i, str(i)) for i in range(1, 16)]
 
 
 class CartAddProductForm(forms.Form):

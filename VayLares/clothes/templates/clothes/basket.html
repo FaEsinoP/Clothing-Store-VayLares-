@@ -15,15 +15,15 @@
                 <a class="fa fa-trash-o" href="{% url 'cart:cart_remove' product.id %}"></a>
             </div>
             <div>
-                <a href="{{ product.get_absolute_url }}">
-                    <img class="img" src="{{ product.photo.url }}">
+                <a href="{{ product.id_clothes.get_absolute_url }}">
+                    <img class="img" src="{{ product.id_clothes.photo.url }}">
                 </a>
             </div>
 
             <div class="description">
-                <span>{{ product.brand }}</span>
-                <span>{{ product.title }}</span>
-                <span>размер {{ product.sizes }}</span>
+                <span>{{ product.id_clothes.brand }}</span>
+                <span>{{ product.id_clothes.title }}</span>
+                <span>размер {{ product.id_size.size }}</span>
             </div>
 
             <div>

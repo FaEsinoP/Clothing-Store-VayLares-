@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 from django.views.decorators.http import require_POST
 from django.views.generic import ListView, DetailView, CreateView
 
-from clothes.models import Clothes
+from clothes.models import *
 from clothes.utils import DataMixin
 from .cart import Cart
 from .forms import CartAddProductForm
@@ -13,7 +13,11 @@ from .forms import CartAddProductForm
 @require_POST
 def cart_add(request, product_id):
     cart = Cart(request)
-    product = get_object_or_404(Clothes, id=product_id)
+    if 'select_size' in request.POST:
+        size_id = request.POST['select_size']
+        product = get_object_or_404(Sizes_of_Clothes, id_clothes=product_id, id_size=size_id)
+    else:
+        product = get_object_or_404(Sizes_of_Clothes, id=product_id)
     form = CartAddProductForm(request.POST)
     if form.is_valid():
         cd = form.cleaned_data
@@ -25,8 +29,7 @@ def cart_add(request, product_id):
 
 def cart_remove(request, product_id):
     cart = Cart(request)
-    product = get_object_or_404(Clothes, id=product_id)
-    cart.remove(product)
+    cart.remove(product_id)
     return redirect('cart:cart_detail')
 
 
