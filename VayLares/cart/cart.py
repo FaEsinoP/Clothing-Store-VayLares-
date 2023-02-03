@@ -17,7 +17,6 @@ class Cart:
 
         cart = self.cart.copy()
         for product in products:
-            print(cart[str(product.id)])
             cart[str(product.id)]['product'] = product
 
         for item in cart.values():

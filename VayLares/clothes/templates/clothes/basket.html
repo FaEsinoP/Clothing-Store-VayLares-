@@ -4,6 +4,7 @@
 <title>{{title}}</title>
 {% block content %}
 
+{% if len > 0 %}
 <div class="flex-container">
     <div class="cart-flex-item1">
         <h4 class="h4-cart">Ваш заказ</h4>
@@ -49,12 +50,15 @@
             </div>
         </div>
         <div class="item" style="border-top: none">
-            <form action="{% url 'home' %}" method="post">
+            <form action="{% url 'home' %}">
                 {% csrf_token %}
                 <button class='buy-button' type="submit">Оформить заказ</button>
             </form>
         </div>
     </div>
 </div>
+{% else %}
+<h1>В данный момент ваша корзина пуста!</h1>
+{% endif %}
 {% endblock %}
 action="{% url 'cart:cart_add' good.id %}"

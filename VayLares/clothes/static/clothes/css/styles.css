@@ -973,3 +973,7 @@ div.trash{
   border-radius: 1em;
   position: relative;
 }
+
+select option:disabled {
+    color: #dcdbdb;
+}

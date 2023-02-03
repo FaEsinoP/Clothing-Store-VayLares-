@@ -161,7 +161,8 @@ class ShowProduct(DataMixin, DetailView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         sizes = context['good'].sizes.all()
-        c_def = self.get_user_context(title=context['good'], sizes=sizes)
+        soc = Sizes_of_Clothes.objects.filter(id_clothes=context['good'].id, count__gt=0).values_list('id_size', flat=True)
+        c_def = self.get_user_context(title=context['good'], sizes=sizes, soc=soc)
         return dict(list(context.items()) + list(c_def.items()))
 
 
@@ -198,18 +199,6 @@ class LoginUser(DataMixin, LoginView):
 def logout_user(request):
     logout(request)
     return redirect('login')
-
-
-class Basket(DataMixin, ListView):
-    model = Clothes
-    template_name = 'clothes/basket.html'
-    context_object_name = 'goods'  # Для отображения товаров
-    allow_empty = False
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(title='Корзина')
-        return dict(list(context.items()) + list(c_def.items()))
 
 
 def PageNotFound(request, exception):

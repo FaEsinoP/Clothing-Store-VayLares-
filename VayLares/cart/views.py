@@ -1,8 +1,6 @@
-from django.http import HttpResponse
-from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse_lazy
+from django.shortcuts import redirect, get_object_or_404
 from django.views.decorators.http import require_POST
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView
 
 from clothes.models import *
 from clothes.utils import DataMixin
@@ -18,7 +16,7 @@ def cart_add(request, product_id):
         product = get_object_or_404(Sizes_of_Clothes, id_clothes=product_id, id_size=size_id)
     else:
         product = get_object_or_404(Sizes_of_Clothes, id=product_id)
-    form = CartAddProductForm(request.POST)
+    form = CartAddProductForm(product.count, request.POST)
     if form.is_valid():
         cd = form.cleaned_data
         cart.add(product=product, quantity=cd['quantity'], update_quantity=cd['update'])
@@ -42,6 +40,7 @@ class Basket(DataMixin, ListView):
         context = super().get_context_data(**kwargs)
         cart = Cart(self.request)
         for item in cart:
-            item['update_quantity_form'] = CartAddProductForm(initial={'quantity': item['quantity'], 'update': True})
-        c_def = self.get_user_context(title='Корзина', cart=cart)
+            item['update_quantity_form'] = CartAddProductForm(initial={'quantity': item['quantity'], 'update': True},
+                                                              count=item['product'].count)
+        c_def = self.get_user_context(title='Корзина', cart=cart, len=cart.__len__())
         return dict(list(context.items()) + list(c_def.items()))

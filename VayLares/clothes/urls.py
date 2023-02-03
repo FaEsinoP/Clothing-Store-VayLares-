@@ -17,7 +17,6 @@ urlpatterns = [
     path('faq/', Faq.as_view(), name='faq'),
     path('add/', AddProduct.as_view(), name='add'),
     path('login/', LoginUser.as_view(), name='login'),
-    path('basket/', Basket.as_view(), name='basket'),
     path('logout/', logout_user, name='logout'),
     path('register/', RegisterUser.as_view(), name='register'),
     path('category/<slug:category_slug>/', ClothesCategory.as_view(), name='category'),
