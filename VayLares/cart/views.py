@@ -1,11 +1,17 @@
+from django.http import HttpResponse
 from django.shortcuts import redirect, get_object_or_404
+from django.urls import reverse_lazy
 from django.views.decorators.http import require_POST
-from django.views.generic import ListView
+from django.views.generic import DetailView, CreateView
 
+from clothes.forms import AddGoodForm
 from clothes.models import *
 from clothes.utils import DataMixin
 from .cart import Cart
-from .forms import CartAddProductForm
+from .forms import *
+
+import sqlite3 as lite
+import sys
 
 
 @require_POST
@@ -31,10 +37,25 @@ def cart_remove(request, product_id):
     return redirect('cart:cart_detail')
 
 
-class Basket(DataMixin, ListView):
+class Basket(DataMixin, CreateView):
+    form_class = AddGoodForm
     model = Clothes
     template_name = 'clothes/basket.html'
     allow_empty = False
+
+    def post(self, request, *args, **kwargs):
+
+        con = lite.connect('db.sqlite3')
+        cart = Cart(self.request)
+
+        with con:
+            cur = con.cursor()
+            for item in cart:
+                cur.execute('''UPDATE clothes_sizes_of_clothes SET count = ? WHERE id = ?''',
+                            (item['product'].count - int(item['quantity']), item['product'].id))
+
+        cart.clear()
+        return redirect('home')
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)

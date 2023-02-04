@@ -50,7 +50,7 @@
             </div>
         </div>
         <div class="item" style="border-top: none">
-            <form action="{% url 'home' %}">
+            <form method="post">
                 {% csrf_token %}
                 <button class='buy-button' type="submit">Оформить заказ</button>
             </form>

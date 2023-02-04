@@ -1,6 +1,5 @@
 from django.contrib.auth import logout, login
 from django.contrib.auth.views import LoginView
-from django.db.models import Q
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
@@ -11,7 +10,6 @@ from rest_framework.views import APIView
 
 from cart.forms import CartAddProductForm
 from .forms import *
-from .models import *
 from .serializers import ClothesSerializer
 from .utils import *
 

@@ -70,7 +70,7 @@ class SizeAdmin(admin.ModelAdmin):
 
 
 class Sizes_of_ClothesAdmin(admin.ModelAdmin):
-    list_display = ('id', 'id_clothes', 'id_size')
+    list_display = ('id', 'count', 'id_clothes', 'id_size')
     list_display_links = ('id',)
 
 
