@@ -1,0 +1,42 @@
+{% extends "clothes/base.html" %}
+{% load static %}
+
+<title>{{ title }}</title>
+{% block content %}
+
+{% if fav|length > 0 %}
+<div class="flex-container">
+    <div class="cart-flex-item1">
+        <h2 class="h4-cart">
+            <span>{{ title }}</span>
+            <span class="search_count">  {{ fav|length }} </span>
+        </h2>
+        {% for item in fav %}
+        {% with product=item.product %}
+
+        <div class="item">
+            <div class="trash">
+                <a class="fa fa-trash-o" href="{% url 'fav_remove' product.id %}"></a>
+            </div>
+            <div>
+                <a href="{{ product.get_absolute_url }}">
+                    <img class="img" src="{{ product.photo.url }}">
+                </a>
+            </div>
+
+            <div class="description">
+                <span>{{ product.brand }}</span>
+                <span>{{ product.title }}</span>
+            </div>
+
+            <div>{{ product.price }} ₽</div>
+
+        </div>
+        {% endwith %}
+        {% endfor %}
+    </div>
+</div>
+{% else %}
+<h3>Понравилась какая-то вещь? Добавь её в избранное и вернись к ней в любой момент позже!</h3>
+{% endif %}
+{% endblock %}

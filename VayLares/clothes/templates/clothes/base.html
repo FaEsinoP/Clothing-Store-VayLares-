@@ -25,16 +25,24 @@
         <li><a href="{% url m.url_name %}">{{m.title}}</a></li>
         {% endif %}
         {% endfor %}
+        {% with cart_items=cart|length %}
+        {% with fav_items=fav|length %}
         <li class="last">
-            <span class="cart-icon">
-                    <a class="fa fa-heart-o" href="#"></a>
-            </span>
+
             <span class="cart-icon">
                 <span class="null">
-                    <span class="cart-counter">{{ total_items }}</span>
+                    <span class="cart-counter">{{ fav_items }}</span>
+                </span>
+                    <a class="fa fa-heart-o" href="{% url 'fav_detail' %}"></a>
+            </span>
+
+            <span class="cart-icon">
+                <span class="null">
+                    <span class="cart-counter">{{ cart_items }}</span>
                 </span>
                     <a class="fa fa-shopping-basket" href="{% url 'cart:cart_detail' %}"></a>
             </span>
+
             {% if request.user.is_authenticated %}
             {{user.username}} | <a href="{% url 'logout' %}">Выйти</a>
             {% else %}
@@ -50,6 +58,8 @@
             </div>
         </li>
     </ul>
+    {% endwith %}
+    {% endwith %}
 </div>
 {% endblock header %}
 

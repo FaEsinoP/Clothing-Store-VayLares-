@@ -1,5 +1,4 @@
 from django.urls import path, include
-from django.views.decorators.cache import cache_page
 from .views import *
 from rest_framework import routers
 
@@ -22,4 +21,7 @@ urlpatterns = [
     path('category/<slug:category_slug>/', ClothesCategory.as_view(), name='category'),
     path('subcategory/<slug:subcategory_slug>', ClothesSubCategory.as_view(), name='subcategory'),
     path('product/<slug:product_slug>/', ShowProduct.as_view(), name='product'),
+    path('fav/', Favourites.as_view(), name='fav_detail'),
+    path('fav/add/<int:product_id>/', fav_add, name='fav_add'),
+    path('fav/remove/<int:product_id>/', fav_remove, name='fav_remove'),
 ]

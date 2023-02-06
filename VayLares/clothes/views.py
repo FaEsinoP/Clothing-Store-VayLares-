@@ -1,6 +1,6 @@
 from django.contrib.auth import logout, login
 from django.contrib.auth.views import LoginView
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views.decorators.http import require_POST
@@ -10,6 +10,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from cart.forms import CartAddProductForm
+from .Favourites import Favour
 from .forms import *
 from .serializers import ClothesSerializer
 from .utils import *
@@ -162,6 +163,7 @@ class ShowProduct(DataMixin, DetailView):
         sizes = context['good'].sizes.all()
         soc = Sizes_of_Clothes.objects.filter(id_clothes=context['good'].id, count__gt=0).values_list('id_size',
                                                                                                       flat=True)
+
         c_def = self.get_user_context(title=context['good'], sizes=sizes, soc=soc)
         return dict(list(context.items()) + list(c_def.items()))
 
@@ -203,3 +205,30 @@ def logout_user(request):
 
 def PageNotFound(request, exception):
     return HttpResponseNotFound('<h1>Страница не найдена</h1>')
+
+
+@require_POST
+def fav_add(request, product_id):
+    fav = Favour(request)
+    product = get_object_or_404(Clothes, id=product_id)
+    fav.add(product=product)
+    print(request.path_info)
+    return HttpResponseRedirect('home')
+
+
+def fav_remove(request, product_id):
+    fav = Favour(request)
+    fav.remove(product_id)
+    return HttpResponseRedirect(request.path_info)
+
+
+class Favourites(DataMixin, ListView):
+    model = Clothes
+    template_name = 'clothes/favourites.html'
+    allow_empty = False
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        fav = Favour(self.request)
+        c_def = self.get_user_context(title='Избранное', fav=fav)
+        return dict(list(context.items()) + list(c_def.items()))

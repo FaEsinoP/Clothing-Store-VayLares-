@@ -49,12 +49,21 @@
             {% csrf_token %}
             <button type="submit" id="submit_button" class="add_button">Добавить к заказу</button>
         </form>
-        <form action="#" method="post">
+        {% if good.id in fav.lst %}
+        <form action="{% url 'fav_remove' good.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="favour_button">
+                <a class="fa fa-heart"></a>
+            </button>
+        </form>
+        {% else %}
+        <form action="{% url 'fav_add' good.id %}" method="post">
             {% csrf_token %}
             <button type="submit" class="favour_button">
                 <a class="fa fa-heart-o"></a>
             </button>
         </form>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

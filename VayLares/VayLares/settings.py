@@ -19,6 +19,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 CART_SESSION_ID = 'cart'
+FAV_SESSION_ID = 'fav'
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-i@5ch=*tl0*r6qbxb52(lh78@silymehejm-mjl)qhddym(bt-'
@@ -68,6 +69,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'cart.context_processors.cart',
+                'clothes.context_processors.fav',
             ],
         },
     },
