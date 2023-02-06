@@ -422,7 +422,8 @@ img {max-width: 150px;}
     margin-bottom: 20px;
 }
 
-.review-flex-item button {
+
+.add_button {
   margin-top:10px;
   min-width: 100px;
   font-family: inherit;
@@ -436,15 +437,33 @@ img {max-width: 150px;}
   cursor: pointer;
 }
 
-.review-flex-item button:hover {
+.add_button:hover {
   background: #173a87;
 }
 
-.review-flex-item button:focus {
+.add_button:focus {
   outline: none;
   box-shadow: 0 0 0 4px #cbd6ee;
 }
 
+.favour_button{
+  margin-left:5px;
+  min-width: 30px;
+  padding: 8px 10px;
+  appearance: none;
+  border: 0;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.favour_button:hover {
+  background: #d4d4d4;
+}
+
+.add_button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #ededed;
+}
 
 
 .container{
@@ -638,7 +657,7 @@ img {max-width: 150px;}
 }
 
 .btn-search:focus ~ .input-search{
-  width: 300px;
+  width: 270px;
   border-radius: 0px;
   background-color: transparent;
   border-bottom:1px solid rgba(255,255,255,.5);
@@ -646,7 +665,7 @@ img {max-width: 150px;}
 }
 
 .input-search:focus{
-  width: 300px;
+  width: 270px;
   border-radius: 0px;
   background-color: transparent;
   border-bottom:1px solid rgba(255,255,255,.5);
@@ -749,6 +768,8 @@ details summary{
 .product-flex-item.is-visible{
   display:block;
 }
+
+
 
 /*||||||||||||||||||| slider ||||||||||||||*/
 
@@ -967,11 +988,14 @@ option{
   box-shadow: 0 0 0 4px #cbd6ee;
 }
 
-div.trash{
+.trash{
   width: 30px;
   height: 30px;
-  border-radius: 1em;
-  position: relative;
+  padding: 8px 10px;
+  border: 0;
+    appearance: none;
+  border-radius: 1rem;
+  cursor: pointer;
 }
 
 select option:disabled {

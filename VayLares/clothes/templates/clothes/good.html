@@ -27,8 +27,8 @@
     <script src="{% static 'clothes/js/slider.js' %}"></script>
     <div class="review-flex-item">
         <h1>{{good.brand}} {{good.title}}</h1>
-
         <p>{{good.content}}</p>
+
         <form action="{% url 'cart:cart_add' good.id %}" method="post">
             <div class="styled-select">
                 <select name="select_size" id="select_size" required onchange="enableButton()">
@@ -47,7 +47,13 @@
                 <h3>{{good.price}} ₽</h3>
             </div>
             {% csrf_token %}
-            <button type="submit" id="submit_button">Добавить к заказу</button>
+            <button type="submit" id="submit_button" class="add_button">Добавить к заказу</button>
+        </form>
+        <form action="#" method="post">
+            {% csrf_token %}
+            <button type="submit" class="favour_button">
+                <a class="fa fa-heart-o"></a>
+            </button>
         </form>
     </div>
 </div>

@@ -3,6 +3,7 @@ from django.contrib.auth.views import LoginView
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
+from django.views.decorators.http import require_POST
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from rest_framework.response import Response
@@ -159,7 +160,8 @@ class ShowProduct(DataMixin, DetailView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         sizes = context['good'].sizes.all()
-        soc = Sizes_of_Clothes.objects.filter(id_clothes=context['good'].id, count__gt=0).values_list('id_size', flat=True)
+        soc = Sizes_of_Clothes.objects.filter(id_clothes=context['good'].id, count__gt=0).values_list('id_size',
+                                                                                                      flat=True)
         c_def = self.get_user_context(title=context['good'], sizes=sizes, soc=soc)
         return dict(list(context.items()) + list(c_def.items()))
 
