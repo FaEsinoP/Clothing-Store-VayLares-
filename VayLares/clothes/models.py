@@ -102,31 +102,31 @@ class Clothes(models.Model):
         return reverse('product', kwargs={'product_slug': self.slug})
 
 
-class Orders(models.Model):
-
-    """ Переделать модель под ManyToMany (в заказе много товаров и у каждого свой размер)"""
-
-    OK = 'Ok'
-    CANCELED = 'Canceled'
-    PROGRESS = 'In progress'
-    STATUS = [
-        (OK, 'Исполнено'),
-        (CANCELED, 'Отменен'),
-        (PROGRESS, 'В процессе'),
-    ]
-
-    time_create = models.DateTimeField(auto_now_add=True, verbose_name='Принят в исполнение')
-    status = models.CharField(max_length=11, choices=STATUS, default=PROGRESS, verbose_name='Статус')
-    time_accept = models.DateTimeField(auto_now_add=False, default=None, verbose_name='Принят в пункте выдачи')
-    product = models.ForeignKey(Clothes, on_delete=models.PROTECT, verbose_name='Товар')
-    size = models.ForeignKey(Sizes, on_delete=models.PROTECT, verbose_name='Размер')
-    count = models.IntegerField(verbose_name='Кол-во')
-    total_price = models.IntegerField(verbose_name='Общая стоимость')
-
-    class Meta:
-        verbose_name = 'Заказы'
-        verbose_name_plural = 'Заказы'
-        ordering = ['id']
+# class Orders(models.Model):
+#
+#     """ Переделать модель под ManyToMany (в заказе много товаров и у каждого свой размер)"""
+#
+#     OK = 'Ok'
+#     CANCELED = 'Canceled'
+#     PROGRESS = 'In progress'
+#     STATUS = [
+#         (OK, 'Исполнено'),
+#         (CANCELED, 'Отменен'),
+#         (PROGRESS, 'В процессе'),
+#     ]
+#
+#     time_create = models.DateTimeField(auto_now_add=True, verbose_name='Принят в исполнение')
+#     status = models.CharField(max_length=11, choices=STATUS, default=PROGRESS, verbose_name='Статус')
+#     time_accept = models.DateTimeField(auto_now_add=False, default=None, verbose_name='Принят в пункте выдачи')
+#     product = models.ForeignKey(Clothes, on_delete=models.PROTECT, verbose_name='Товар')
+#     size = models.ForeignKey(Sizes, on_delete=models.PROTECT, verbose_name='Размер')
+#     count = models.IntegerField(verbose_name='Кол-во')
+#     total_price = models.IntegerField(verbose_name='Общая стоимость')
+#
+#     class Meta:
+#         verbose_name = 'Заказы'
+#         verbose_name_plural = 'Заказы'
+#         ordering = ['id']
 
 
 class Sizes_of_Clothes(models.Model):
@@ -138,3 +138,4 @@ class Sizes_of_Clothes(models.Model):
         verbose_name = 'Размеры вещей'
         verbose_name_plural = 'Размеры вещей'
         ordering = ['id']
+
