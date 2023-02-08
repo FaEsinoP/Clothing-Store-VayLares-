@@ -30,21 +30,29 @@
         <li class="last">
 
             <span class="cart-icon">
+                {% if fav_items %}
                 <span class="null">
                     <span class="cart-counter">{{ fav_items }}</span>
                 </span>
+                {% endif %}
                     <a class="fa fa-heart-o" href="{% url 'fav_detail' %}"></a>
             </span>
 
             <span class="cart-icon">
+                {% if cart_items %}
                 <span class="null">
                     <span class="cart-counter">{{ cart_items }}</span>
                 </span>
+                {% endif %}
                     <a class="fa fa-shopping-basket" href="{% url 'cart:cart_detail' %}"></a>
             </span>
 
             {% if request.user.is_authenticated %}
+<<<<<<< HEAD
             <a href="{% url 'profile' %}" >{{user.username}}</a> | <a href="{% url 'logout' %}">Выйти</a>
+=======
+             <a href="{% url 'profile' %}" >{{user.username}}</a> | <a href="{% url 'logout' %}">Выйти</a>
+>>>>>>> my-temporary-work
             {% else %}
             <a href="{% url 'register' %}">Регистрация</a>| <a href="{% url 'login' %}">Войти</a>
             {% endif %}
