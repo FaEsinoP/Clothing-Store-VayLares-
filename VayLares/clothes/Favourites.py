@@ -6,9 +6,7 @@ class Favour:
 
     def __init__(self, request):
         self.session = request.session
-        fav = self.session.get(settings.FAV_SESSION_ID)
-        if not fav:
-            fav = self.session[settings.FAV_SESSION_ID] = {}
+        fav = self.session.get(settings.FAV_SESSION_ID, {})
         self.fav = fav
         self.lst = [int(item) for item in self.fav]
 
@@ -40,7 +38,3 @@ class Favour:
         if product_id in self.fav:
             del self.fav[product_id]
             self.save()
-
-    def clear(self):
-        del self.session[settings.FAV_SESSION_ID]
-        self.save()

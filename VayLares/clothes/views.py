@@ -212,14 +212,13 @@ def fav_add(request, product_id):
     fav = Favour(request)
     product = get_object_or_404(Clothes, id=product_id)
     fav.add(product=product)
-    print(request.path_info)
-    return HttpResponseRedirect('home')
+    return redirect('fav_detail')
 
 
 def fav_remove(request, product_id):
     fav = Favour(request)
     fav.remove(product_id)
-    return HttpResponseRedirect(request.path_info)
+    return redirect('fav_detail')
 
 
 class Favourites(DataMixin, ListView):
@@ -232,3 +231,16 @@ class Favourites(DataMixin, ListView):
         fav = Favour(self.request)
         c_def = self.get_user_context(title='Избранное', fav=fav)
         return dict(list(context.items()) + list(c_def.items()))
+
+
+class Profile(LoginRequiredMixin, DataMixin, ListView):
+    template_name = 'clothes/profile.html'
+    raise_exception = True
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title='Личный кабинет')
+        return dict(list(context.items()) + list(c_def.items()))
+
+    def get_queryset(self):
+        return Clothes.objects.all()

@@ -1,8 +1,7 @@
-from django.http import HttpResponse
 from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.decorators.http import require_POST
-from django.views.generic import DetailView, CreateView
+from django.views.generic import CreateView
 
 from clothes.forms import AddGoodForm
 from clothes.models import *
@@ -11,7 +10,6 @@ from .cart import Cart
 from .forms import *
 
 import sqlite3 as lite
-import sys
 
 
 @require_POST
