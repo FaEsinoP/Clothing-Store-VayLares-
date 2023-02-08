@@ -212,10 +212,6 @@ def fav_add(request, product_id):
     fav = Favour(request)
     product = get_object_or_404(Clothes, id=product_id)
     fav.add(product=product)
-<<<<<<< HEAD
-    print(request.path_info)
-=======
->>>>>>> my-temporary-work
     return redirect('fav_detail')
 
 
@@ -247,8 +243,4 @@ class Profile(LoginRequiredMixin, DataMixin, ListView):
         return dict(list(context.items()) + list(c_def.items()))
 
     def get_queryset(self):
-<<<<<<< HEAD
         return Clothes.objects.all()
-=======
-        return Clothes.objects.all()
->>>>>>> my-temporary-work

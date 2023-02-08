@@ -142,8 +142,6 @@ class Sizes_of_Clothes(models.Model):
         verbose_name_plural = 'Размеры вещей'
         ordering = ['id']
 
-<<<<<<< HEAD
-=======
 
 class Orders(models.Model):
     """ Переделать модель под ManyToMany (в заказе много товаров и у каждого свой размер)"""
@@ -168,4 +166,3 @@ class Orders(models.Model):
         verbose_name = 'Заказы'
         verbose_name_plural = 'Заказы'
         ordering = ['id']
->>>>>>> my-temporary-work

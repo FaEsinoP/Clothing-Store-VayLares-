@@ -24,9 +24,5 @@ urlpatterns = [
     path('fav/', Favourites.as_view(), name='fav_detail'),
     path('fav/add/<int:product_id>/', fav_add, name='fav_add'),
     path('fav/remove/<int:product_id>/', fav_remove, name='fav_remove'),
-<<<<<<< HEAD
     path('profile/', Profile.as_view(), name='profile'),
-=======
-    path('profile/>/', Profile.as_view(), name='profile'),
->>>>>>> my-temporary-work
 ]
