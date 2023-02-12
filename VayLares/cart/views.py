@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, get_object_or_404
+from django.shortcuts import redirect, get_object_or_404, render
 from django.urls import reverse_lazy
 from django.views.decorators.http import require_POST
 from django.views.generic import CreateView
@@ -42,7 +42,6 @@ class Basket(DataMixin, CreateView):
     allow_empty = False
 
     def post(self, request, *args, **kwargs):
-
         con = lite.connect('db.sqlite3')
         cart = Cart(self.request)
 
@@ -51,15 +50,11 @@ class Basket(DataMixin, CreateView):
             for item in cart:
                 cur.execute('''UPDATE clothes_sizes_of_clothes SET count = ? WHERE id = ?''',
                             (item['product'].count - int(item['quantity']), item['product'].id))
-
         cart.clear()
         return redirect('home')
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         cart = Cart(self.request)
-        for item in cart:
-            item['update_quantity_form'] = CartAddProductForm(initial={'quantity': item['quantity'], 'update': True},
-                                                              count=item['product'].count)
         c_def = self.get_user_context(title='Корзина', cart=cart, len=cart.__len__())
         return dict(list(context.items()) + list(c_def.items()))

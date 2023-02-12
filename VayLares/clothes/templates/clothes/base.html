@@ -48,11 +48,7 @@
             </span>
 
             {% if request.user.is_authenticated %}
-<<<<<<< HEAD
-            <a href="{% url 'profile' %}" >{{user.username}}</a> | <a href="{% url 'logout' %}">Выйти</a>
-=======
              <a href="{% url 'profile' %}" >{{user.username}}</a> | <a href="{% url 'logout' %}">Выйти</a>
->>>>>>> my-temporary-work
             {% else %}
             <a href="{% url 'register' %}">Регистрация</a>| <a href="{% url 'login' %}">Войти</a>
             {% endif %}
