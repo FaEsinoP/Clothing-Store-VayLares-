@@ -1,5 +1,12 @@
 {% extends 'clothes/base.html' %}
-
 {% block content %}
 <h1>{{title}}</h1>
+<h3>Ваши заказы</h3>
+{% for key, value in orders.items %}
+<ul>
+    {% for soc in value %}
+    <li>{{ soc }}, {{key.count}} шт. Итого: <b>{{key.total_price}} ₽</b> Статус: <b style="color: #dcb518">{{ key.status }}</b></li>
+    {% endfor %}
+</ul>
+{% endfor %}
 {% endblock content %}

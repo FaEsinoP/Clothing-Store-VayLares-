@@ -1,3 +1,5 @@
+import datetime
+
 from django.shortcuts import redirect, get_object_or_404, render
 from django.urls import reverse_lazy
 from django.views.decorators.http import require_POST
@@ -44,12 +46,18 @@ class Basket(DataMixin, CreateView):
     def post(self, request, *args, **kwargs):
         con = lite.connect('db.sqlite3')
         cart = Cart(self.request)
-
         with con:
             cur = con.cursor()
             for item in cart:
                 cur.execute('''UPDATE clothes_sizes_of_clothes SET count = ? WHERE id = ?''',
                             (item['product'].count - int(item['quantity']), item['product'].id))
+
+                order = Orders(status='In progress', user_name=request.user.username, count=int(item['quantity']),
+                               total_price=item['total_price'])
+                order.save()
+                order.product.add(item['product'])
+                order.save()
+
         cart.clear()
         return redirect('home')
 

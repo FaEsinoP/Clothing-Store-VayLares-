@@ -1,3 +1,5 @@
+import datetime
+
 from django.db import models
 from django.urls import reverse
 
@@ -108,7 +110,7 @@ class Sizes_of_Clothes(models.Model):
     count = models.IntegerField()
 
     def __str__(self):
-        return self.id_clothes.title + ' ( ' + self.id_size.size_title + ')'
+        return self.id_clothes.title + ' (' + self.id_size.size_title + ')'
 
     class Meta:
         verbose_name = 'Размеры вещей'
@@ -126,9 +128,11 @@ class Orders(models.Model):
         (PROGRESS, 'В процессе'),
     ]
 
+    user_name = models.CharField(max_length=255, default=None, verbose_name='Пользователь')
     time_create = models.DateTimeField(auto_now_add=True, verbose_name='Принят в исполнение')
     status = models.CharField(max_length=11, choices=STATUS, default=PROGRESS, verbose_name='Статус')
-    time_accept = models.DateTimeField(auto_now_add=False, default=None, verbose_name='Принят в пункте выдачи')
+    time_accept = models.DateTimeField(auto_now_add=False, default=datetime.datetime.now() + datetime.timedelta(days=1),
+                                       verbose_name='Принят в пункте выдачи')
     product = models.ManyToManyField(Sizes_of_Clothes, verbose_name='Товар')
     count = models.IntegerField(verbose_name='Кол-во')
     total_price = models.IntegerField(verbose_name='Общая стоимость')

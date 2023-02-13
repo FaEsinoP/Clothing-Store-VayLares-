@@ -234,13 +234,16 @@ class Favourites(DataMixin, ListView):
 
 
 class Profile(LoginRequiredMixin, DataMixin, ListView):
+    model = Orders
     template_name = 'clothes/profile.html'
     raise_exception = True
+    context_object_name = 'orders'
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(title='Личный кабинет')
+        dct = {}
+        orders = Orders.objects.filter(user_name=self.request.user.username)
+        for ord in orders:
+            dct[ord] = ord.product.all()
+        c_def = self.get_user_context(title='Личный кабинет', orders=dct)
         return dict(list(context.items()) + list(c_def.items()))
-
-    def get_queryset(self):
-        return Clothes.objects.all()

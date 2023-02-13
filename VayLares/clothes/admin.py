@@ -74,9 +74,8 @@ class Sizes_of_ClothesAdmin(admin.ModelAdmin):
     list_display_links = ('id',)
 
 
-
 class OrdersAdmin(admin.ModelAdmin):
-    list_display = ('id', 'status', 'time_create', 'time_accept', 'count', 'total_price')
+    list_display = ('id', 'status', 'user_name', 'time_create', 'time_accept', 'count', 'total_price')
     list_display_links = ('id',)
     filter_horizontal = ('product',)
 
