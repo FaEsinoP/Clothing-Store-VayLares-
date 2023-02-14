@@ -237,13 +237,14 @@ class Profile(LoginRequiredMixin, DataMixin, ListView):
     model = Orders
     template_name = 'clothes/profile.html'
     raise_exception = True
-    context_object_name = 'orders'
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        dct = {}
+        dct = {}  # Ключи - заказы, значения - инфа о вещах
         orders = Orders.objects.filter(user_name=self.request.user.username)
         for ord in orders:
             dct[ord] = ord.product.all()
-        c_def = self.get_user_context(title='Личный кабинет', orders=dct)
+        lst = [ord.id for ord in orders]
+        ord_of_clothes = Orders_of_Clothes.objects.filter(id_order__in=lst)
+        c_def = self.get_user_context(title='Личный кабинет', orders=dct, ord_of_clothes=ord_of_clothes)
         return dict(list(context.items()) + list(c_def.items()))

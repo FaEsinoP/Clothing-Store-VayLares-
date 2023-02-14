@@ -107,7 +107,7 @@ class Clothes(models.Model):
 class Sizes_of_Clothes(models.Model):
     id_clothes = models.ForeignKey(Clothes, on_delete=models.PROTECT, verbose_name='id товара')
     id_size = models.ForeignKey(Sizes, on_delete=models.PROTECT, verbose_name='id размера')
-    count = models.IntegerField()
+    count = models.IntegerField(verbose_name='Кол-во')
 
     def __str__(self):
         return self.id_clothes.title + ' (' + self.id_size.size_title + ')'
@@ -133,11 +133,21 @@ class Orders(models.Model):
     status = models.CharField(max_length=11, choices=STATUS, default=PROGRESS, verbose_name='Статус')
     time_accept = models.DateTimeField(auto_now_add=False, default=datetime.datetime.now() + datetime.timedelta(days=1),
                                        verbose_name='Принят в пункте выдачи')
-    product = models.ManyToManyField(Sizes_of_Clothes, verbose_name='Товар')
-    count = models.IntegerField(verbose_name='Кол-во')
-    total_price = models.IntegerField(verbose_name='Общая стоимость')
+    product = models.ManyToManyField(Sizes_of_Clothes, through='Orders_of_Clothes', verbose_name='Товар')
+    total_price = models.IntegerField(verbose_name='Общая стоимость', default=0)
 
     class Meta:
         verbose_name = 'Заказы'
         verbose_name_plural = 'Заказы'
+        ordering = ['id']
+
+
+class Orders_of_Clothes(models.Model):
+    id_clothes_with_size = models.ForeignKey(Sizes_of_Clothes, on_delete=models.PROTECT, verbose_name='id товара')
+    id_order = models.ForeignKey(Orders, on_delete=models.PROTECT, verbose_name='id размера')
+    count = models.IntegerField(verbose_name='Кол-во', default=1)
+
+    class Meta:
+        verbose_name = 'Наполнение заказов'
+        verbose_name_plural = 'Наполнение заказов'
         ordering = ['id']
