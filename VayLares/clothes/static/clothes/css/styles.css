@@ -1001,3 +1001,77 @@ option{
 select option:disabled {
     color: #dcdbdb;
 }
+
+/*||||||||||||||||||| profile ||||||||||||||*/
+
+.profile-flex-container{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction:row;
+    padding: 0;
+}
+
+.profile-item1{
+  width:10%;
+  height: 30px;
+  padding-top:4px;
+  text-align:center;
+  border: 1px solid #d0d0d0;
+  border-radius: 15px 0 0 15px;
+  background-color: #eff0f0;
+  -webkit-transition: all 0.3s ease;
+          transition: all 0.3s ease;
+}
+
+.profile-item1:hover{
+  color: #47afff;
+}
+
+.profile-item1-selected{
+  width:10%;
+  height: 30px;
+  padding-top:4px;
+  text-align:center;
+  border: 1px solid #d0d0d0;
+  border-radius: 13px 0 0 13px;
+  color: white;
+  background-color:#0f0368;
+}
+
+
+.profile-item2{
+  width:10%;
+  height: 30px;
+  padding-top:4px;
+  text-align:center;
+  border: 1px solid #d0d0d0;
+  border-radius: 0 13px 13px 0;
+  background-color: #eff0f0;
+  -webkit-transition: all 0.3s ease;
+          transition: all 0.3s ease;
+}
+
+.profile-item2:hover{
+  color: #47afff;
+}
+
+.profile-item2-selected{
+  width:10%;
+  height: 30px;
+  padding-top:4px;
+  text-align:center;
+  border: 1px solid #d0d0d0;
+  border-radius: 0 13px 13px 0;
+  color: white;
+  background-color:#0f0368;
+}
+
+.logout{
+  display: block;
+  width:100px;
+  height: 30px;
+  padding-top:4px;
+  text-align:center;
+  border: 2px solid #ba2121;
+}

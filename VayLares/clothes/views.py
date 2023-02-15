@@ -233,9 +233,21 @@ class Favourites(DataMixin, ListView):
         return dict(list(context.items()) + list(c_def.items()))
 
 
-class Profile(LoginRequiredMixin, DataMixin, ListView):
-    model = Orders
+class Profile(LoginRequiredMixin, DataMixin, CreateView):
+    form_class = ProfileUserForm
     template_name = 'clothes/profile.html'
+    raise_exception = True
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        username = self.request.user.username
+        c_def = self.get_user_context(title='Профиль')
+        return dict(list(context.items()) + list(c_def.items()))
+
+
+class ClothesOrders(LoginRequiredMixin, DataMixin, ListView):
+    model = Orders
+    template_name = 'clothes/orders.html'
     raise_exception = True
 
     def get_context_data(self, *, object_list=None, **kwargs):
@@ -246,5 +258,5 @@ class Profile(LoginRequiredMixin, DataMixin, ListView):
             dct[ord] = ord.product.all()
         lst = [ord.id for ord in orders]
         ord_of_clothes = Orders_of_Clothes.objects.filter(id_order__in=lst)
-        c_def = self.get_user_context(title='Личный кабинет', orders=dct, ord_of_clothes=ord_of_clothes)
+        c_def = self.get_user_context(title='Мои заказы', orders=dct, ord_of_clothes=ord_of_clothes)
         return dict(list(context.items()) + list(c_def.items()))

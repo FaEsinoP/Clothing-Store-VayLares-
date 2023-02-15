@@ -22,12 +22,6 @@ class AddGoodForm(forms.ModelForm):
             'content': forms.Textarea(attrs={'cols': 50, 'rows': 5}),
         }
 
-    # def clean_title(self):
-    #     title = self.cleaned_data['title']
-    #     if len(title) > 200:
-    #         raise ValidationError('Длина превышает 200 символов')
-    #     return title
-
 
 class RegisterUserForm(UserCreationForm):
     username = forms.CharField(label='Логин')
@@ -45,3 +39,14 @@ class LoginUserForm(AuthenticationForm):
 
 
 VARIANTS = [(i, str(i)) for i in range(1, 21)]
+
+
+class ProfileUserForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        print(kwargs)
+        # user = User.objects.get(username=username)
+
+    class Meta:
+        model = UserInfo
+        fields = ['gender', 'phone_number']

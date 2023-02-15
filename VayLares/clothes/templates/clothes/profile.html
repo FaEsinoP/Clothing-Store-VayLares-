@@ -1,22 +1,11 @@
 {% extends 'clothes/base.html' %}
 {% block content %}
-{% if request.user.is_authenticated %}
 <h1>Привет, {{request.user.username}}!</h1>
-<h3>История заказов:</h3>
-{% for order, clothes in orders.items %}
-<div>
-    <div>Заказ от {{order.time_create}}</div>
-    {% for soc in clothes %}
-    {% for ooc in ord_of_clothes %}
-    {% if ooc.id_order.id == order.id and ooc.id_clothes_with_size.id == soc.id %}
-    <div> {{soc}}, {{ooc.count}} шт. </div>
-    {% endif %}
-    {% endfor %}
-    {% endfor %}
-    <div> Итого: <b>{{ order.total_price }} ₽</b> Статус: <b style="color: #dcb518">{{order.status}}</b> </div>
+{{request.user.first_name}}
+<div class="profile-flex-container">
+    <div class="profile-item1-selected">Профиль</div>
+    <a href="{% url 'orders' %}" class="profile-item2">Заказы</a>
 </div>
-{% endfor %}
-{% else %}
-<h1>{{title}}</h1>
-{% endif %}
+
+<a href="{% url 'logout' %}" class="logout">Выйти</a>
 {% endblock content %}

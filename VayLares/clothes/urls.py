@@ -25,4 +25,5 @@ urlpatterns = [
     path('fav/add/<int:product_id>/', fav_add, name='fav_add'),
     path('fav/remove/<int:product_id>/', fav_remove, name='fav_remove'),
     path('profile/', Profile.as_view(), name='profile'),
+    path('orders/', ClothesOrders.as_view(), name='orders'),
 ]

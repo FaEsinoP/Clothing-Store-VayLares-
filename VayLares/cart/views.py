@@ -61,8 +61,9 @@ class Basket(DataMixin, CreateView):
             for item in cart:
                 cur.execute('''UPDATE clothes_sizes_of_clothes SET count = ? WHERE id = ?''',
                             (item['product'].count - int(item['quantity']), item['product'].id))
-                cur.execute('''UPDATE clothes_orders_of_clothes SET count = ? WHERE id_order_id = ? AND id_clothes_with_size_id = ?''',
-                            (int(item['quantity']), order.id, item['product'].id))
+                cur.execute(
+                    '''UPDATE clothes_orders_of_clothes SET count = ? WHERE id_order_id = ? AND id_clothes_with_size_id = ?''',
+                    (int(item['quantity']), order.id, item['product'].id))
 
         cart.clear()
         return redirect('home')

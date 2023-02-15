@@ -1,5 +1,6 @@
 import datetime
 
+from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
 
@@ -150,4 +151,15 @@ class Orders_of_Clothes(models.Model):
     class Meta:
         verbose_name = 'Наполнение заказов'
         verbose_name_plural = 'Наполнение заказов'
+        ordering = ['id']
+
+
+class UserInfo(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    gender = models.CharField(max_length=255)
+    phone_number = models.CharField(max_length=255)
+
+    class Meta:
+        verbose_name = 'О пользователях'
+        verbose_name_plural = 'О пользователях'
         ordering = ['id']
