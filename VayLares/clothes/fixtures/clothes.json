@@ -1,0 +1,200 @@
+[
+  {
+    "model": "clothes.clothes",
+    "pk": 1,
+    "fields": {
+      "title": "Air Jordan 1 Mid sneakers",
+      "slug": "air-jordan-1-mid-sneakers",
+      "content": "╨б ╨╝╨╛╨╝╨╡╨╜╤В╨░ ╨╕╤Е ╨▓╤Л╨┐╤Г╤Б╨║╨░ ╨▓ 1984 ╨│╨╛╨┤╤Г ╨┐╨╡╤А╨▓╤Л╨╣ ╨▓ ╨╕╤Б╤В╨╛╤А╨╕╨╕ ╤Б╨╕╨╗╤Г╤Н╤В ╨║╤А╨╛╤Б╤Б╨╛╨▓╨╛╨║ ╨Ь╨░╨╣╨║╨╗╨░ ╨Ф╨╢╨╛╤А╨┤╨░╨╜╨░, Air Jordan 1, ╤Б╤В╨░╨╗ ╨╛╨┤╨╜╨╕╨╝ ╨╕╨╖ ╤Б╨░╨╝╤Л╤Е ╨┐╨╛╨┐╤Г╨╗╤П╤А╨╜╤Л╤Е ╤Б╤В╨╕╨╗╨╡╨╣ ╨▓ ╨╝╨╕╤А╨╡. ╨Я╨╛╤З╤В╨╕ ╤Б╨╛╤А╨╛╨║ ╨╗╨╡╤В ╤Б╨┐╤Г╤Б╤В╤П ╤Н╤В╨░ ╤Г╨╜╨╕╨▓╨╡╤А╤Б╨╕╤В╨╡╤В╤Б╨║╨░╤П ╤Б╨╕╨╜╨╡-╨▒╨╡╨╗╨╛-╤З╨╡╤А╨╜╨░╤П ╨┐╨░╤А╨░ ╨┐╨╛-╨┐╤А╨╡╨╢╨╜╨╡╨╝╤Г ╨╕╨╝╨╡╨╡╤В ╤В╨╛╤В ╨╢╨╡ ╨╗╤О╨▒╨╕╨╝╤Л╨╣ ╨┤╨╕╨╖╨░╨╣╨╜, ╨║╨╛╤В╨╛╤А╤Л╨╣ ╨┐╤А╨╕╨╛╨▒╤А╨╡╨╗ ╨╕╤Е ╨┐╨╡╤А╨▓╨╛╨╜╨░╤З╨░╨╗╤М╨╜╤Л╨╣ ╤Б╤В╨░╤В╤Г╤Б, ╨╛╤В ╨▓╨╡╤А╤Е╨╜╨╡╨╣ ╨┐╨░╨╜╨╡╨╗╨╕ ╨╕╨╖ ╤Ж╨▓╨╡╤В╨╜╨╛╨│╨╛ ╨▒╨╗╨╛╨║╨░ ╨┤╨╛ ╨▓╤Л╤И╨╕╤В╤Л╤Е ╨║╤А╤Л╨╗╤М╨╡╨▓ ╨╕ ╨╗╨╛╨│╨╛╤В╨╕╨┐╨╛╨▓ Jumpman ╨┐╨╛╨▓╤Б╤О╨┤╤Г ╨▓ ╨╖╨╜╨░╨║ ╤Г╨▓╨░╨╢╨╡╨╜╨╕╤П ╨║ ╤Б╨░╨╝╨╛╨╝╤Г MJ",
+      "price": 16500,
+      "photo": "pictures/23/02/09/jordan1.webp",
+      "alternative_photo": "alternative-pictures/23/02/09/jordan2.webp",
+      "time_create": "2023-02-08T22:24:38.991Z",
+      "gender": "All",
+      "is_published": true,
+      "brand": 3,
+      "subcategory": 1,
+      "category": 1
+    }
+  },
+  {
+    "model": "clothes.clothes",
+    "pk": 2,
+    "fields": {
+      "title": "Yeezy Slide \"Bone\"",
+      "slug": "yeezy-slide-bone",
+      "content": "Adidas Yeezy Slide Bone ╨▒╤Л╨╗╨╕ ╤А╨░╨╖╤А╨░╨▒╨╛╤В╨░╨╜╤Л ╨▓ ╤А╨░╨╝╨║╨░╤Е ╨║╨╛╨╗╨╗╨░╨▒╨╛╤А╨░╤Ж╨╕╨╕ Adidas x Yeezy ╨┤╨╗╤П ╤Б╨╛╨╖╨┤╨░╨╜╨╕╤П ╨┐╨╛╨▓╤Б╨╡╨┤╨╜╨╡╨▓╨╜╨╛╨│╨╛ ╨║╨╛╨╝╤Д╨╛╤А╤В╨░ ╨▓╤Б╨╡╤Е ╨╗╤О╨▒╨╕╤В╨╡╨╗╨╡╨╣ ╨▒╤А╨╡╨╜╨┤╨░. Kany West ╤Б╨╛╨╖╨┤╨░╨╗ ╤В╨░╨┐╨║╨╕ ╨╜╨░ ╨║╨░╨╢╨┤╤Л╨╣ ╨┤╨╡╨╜╤М. ╨Ф╨╗╤П ╤В╨╛╨│╨╛, ╤З╤В╨╛╨▒╤Л ╤Б╨┤╨╡╨╗╨░╤В╤М ╨╕╤Е ╨╝╨░╨║╤Б╨╕╨╝╨░╨╗╤М╨╜╨╛ ╨║╨╛╨╝╤Д╨╛╤А╤В╨╜╤Л╨╝╨╕ ╨╕ ╨╗╨╡╨│╨║╨╕╨╝╨╕, Yeezy Slide \"Bone\" ╨▒╤Л╨╗╨╕ ╨┐╤А╨╛╨╕╨╖╨▓╨╡╨┤╨╡╨╜╤Л ╨╕╨╖ ╨┐╨╡╨╜╤Л EVA",
+      "price": 5500,
+      "photo": "pictures/23/02/09/14904573_24644869_1000.webp",
+      "alternative_photo": "alternative-pictures/23/02/09/Adidas_Yeezy_Slide_Bone_st6awb6.jpg",
+      "time_create": "2023-02-09T15:43:37.896Z",
+      "gender": "All",
+      "is_published": true,
+      "brand": 5,
+      "subcategory": 4,
+      "category": 1
+    }
+  },
+  {
+    "model": "clothes.clothes",
+    "pk": 3,
+    "fields": {
+      "title": "Graph-Print Crew-neck",
+      "slug": "graph-print-crew-neck",
+      "content": "╨Ю╤Б╤В╨░╨▓╨░╤П╤Б╤М ╨▓╨╡╤А╨╜╨╛╨╣ ╤В╨╡╨╝╨╡ ╨▒╤А╨╡╨╜╨┤╨░ - ╨┐╨░╨╗╤М╨╝╨░╨╝, ╤Н╤В╨░ ╤Д╤Г╤В╨▒╨╛╨╗╨║╨░ ╤Б ╨│╤А╨░╤Д╨╕╤З╨╡╤Б╨║╨╕╨╝ ╤А╨╕╤Б╤Г╨╜╨║╨╛╨╝ ╤П╨▓╨╗╤П╨╡╤В╤Б╤П ╤З╨░╤Б╤В╤М╤О ╨║╨╛╨╗╨╗╨╡╨║╤Ж╨╕╨╕ Palm Angels AW22. ╨Ш╨╖╨│╨╛╤В╨╛╨▓╨╗╨╡╨╜╨╜╨░╤П ╨╕╨╖ ╤Е╨╗╨╛╨┐╨║╨░, ╨╛╨╜╨░ ╤П╨▓╨╗╤П╨╡╤В╤Б╤П ╤Г╨┤╨╛╨▒╨╜╤Л╨╝ ╨▓╤Л╨▒╨╛╤А╨╛╨╝ ╨┤╨╗╤П ╤Н╤В╨╛╨│╨╛ ╤Б╨╡╨╖╨╛╨╜╨░ ╨╕ ╨╖╨░ ╨╡╨│╨╛ ╨┐╤А╨╡╨┤╨╡╨╗╨░╨╝╨╕.",
+      "price": 15000,
+      "photo": "pictures/23/02/09/18813757_40819124_1000.jpg",
+      "alternative_photo": "alternative-pictures/23/02/09/18813757_40818212_1000.webp",
+      "time_create": "2023-02-09T15:45:22.601Z",
+      "gender": "Man",
+      "is_published": true,
+      "brand": 8,
+      "subcategory": 7,
+      "category": 2
+    }
+  },
+  {
+    "model": "clothes.clothes",
+    "pk": 4,
+    "fields": {
+      "title": "Burning drop-shoulder jumper",
+      "slug": "burning-drop-shoulder-jumper",
+      "content": "╨У╨╛╨▓╨╛╤А╤П ╨╛ ╨╜╨╡╨┐╨╛╤З╤В╨╕╤В╨╡╨╗╤М╨╜╨╛╨╝ ╨┐╨╛╨┤╤Е╨╛╨┤╨╡ Palm Angels ╨║ ╨╝╨╛╨┤╨╡, ╤Н╤В╨╛╤В ╨┤╨╢╨╡╨╝╨┐╨╡╤А ╤Г╨║╤А╨░╤И╨╡╨╜ ╨┐╤А╨╕╨╜╤В╨╛╨╝ Burning Flames, ╤Б╨╛╨╖╨┤╨░╤О╤Й╨╕╨╝ ╤Б╨╝╨╡╨╗╤Л╨╣ ╨╛╨▒╤А╨░╨╖. ╨Ь╨╛╨┤╨╡╨╗╤М ╤Б ╨╖╨░╨╜╨╕╨╢╨╡╨╜╨╜╤Л╨╝╨╕ ╨┐╨╗╨╡╤З╨░╨╝╨╕ ╨╕╨╝╨╡╨╡╤В ╨┐╨╛╨╗╨╛╤Б╨░╤В╤Л╨╡ ╨║╤А╨░╤П, ╨┐╤А╨╕╨┤╨░╤О╤Й╨╕╨╡ ╨╡╨╣ ╤Б╨┐╨╛╤А╤В╨╕╨▓╨╜╤Л╨╣ ╨▓╨╕╨┤.",
+      "price": 12000,
+      "photo": "pictures/23/02/09/PalmAngels_Burning_drop-shoulder_jumper.jpg",
+      "alternative_photo": "",
+      "time_create": "2023-02-09T15:46:14.680Z",
+      "gender": "Man",
+      "is_published": true,
+      "brand": 8,
+      "subcategory": 5,
+      "category": 2
+    }
+  },
+  {
+    "model": "clothes.clothes",
+    "pk": 5,
+    "fields": {
+      "title": "belted leather mini skirt",
+      "slug": "belted-leather-mini-skirt",
+      "content": "╤А╨░╨┤╨░ ╨╜╨╕╤Б╨┐╤А╨╛╨▓╨╡╤А╨│╨░╨╡╤В ╤В╤А╨░╨┤╨╕╤Ж╨╕╨╛╨╜╨╜╤Г╤О ╨╝╨╕╨╜╨╕-╤О╨▒╨║╤Г, ╤Б╨╛╨╖╨┤╨░╨▓╨░╤П ╨┤╨╕╨╖╨░╨╣╨╜ ╤Б ╨▒╨╛╨╗╨╡╨╡ ╤Б╨╝╨╡╨╗╤Л╨╝ ╤Б╨╕╨╗╤Г╤Н╤В╨╛╨╝, ╤З╨╡╨╝ ╨▓ ╨╛╤А╨╕╨│╨╕╨╜╨░╨╗╨╡. ╨н╤В╨╛ ╨╕╨╖╨┤╨╡╨╗╨╕╨╡ ╨┤╨╗╨╕╨╜╨╛╨╣ ╨┤╨╛ ╨▒╨╡╨┤╨╡╤А ╤Б╨╛╨╖╨┤╨░╨╡╤В ╤Б╨╝╨╡╨╗╤Л╨╣ ╨╛╨▒╤А╨░╨╖.",
+      "price": 12000,
+      "photo": "pictures/23/02/09/18457247_41549523_1000.jpg",
+      "alternative_photo": "",
+      "time_create": "2023-02-09T15:50:37.908Z",
+      "gender": "Woman",
+      "is_published": true,
+      "brand": 9,
+      "subcategory": 13,
+      "category": 2
+    }
+  },
+  {
+    "model": "clothes.clothes",
+    "pk": 6,
+    "fields": {
+      "title": "Palm Beach mini bag",
+      "slug": "palm-beach-mini-bag",
+      "content": "Palm Angels ╨┐╤А╨╡╨┤╤Б╤В╨░╨▓╨╗╤П╨╡╤В ╨╜╨╛╨▓╤Г╤О ╨▓╨╡╤А╤Б╨╕╤О ╤Б╨▓╨╛╨╡╨╣ ╤Д╨╕╤А╨╝╨╡╨╜╨╜╨╛╨╣ ╤Б╤Г╨╝╨║╨╕ Palm Beach ╨┤╨╗╤П AW22. ╨н╤В╨╛╤В ╨╝╨╕╨╜╨╕╨░╤В╤О╤А╨╜╤Л╨╣ ╨░╨║╤Б╨╡╤Б╤Б╤Г╨░╤А ╨╛╤В╨╗╨╕╤З╨░╨╡╤В╤Б╤П ╨▓╨╛╨╗╨╜╨╕╤Б╤В╤Л╨╝ ╨┤╨╕╨╖╨░╨╣╨╜╨╛╨╝, ╨▓╨┤╨╛╤Е╨╜╨╛╨▓╨╗╨╡╨╜╨╜╤Л╨╝ ╨╛╤З╨░╤А╨╛╨▓╨░╨╜╨╕╨╡╨╝ ╨╝╨╛╤А╤П. ╨Т╤Л╨┐╨╛╨╗╨╜╨╡╨╜╨╜╤Л╨╣ ╨▓ ╤З╨╡╤А╨╜╨╛╨╝ ╤Ж╨▓╨╡╤В╨╡, ╨╡╨│╨╛ ╨╝╨╛╨╢╨╜╨╛ ╨╜╨╛╤Б╨╕╤В╤М ╨╜╨░ ╤А╨╡╨╝╨╡╤И╨║╨╡-╤Ж╨╡╨┐╨╛╤З╨║╨╡ ╨╖╨╛╨╗╨╛╤В╨╕╤Б╤В╨╛╨│╨╛ ╤Ж╨▓╨╡╤В╨░, ╨║╨╛╤В╨╛╤А╤Л╨╣ ╤Б╨╛╨╛╤В╨▓╨╡╤В╤Б╤В╨▓╤Г╨╡╤В ╨▒╨╗╤П╤И╨║╨╡ ╨╜╨░ ╨┐╨╡╤А╨╡╨┤╨╜╨╡╨╣ ╤З╨░╤Б╤В╨╕ ╨╗╨░╨┤╨╛╨╜╨╕.",
+      "price": 22000,
+      "photo": "pictures/23/02/09/18569990_141443838_1000.webp",
+      "alternative_photo": "",
+      "time_create": "2023-02-09T15:52:10.756Z",
+      "gender": "Woman",
+      "is_published": true,
+      "brand": 8,
+      "subcategory": 9,
+      "category": 3
+    }
+  },
+  {
+    "model": "clothes.clothes",
+    "pk": 7,
+    "fields": {
+      "title": "logo patch bucket hat",
+      "slug": "logo-patch-bucket-hat",
+      "content": "╨Я╨░╨╜╨░╨╝╨░ ╨╕╨╖ ╨╜╨╛╨▓╨╛╨╣ ╨║╨╛╨╗╨╗╨╡╨║╤Ж╨╕╨╕ Moncler ╨▓╤Л╨┐╨╛╨╗╨╜╨╡╨╜╨░ ╨▓ ╤В╨░╨║╨╛╨╝ ╨╢╨╡ ╤Б╤В╤А╨╛╨│╨╛╨╝ ╤Б╤В╨╕╨╗╨╡, ╨║╨░╨║ ╨╕ ╨▓╤Б╤П ╨╗╨╕╨╜╨╡╨╣╨║╨░.logo patch bucket hat",
+      "price": 6000,
+      "photo": "pictures/23/02/09/18528631_40412263_1000.jpg",
+      "alternative_photo": "",
+      "time_create": "2023-02-09T15:53:29.467Z",
+      "gender": "All",
+      "is_published": true,
+      "brand": 12,
+      "subcategory": 10,
+      "category": 3
+    }
+  },
+  {
+    "model": "clothes.clothes",
+    "pk": 8,
+    "fields": {
+      "title": "floral-print minidress",
+      "slug": "floral-print-minidress",
+      "content": "╨Ъ╨╛╨╗╨╗╨╡╨║╤Ж╨╕╤П ZIMMERMANN Resort 2023 ╨┐╤А╨╛╨╜╨╕╨╖╨░╨╜╨░ ╤А╨╛╨╝╨░╨╜╤В╨╕╤З╨╡╤Б╨║╨╕╨╝ ╨▓╨┤╨╛╤Е╨╜╨╛╨▓╨╡╨╜╨╕╨╡╨╝. ╨н╤В╨╛ ╨╝╨╕╨╜╨╕-╨┐╨╗╨░╤В╤М╨╡, ╤П╨▓╨╗╤П╤О╤Й╨╡╨╡╤Б╤П ╤З╨░╤Б╤В╤М╤О ╨┐╤А╨╡╨┤╨╗╨╛╨╢╨╡╨╜╨╕╤П, ╤Г╨║╤А╨░╤И╨╡╨╜╨╛ ╨╖╨░╨╝╤Л╤Б╨╗╨╛╨▓╨░╤В╤Л╨╝╨╕ ╤Ж╨▓╨╡╤В╨╛╤З╨╜╤Л╨╝╨╕ ╤Г╨╖╨╛╤А╨░╨╝╨╕ ╨╕ ╨╕╨╝╨╡╨╡╤В ╨╛╨▒╤К╨╡╨╝╨╜╤Л╨╡ ╨┐╤Л╤И╨╜╤Л╨╡ ╤А╤Г╨║╨░╨▓╨░.",
+      "price": 45000,
+      "photo": "pictures/23/02/09/19176677_42264894_1000.webp",
+      "alternative_photo": "",
+      "time_create": "2023-02-09T15:54:39.424Z",
+      "gender": "Woman",
+      "is_published": true,
+      "brand": 11,
+      "subcategory": 14,
+      "category": 2
+    }
+  },
+  {
+    "model": "clothes.clothes",
+    "pk": 9,
+    "fields": {
+      "title": "Explorer logo-patch belt bag",
+      "slug": "explorer-logo-patch-belt-bag",
+      "content": "╨Т ╤Н╤В╨╛╨╣ ╤Б╤Г╨╝╨║╨╡ Explorer ╨╕╨╖ ╨║╨╛╨╗╨╗╨╡╨║╤Ж╨╕╨╕ SS23 ╨╛╤В Balenciaga ╤Д╤Г╨╜╨║╤Ж╨╕╨╛╨╜╨░╨╗╤М╨╜╤Л╨╣ ╨┤╨╕╨╖╨░╨╣╨╜ ╤Б╨╛╤З╨╡╤В╨░╨╡╤В╤Б╤П ╤Б ╤Н╨╗╨╡╨╝╨╡╨╜╤В╨░╨╝╨╕ ╤Г╨╗╨╕╤З╨╜╨╛╨╣ ╨╛╨┤╨╡╨╢╨┤╤Л. ╨Ф╨╡╤В╨░╨╗╨╕ ╨╜╨░ ╨╝╨╛╨╗╨╜╨╕╨╕ ╤Б╨╛╨╖╨┤╨░╤О╤В ╤Г╤В╨╕╨╗╨╕╤В╨░╤А╨╜╤Л╨╣ ╨▓╨╕╨┤, ╨▓ ╤В╨╛ ╨▓╤А╨╡╨╝╤П ╨║╨░╨║ ╨╝╨╜╨╛╨│╨╛╤З╨╕╤Б╨╗╨╡╨╜╨╜╤Л╨╡ ╨╜╨░╤И╨╕╨▓╨║╨╕ ╤Б ╨╗╨╛╨│╨╛╤В╨╕╨┐╨░╨╝╨╕ ╨╗╨╡╨│╨║╨╛ ╨▓╨┐╨╕╤Б╤Л╨▓╨░╤О╤В╤Б╤П ╨▓ ╤Б╨╛╨▓╤А╨╡╨╝╨╡╨╜╨╜╤Л╨╡ ╤В╨╡╨╜╨┤╨╡╨╜╤Ж╨╕╨╕ ╨▒╤А╨╡╨╜╨┤╨╕╨╜╨│╨░.",
+      "price": 20000,
+      "photo": "pictures/23/02/09/bakenciaga_bag.webp",
+      "alternative_photo": "",
+      "time_create": "2023-02-09T15:55:43.115Z",
+      "gender": "All",
+      "is_published": true,
+      "brand": 15,
+      "subcategory": 9,
+      "category": 3
+    }
+  },
+  {
+    "model": "clothes.clothes",
+    "pk": 10,
+    "fields": {
+      "title": "tapered cargo track pants",
+      "slug": "tapered-cargo-track-pants",
+      "content": "╨Э╨╛╨▓╨░╤П ╨║╨╛╨╗╨╗╨╡╨║╤Ж╨╕╤П ╨╕╨╖╨▓╨╡╤Б╤В╨╜╨╛╨│╨╛ ╨╕╤В╨░╨╗╤М╤П╨╜╤Б╨║╨╛╨│╨╛ ╨▒╤А╤Н╨╜╨┤╨░",
+      "price": 12000,
+      "photo": "pictures/23/02/09/╨Ф╨У_╤И╤В╨░╨╜╤Л.webp",
+      "alternative_photo": "alternative-pictures/23/02/09/╨Ф╨У_╨и╤В╨░╨╜╤Л_╨░╨╗╤М╤В╨╡╤А╨╜╨░╤В╨╕╨▓.webp",
+      "time_create": "2023-02-09T15:56:53.961Z",
+      "gender": "Man",
+      "is_published": true,
+      "brand": 13,
+      "subcategory": 6,
+      "category": 2
+    }
+  },
+  {
+    "model": "clothes.clothes",
+    "pk": 11,
+    "fields": {
+      "title": "Bling Patches varsity jacket",
+      "slug": "bling-patches-varsity-jacket",
+      "content": "╨С╨╡╨╗╨╛╤Б╨╜╨╡╨╢╨╜╤Л╨╣ ╤Ж╨▓╨╡╤В ╤Б╨╜╨╛╨▓╨░ ╨╛╨▒╨╜╨╛╨▓╨╗╤П╨╡╤В ╨║╨╗╨░╤Б╤Б╨╕╤З╨╡╤Б╨║╤Г╤О ╤Г╨╜╨╕╨▓╨╡╤А╤Б╨╕╤В╨╡╤В╤Б╨║╤Г╤О ╨║╤Г╤А╤В╨║╤Г. ╨н╤В╨░ ╨▓╨╡╤А╤Б╨╕╤П ╤Г╨║╤А╨░╤И╨╡╨╜╨░ ╤Б╤В╨╡╨║╨╗╤П╨╜╨╜╤Л╨╝╨╕ ╨║╤А╨╕╤Б╤В╨░╨╗╨╗╨░╨╝╨╕, ╤Г╤Б╨╕╨╗╨╕╨▓╨░╤О╤Й╨╕╨╝╨╕ ╨╛╨▒╤Й╨╕╨╣ ╨╝╨╛╤В╨╕╨▓ ╨╗╨╛╨│╨╛╤В╨╕╨┐╨░ ╨╕ ╨┐╨╛╨┤╤З╨╡╤А╨║╨╕╨▓╨░╤О╤Й╨╕╨╝╨╕ ╨╕╨│╤А╨╕╨▓╤Л╨╣ ╨┤╤Г╤Е ╨▒╤А╨╡╨╜╨┤╨░.",
+      "price": 32000,
+      "photo": "pictures/23/02/09/off_white_jacket.webp",
+      "alternative_photo": "",
+      "time_create": "2023-02-09T15:57:42.440Z",
+      "gender": "Woman",
+      "is_published": true,
+      "brand": 14,
+      "subcategory": 5,
+      "category": 2
+    }
+  }
+]

@@ -1,6 +1,6 @@
 import datetime
 
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.urls import reverse
 
@@ -154,12 +154,19 @@ class Orders_of_Clothes(models.Model):
         ordering = ['id']
 
 
-class UserInfo(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    gender = models.CharField(max_length=255)
-    phone_number = models.CharField(max_length=255)
+class User(AbstractUser):
+
+    Man = 'Man'
+    Woman = 'Woman'
+    GENDERS = [
+        (Man, 'Мужчина'),
+        (Woman, 'Женщина'),
+    ]
+
+    gender = models.CharField(max_length=255, choices=GENDERS)
+    image = models.ImageField(upload_to='user-images', null=True, blank=True)
 
     class Meta:
-        verbose_name = 'О пользователях'
-        verbose_name_plural = 'О пользователях'
+        verbose_name = 'Пользователи'
+        verbose_name_plural = 'Пользователи'
         ordering = ['id']

@@ -41,12 +41,12 @@ class LoginUserForm(AuthenticationForm):
 VARIANTS = [(i, str(i)) for i in range(1, 21)]
 
 
-class ProfileUserForm(forms.ModelForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        print(kwargs)
-        # user = User.objects.get(username=username)
-
-    class Meta:
-        model = UserInfo
-        fields = ['gender', 'phone_number']
+# class ProfileUserForm(forms.ModelForm):
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
+#         print(kwargs)
+#         # user = User.objects.get(username=username)
+#
+#     class Meta:
+#         model = UserInfo
+#         fields = ['gender', 'phone_number']

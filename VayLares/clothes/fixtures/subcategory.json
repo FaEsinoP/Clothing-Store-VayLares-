@@ -1,0 +1,128 @@
+[
+  {
+    "model": "clothes.subcategory",
+    "pk": 1,
+    "fields": {
+      "subcategory_name": "╨Ъ╤А╨╛╤Б╤Б╨╛╨▓╨║╨╕",
+      "slug": "krossovki",
+      "category": 1
+    }
+  },
+  {
+    "model": "clothes.subcategory",
+    "pk": 2,
+    "fields": {
+      "subcategory_name": "╨Ъ╨╡╨┤╤Л",
+      "slug": "kedy",
+      "category": 1
+    }
+  },
+  {
+    "model": "clothes.subcategory",
+    "pk": 3,
+    "fields": {
+      "subcategory_name": "╨С╨╛╤В╨╕╨╜╨║╨╕",
+      "slug": "botinki",
+      "category": 1
+    }
+  },
+  {
+    "model": "clothes.subcategory",
+    "pk": 4,
+    "fields": {
+      "subcategory_name": "╨б╨╗╨░╨╜╤Ж╤Л",
+      "slug": "slancy",
+      "category": 1
+    }
+  },
+  {
+    "model": "clothes.subcategory",
+    "pk": 5,
+    "fields": {
+      "subcategory_name": "╨в╨╛╨╗╤Б╤В╨╛╨▓╨║╨╕",
+      "slug": "tolstovki",
+      "category": 2
+    }
+  },
+  {
+    "model": "clothes.subcategory",
+    "pk": 6,
+    "fields": {
+      "subcategory_name": "╨С╤А╤О╨║╨╕",
+      "slug": "bryuki",
+      "category": 2
+    }
+  },
+  {
+    "model": "clothes.subcategory",
+    "pk": 7,
+    "fields": {
+      "subcategory_name": "╨д╤Г╤В╨▒╨╛╨╗╨║╨╕ ╨╕ ╨╝╨░╨╣╨║╨╕",
+      "slug": "futbolki-i-majki",
+      "category": 2
+    }
+  },
+  {
+    "model": "clothes.subcategory",
+    "pk": 8,
+    "fields": {
+      "subcategory_name": "╨Ъ╤Г╤А╤В╨║╨╕",
+      "slug": "kurtki",
+      "category": 2
+    }
+  },
+  {
+    "model": "clothes.subcategory",
+    "pk": 9,
+    "fields": {
+      "subcategory_name": "╨а╤О╨║╨╖╨░╨║╨╕ ╨╕ ╤Б╤Г╨╝╨║╨╕",
+      "slug": "ryukzaki-i-sumki",
+      "category": 3
+    }
+  },
+  {
+    "model": "clothes.subcategory",
+    "pk": 10,
+    "fields": {
+      "subcategory_name": "╨Ъ╨╡╨┐╨║╨╕",
+      "slug": "kepki",
+      "category": 3
+    }
+  },
+  {
+    "model": "clothes.subcategory",
+    "pk": 11,
+    "fields": {
+      "subcategory_name": "╨а╨╡╨╝╨╜╨╕",
+      "slug": "remni",
+      "category": 3
+    }
+  },
+  {
+    "model": "clothes.subcategory",
+    "pk": 12,
+    "fields": {
+      "subcategory_name": "╨Э╨╛╤Б╨║╨╕",
+      "slug": "noski",
+      "category": 3
+    }
+  },
+  {
+    "model": "clothes.subcategory",
+    "pk": 13,
+    "fields": {
+      "subcategory_name": "╨о╨▒╨║╨╕",
+      "slug": "yubki",
+      "category": 2
+    }
+  },
+  {
+    "model": "clothes.subcategory",
+    "pk": 14,
+    "fields": {
+      "subcategory_name": "╨Я╨╗╨░╤В╤М╤П",
+      "slug": "platya",
+      "category": 2
+    }
+  }
+]

@@ -1,0 +1,47 @@
+[
+  {
+    "model": "clothes.orders_of_clothes",
+    "pk": 23,
+    "fields": {
+      "id_clothes_with_size": 7,
+      "id_order": 13,
+      "count": 2
+    }
+  },
+  {
+    "model": "clothes.orders_of_clothes",
+    "pk": 24,
+    "fields": {
+      "id_clothes_with_size": 15,
+      "id_order": 13,
+      "count": 1
+    }
+  },
+  {
+    "model": "clothes.orders_of_clothes",
+    "pk": 25,
+    "fields": {
+      "id_clothes_with_size": 20,
+      "id_order": 13,
+      "count": 1
+    }
+  },
+  {
+    "model": "clothes.orders_of_clothes",
+    "pk": 26,
+    "fields": {
+      "id_clothes_with_size": 4,
+      "id_order": 14,
+      "count": 2
+    }
+  },
+  {
+    "model": "clothes.orders_of_clothes",
+    "pk": 27,
+    "fields": {
+      "id_clothes_with_size": 20,
+      "id_order": 14,
+      "count": 1
+    }
+  }
+]

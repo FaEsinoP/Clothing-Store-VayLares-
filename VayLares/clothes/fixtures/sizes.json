@@ -1,0 +1,155 @@
+[
+  {
+    "model": "clothes.sizes",
+    "pk": 1,
+    "fields": {
+      "size_title": "╨Т╨╡╤А╤Е S",
+      "slug": "verh-s",
+      "size": "S (44-46)"
+    }
+  },
+  {
+    "model": "clothes.sizes",
+    "pk": 2,
+    "fields": {
+      "size_title": "╨Т╨╡╤А╤Е M",
+      "slug": "verh-m",
+      "size": "M (46-48)"
+    }
+  },
+  {
+    "model": "clothes.sizes",
+    "pk": 3,
+    "fields": {
+      "size_title": "╨Т╨╡╤А╤Е L",
+      "slug": "verh-l",
+      "size": "L (48-50)"
+    }
+  },
+  {
+    "model": "clothes.sizes",
+    "pk": 4,
+    "fields": {
+      "size_title": "╨Т╨╡╤А╤Е XL",
+      "slug": "verh-xl",
+      "size": "XL (50-52)"
+    }
+  },
+  {
+    "model": "clothes.sizes",
+    "pk": 5,
+    "fields": {
+      "size_title": "╨Т╨╡╤А╤Е XXL",
+      "slug": "verh-xxl",
+      "size": "XXL (52-54)"
+    }
+  },
+  {
+    "model": "clothes.sizes",
+    "pk": 6,
+    "fields": {
+      "size_title": "╨Ю╨▒╤Г╨▓╤М 35",
+      "slug": "obuv-35",
+      "size": "35"
+    }
+  },
+  {
+    "model": "clothes.sizes",
+    "pk": 7,
+    "fields": {
+      "size_title": "╨Ю╨▒╤Г╨▓╤М 36",
+      "slug": "obuv-36",
+      "size": "36"
+    }
+  },
+  {
+    "model": "clothes.sizes",
+    "pk": 8,
+    "fields": {
+      "size_title": "╨Ю╨▒╤Г╨▓╤М 37",
+      "slug": "obuv-37",
+      "size": "37"
+    }
+  },
+  {
+    "model": "clothes.sizes",
+    "pk": 9,
+    "fields": {
+      "size_title": "╨Ю╨▒╤Г╨▓╤М 38",
+      "slug": "obuv-38",
+      "size": "38"
+    }
+  },
+  {
+    "model": "clothes.sizes",
+    "pk": 10,
+    "fields": {
+      "size_title": "╨Ю╨▒╤Г╨▓╤М 39",
+      "slug": "obuv-39",
+      "size": "39"
+    }
+  },
+  {
+    "model": "clothes.sizes",
+    "pk": 11,
+    "fields": {
+      "size_title": "╨Ю╨▒╤Г╨▓╤М 40",
+      "slug": "obuv-40",
+      "size": "40"
+    }
+  },
+  {
+    "model": "clothes.sizes",
+    "pk": 12,
+    "fields": {
+      "size_title": "╨Ю╨▒╤Г╨▓╤М 41",
+      "slug": "obuv-41",
+      "size": "41"
+    }
+  },
+  {
+    "model": "clothes.sizes",
+    "pk": 13,
+    "fields": {
+      "size_title": "╨Ю╨▒╤Г╨▓╤М 42",
+      "slug": "obuv-42",
+      "size": "42"
+    }
+  },
+  {
+    "model": "clothes.sizes",
+    "pk": 14,
+    "fields": {
+      "size_title": "╨Ю╨▒╤Г╨▓╤М 43",
+      "slug": "obuv-43",
+      "size": "43"
+    }
+  },
+  {
+    "model": "clothes.sizes",
+    "pk": 15,
+    "fields": {
+      "size_title": "╨Ю╨▒╤Г╨▓╤М 44",
+      "slug": "obuv-44",
+      "size": "44"
+    }
+  },
+  {
+    "model": "clothes.sizes",
+    "pk": 16,
+    "fields": {
+      "size_title": "╨Ю╨▒╤Г╨▓╤М 45",
+      "slug": "obuv-45",
+      "size": "45"
+    }
+  },
+  {
+    "model": "clothes.sizes",
+    "pk": 17,
+    "fields": {
+      "size_title": "╨Ю╨▒╤Г╨▓╤М 46",
+      "slug": "obuv-46",
+      "size": "46"
+    }
+  }
+]

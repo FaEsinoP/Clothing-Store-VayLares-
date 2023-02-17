@@ -1,0 +1,26 @@
+[
+  {
+    "model": "clothes.category",
+    "pk": 1,
+    "fields": {
+      "category_name": "╨Ю╨▒╤Г╨▓╤М",
+      "slug": "obuv"
+    }
+  },
+  {
+    "model": "clothes.category",
+    "pk": 2,
+    "fields": {
+      "category_name": "╨Ю╨┤╨╡╨╢╨┤╨░",
+      "slug": "odezhda"
+    }
+  },
+  {
+    "model": "clothes.category",
+    "pk": 3,
+    "fields": {
+      "category_name": "╨Р╨║╤Б╨╡╤Б╤Б╤Г╨░╤А╤Л",
+      "slug": "aksessuary"
+    }
+  }
+]

@@ -85,11 +85,6 @@ class Orders_of_ClothesAdmin(admin.ModelAdmin):
     list_display_links = ('id',)
 
 
-class UserInfoAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'gender', 'phone_number')
-    list_display_links = ('id',)
-
-
 admin.site.register(Clothes, ClothesAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Subcategory, SubcategoryAdmin)
@@ -98,4 +93,4 @@ admin.site.register(Sizes, SizeAdmin)
 admin.site.register(Sizes_of_Clothes, Sizes_of_ClothesAdmin)
 admin.site.register(Orders, OrdersAdmin)
 admin.site.register(Orders_of_Clothes, Orders_of_ClothesAdmin)
-admin.site.register(UserInfo, UserInfoAdmin)
+admin.site.register(User)

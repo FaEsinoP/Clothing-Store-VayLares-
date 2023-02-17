@@ -1,0 +1,122 @@
+[
+  {
+    "model": "clothes.brand",
+    "pk": 1,
+    "fields": {
+      "brand_name": "Nike",
+      "slug": "nike"
+    }
+  },
+  {
+    "model": "clothes.brand",
+    "pk": 2,
+    "fields": {
+      "brand_name": "PUMA",
+      "slug": "puma"
+    }
+  },
+  {
+    "model": "clothes.brand",
+    "pk": 3,
+    "fields": {
+      "brand_name": "Jordan",
+      "slug": "jordan"
+    }
+  },
+  {
+    "model": "clothes.brand",
+    "pk": 4,
+    "fields": {
+      "brand_name": "Vans",
+      "slug": "vans"
+    }
+  },
+  {
+    "model": "clothes.brand",
+    "pk": 5,
+    "fields": {
+      "brand_name": "Adidas",
+      "slug": "adidas"
+    }
+  },
+  {
+    "model": "clothes.brand",
+    "pk": 6,
+    "fields": {
+      "brand_name": "New Balance",
+      "slug": "new-balance"
+    }
+  },
+  {
+    "model": "clothes.brand",
+    "pk": 7,
+    "fields": {
+      "brand_name": "Dr. Martens",
+      "slug": "dr-martens"
+    }
+  },
+  {
+    "model": "clothes.brand",
+    "pk": 8,
+    "fields": {
+      "brand_name": "Palm Angels",
+      "slug": "palm-angels"
+    }
+  },
+  {
+    "model": "clothes.brand",
+    "pk": 9,
+    "fields": {
+      "brand_name": "Prada",
+      "slug": "prada"
+    }
+  },
+  {
+    "model": "clothes.brand",
+    "pk": 10,
+    "fields": {
+      "brand_name": "Gucci",
+      "slug": "gucci"
+    }
+  },
+  {
+    "model": "clothes.brand",
+    "pk": 11,
+    "fields": {
+      "brand_name": "ZIMMERMANN",
+      "slug": "zimmermann"
+    }
+  },
+  {
+    "model": "clothes.brand",
+    "pk": 12,
+    "fields": {
+      "brand_name": "Moncler",
+      "slug": "moncler"
+    }
+  },
+  {
+    "model": "clothes.brand",
+    "pk": 13,
+    "fields": {
+      "brand_name": "Dolce & Gabbana",
+      "slug": "dolce-gabbana"
+    }
+  },
+  {
+    "model": "clothes.brand",
+    "pk": 14,
+    "fields": {
+      "brand_name": "Off-White",
+      "slug": "off-white"
+    }
+  },
+  {
+    "model": "clothes.brand",
+    "pk": 15,
+    "fields": {
+      "brand_name": "Balenciaga",
+      "slug": "balenciaga"
+    }
+  }
+]

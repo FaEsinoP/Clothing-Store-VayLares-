@@ -233,16 +233,16 @@ class Favourites(DataMixin, ListView):
         return dict(list(context.items()) + list(c_def.items()))
 
 
-class Profile(LoginRequiredMixin, DataMixin, CreateView):
-    form_class = ProfileUserForm
-    template_name = 'clothes/profile.html'
-    raise_exception = True
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        username = self.request.user.username
-        c_def = self.get_user_context(title='Профиль')
-        return dict(list(context.items()) + list(c_def.items()))
+# class Profile(LoginRequiredMixin, DataMixin, CreateView):
+#     form_class = ProfileUserForm
+#     template_name = 'clothes/profile.html'
+#     raise_exception = True
+#
+#     def get_context_data(self, *, object_list=None, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         username = self.request.user.username
+#         c_def = self.get_user_context(title='Профиль')
+#         return dict(list(context.items()) + list(c_def.items()))
 
 
 class ClothesOrders(LoginRequiredMixin, DataMixin, ListView):
