@@ -1,6 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UserChangeForm
 from django.core.exceptions import ValidationError
 from captcha.fields import CaptchaField
 
@@ -41,12 +40,17 @@ class LoginUserForm(AuthenticationForm):
 VARIANTS = [(i, str(i)) for i in range(1, 21)]
 
 
-# class ProfileUserForm(forms.ModelForm):
-#     def __init__(self, *args, **kwargs):
-#         super().__init__(*args, **kwargs)
-#         print(kwargs)
-#         # user = User.objects.get(username=username)
-#
-#     class Meta:
-#         model = UserInfo
-#         fields = ['gender', 'phone_number']
+class UserProfileForm(UserChangeForm):
+    def __init__(self, *args, **kwargs):
+        self.request = kwargs.pop('request', None)
+        super(UserProfileForm, self).__init__(*args, **kwargs)
+        self.fields['first_name'].initial = self.request.user.first_name
+        self.fields['last_name'].initial = self.request.user.last_name
+        self.fields['image'].initial = self.request.user.image
+        self.fields['username'].initial = self.request.user.username
+        self.fields['gender'].initial = self.request.user.gender
+        self.fields['email'].initial = self.request.user.email
+
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name', 'image', 'username', 'gender', 'email')

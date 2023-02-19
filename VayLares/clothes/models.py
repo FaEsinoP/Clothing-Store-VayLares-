@@ -155,15 +155,14 @@ class Orders_of_Clothes(models.Model):
 
 
 class User(AbstractUser):
-
-    Man = 'Man'
-    Woman = 'Woman'
+    Man = 'Мужcкой'
+    Woman = 'Женский'
     GENDERS = [
-        (Man, 'Мужчина'),
-        (Woman, 'Женщина'),
+        (Man, 'Мужcкой'),
+        (Woman, 'Женский'),
     ]
 
-    gender = models.CharField(max_length=255, choices=GENDERS)
+    gender = models.CharField(max_length=15, choices=GENDERS, default=Man)
     image = models.ImageField(upload_to='user-images', null=True, blank=True)
 
     class Meta:

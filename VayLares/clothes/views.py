@@ -1,6 +1,6 @@
 from django.contrib.auth import logout, login
 from django.contrib.auth.views import LoginView
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views.decorators.http import require_POST
@@ -233,16 +233,20 @@ class Favourites(DataMixin, ListView):
         return dict(list(context.items()) + list(c_def.items()))
 
 
-# class Profile(LoginRequiredMixin, DataMixin, CreateView):
-#     form_class = ProfileUserForm
-#     template_name = 'clothes/profile.html'
-#     raise_exception = True
-#
-#     def get_context_data(self, *, object_list=None, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         username = self.request.user.username
-#         c_def = self.get_user_context(title='Профиль')
-#         return dict(list(context.items()) + list(c_def.items()))
+class Profile(LoginRequiredMixin, DataMixin, CreateView):
+    form_class = UserProfileForm
+    template_name = 'clothes/profile.html'
+    raise_exception = True
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title='Профиль')
+        return dict(list(context.items()) + list(c_def.items()))
+
+    def get_form_kwargs(self):
+        kwargs = super(Profile, self).get_form_kwargs()
+        kwargs.update({'request': self.request})
+        return kwargs
 
 
 class ClothesOrders(LoginRequiredMixin, DataMixin, ListView):

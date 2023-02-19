@@ -1075,3 +1075,11 @@ select option:disabled {
   text-align:center;
   border: 2px solid #ba2121;
 }
+
+.order{
+  margin: 10px 0 10px 0;
+}
+
+.order-title{
+  text-decoration: underline ;
+}

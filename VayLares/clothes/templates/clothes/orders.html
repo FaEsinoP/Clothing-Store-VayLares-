@@ -8,8 +8,8 @@
 
 <h3>История заказов</h3>
 {% for order, clothes in orders.items %}
-<div>
-    <div>Заказ от {{order.time_create}}</div>
+<div class="order">
+    <div class="order-title">Заказ от {{order.time_create}}</div>
     {% for soc in clothes %}
     {% for ooc in ord_of_clothes %}
     {% if ooc.id_order.id == order.id and ooc.id_clothes_with_size.id == soc.id %}

@@ -19,7 +19,6 @@ class DataMixin:
 
         subcats = Subcategory.objects.all()
 
-
         user_menu = menu.copy()
 
         if not self.request.user.is_superuser:
