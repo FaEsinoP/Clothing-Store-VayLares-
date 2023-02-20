@@ -41,16 +41,20 @@ VARIANTS = [(i, str(i)) for i in range(1, 21)]
 
 
 class UserProfileForm(UserChangeForm):
-    def __init__(self, *args, **kwargs):
-        self.request = kwargs.pop('request', None)
-        super(UserProfileForm, self).__init__(*args, **kwargs)
-        self.fields['first_name'].initial = self.request.user.first_name
-        self.fields['last_name'].initial = self.request.user.last_name
-        self.fields['image'].initial = self.request.user.image
-        self.fields['username'].initial = self.request.user.username
-        self.fields['gender'].initial = self.request.user.gender
-        self.fields['email'].initial = self.request.user.email
+    fields = ['first_name', 'last_name', 'image', 'username', 'gender', 'email']
 
     class Meta:
         model = User
         fields = ('first_name', 'last_name', 'image', 'username', 'gender', 'email')
+        widgets = {
+            'first_name': forms.TextInput(attrs={'class': 'text-field__input'}),
+            'last_name': forms.TextInput(attrs={'class': 'text-field__input'}),
+            'username': forms.TextInput(attrs={'class': 'text-field__input'}),
+            'gender': forms.Select(attrs={'class': 'gender-select'}),
+            'email': forms.TextInput(attrs={'class': 'text-field__input'}),
+        }
+
+    def clean_first_name(self):
+        if self.cleaned_data['first_name'] == 0:
+            raise ValidationError("Пустой first_name")
+        return self.cleaned_data['first_name']

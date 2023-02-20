@@ -4,7 +4,7 @@ from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views.decorators.http import require_POST
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -233,7 +233,7 @@ class Favourites(DataMixin, ListView):
         return dict(list(context.items()) + list(c_def.items()))
 
 
-class Profile(LoginRequiredMixin, DataMixin, CreateView):
+class Profile(LoginRequiredMixin, DataMixin, UpdateView):
     form_class = UserProfileForm
     template_name = 'clothes/profile.html'
     raise_exception = True
@@ -243,10 +243,15 @@ class Profile(LoginRequiredMixin, DataMixin, CreateView):
         c_def = self.get_user_context(title='Профиль')
         return dict(list(context.items()) + list(c_def.items()))
 
-    def get_form_kwargs(self):
-        kwargs = super(Profile, self).get_form_kwargs()
-        kwargs.update({'request': self.request})
-        return kwargs
+    def get_object(self, queryset=None):
+        return self.request.user
+
+    def post(self, request, *args, **kwargs):
+        form = UserProfileForm(instance=request.user, data=request.POST, files=request.FILES)
+        if form.is_valid():
+            form.save()
+            print(form['first_name'])
+            return HttpResponseRedirect(reverse('profile'))
 
 
 class ClothesOrders(LoginRequiredMixin, DataMixin, ListView):
