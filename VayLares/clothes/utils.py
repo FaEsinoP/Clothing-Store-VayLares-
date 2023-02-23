@@ -7,6 +7,12 @@ menu = [{'title': "Для мужчин", 'url_name': 'man'},
         {'title': "Добавить позицию", 'url_name': 'add'}
         ]
 
+submenu = [{'title': "Профиль", 'url_name': 'profile'},
+           {'title': "Заказы", 'url_name': 'orders'},
+           {'title': "Админ-панель", 'url_name': 'admin:index'},
+           {'title': "Выйти", 'url_name': 'logout'}
+           ]
+
 
 class DataMixin:
     def get_user_context(self, **kwargs):
@@ -20,11 +26,14 @@ class DataMixin:
         subcats = Subcategory.objects.all()
 
         user_menu = menu.copy()
+        user_submenu = submenu.copy()
 
         if not self.request.user.is_superuser:
             user_menu.pop(2)
+            user_submenu.pop(2)
 
         context['menu'] = user_menu
+        context['submenu'] = user_submenu
 
         search_request = self.request.GET.get('search', '').title()
         search_result = Clothes.objects.filter(Q(title__icontains=search_request) |

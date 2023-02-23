@@ -58,6 +58,7 @@ class ForMan(DataMixin, ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         c_def = self.get_user_context(title='Для мужчин', gender_selected='Для мужчин')
+        print(dict(list(context.items()) + list(c_def.items())))
         return dict(list(context.items()) + list(c_def.items()))
 
     def get_queryset(self):  # Указываем, что именно выбирать из модели
@@ -126,6 +127,7 @@ class ClothesCategory(DataMixin, ListView):
         context = super().get_context_data(**kwargs)
         c = Category.objects.get(slug=self.kwargs['category_slug'])
         c_def = self.get_user_context(title='Категория - ' + str(c.category_name), cat_selected=c.pk)
+        print(dict(list(context.items()) + list(c_def.items())))
         return dict(list(context.items()) + list(c_def.items()))
 
     def get_queryset(self):  # Указываем, что именно выбирать из модели
@@ -250,7 +252,6 @@ class Profile(LoginRequiredMixin, DataMixin, UpdateView):
         form = UserProfileForm(instance=request.user, data=request.POST, files=request.FILES)
         if form.is_valid():
             form.save()
-            print(form['first_name'])
             return HttpResponseRedirect(reverse('profile'))
 
 

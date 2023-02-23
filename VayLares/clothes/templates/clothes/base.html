@@ -15,9 +15,11 @@
 {% block header %}
 <div class="header">
     <ul id="mainmenu" class="mainmenu">
-        <li class="logo"><a href="{% url 'home' %}">
-            <div class="logo"></div>
-        </a></li>
+        <li class="logo">
+            <a href="{% url 'home' %}">
+                <div class="logo"></div>
+            </a>
+        </li>
         {% for m in menu %}
         {% if m.title == gender_selected %}
         <li class="gender-selected">{{m.title}}</li>
@@ -25,34 +27,6 @@
         <li><a href="{% url m.url_name %}">{{m.title}}</a></li>
         {% endif %}
         {% endfor %}
-        {% with cart_items=cart|length %}
-        {% with fav_items=fav|length %}
-        <li class="last">
-
-            <span class="cart-icon">
-                {% if fav_items %}
-                <span class="null">
-                    <span class="cart-counter">{{ fav_items }}</span>
-                </span>
-                {% endif %}
-                    <a class="fa fa-heart-o" href="{% url 'fav_detail' %}"></a>
-            </span>
-
-            <span class="cart-icon">
-                {% if cart_items %}
-                <span class="null">
-                    <span class="cart-counter">{{ cart_items }}</span>
-                </span>
-                {% endif %}
-                    <a class="fa fa-shopping-basket" href="{% url 'cart:cart_detail' %}"></a>
-            </span>
-
-            {% if request.user.is_authenticated %}
-             <a href="{% url 'profile' %}" >Личный кабинет</a>
-            {% else %}
-            <a href="{% url 'register' %}">Регистрация</a>| <a href="{% url 'login' %}">Войти</a>
-            {% endif %}
-        </li>
         <li>
             <div class="search-box">
                 <form name="search" action="{% url 'home' %}">
@@ -61,6 +35,40 @@
                 </form>
             </div>
         </li>
+        <div class="last">
+            <li style="	margin: 18px 10px 0 0">
+                {% with cart_items=cart|length %}
+                {% with fav_items=fav|length %}
+                <span class="cart-icon">
+                {% if fav_items %}
+                <span class="null">
+                    <span class="cart-counter">{{ fav_items }}</span>
+                </span>
+                {% endif %}
+                    <a class="fa fa-heart-o" href="{% url 'fav_detail' %}"></a>
+                </span>
+                <span class="cart-icon">
+                {% if cart_items %}
+                <span class="null">
+                    <span class="cart-counter">{{ cart_items }}</span>
+                </span>
+                {% endif %}
+                    <a class="fa fa-shopping-basket" href="{% url 'cart:cart_detail' %}"></a>
+            </span>
+            </li>
+            <li style="	margin: 18px 114px 0 0">
+                {% if request.user.is_authenticated %}
+                <a href="{% url 'profile' %}" class="submenu-link"><i class="fa fa-user-circle"></i></a>
+                <ul class="submenu">
+                    {% for s_m in submenu %}
+                    <li><a href="{% url s_m.url_name %}">{{s_m.title}}</a></li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <a href="{% url 'login' %}">Войти <i class="fa fa-sign-in"> </i></a>
+                {% endif %}
+            </li>
+        </div>
     </ul>
     {% endwith %}
     {% endwith %}

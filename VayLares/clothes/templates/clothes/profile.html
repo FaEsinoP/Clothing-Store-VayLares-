@@ -12,10 +12,6 @@
             <div class="avatar-container avatar-size">
                 <img class="avatar-img"
                      src="{% if user.image %} {{ user.image.url }} {% else %} {% static 'clothes/images/default-avatar.jpeg' %} {% endif %}">
-
-                <div class="edit-avatar-container">
-                    <div>123</div>
-                </div>
             </div>
         </div>
     </div>
@@ -45,20 +41,20 @@
                 </div>
                 <div class="form-group row">
                     <div>
-                        <label for="{{ form.image.id_for_label }}" class="col-sm-2 col-form-label">Выберите
-                            изображение</label>
-                        {{ form.image }}
-                    </div>
-                    <div>
                         <label for="{{ form.gender.id_for_label }}" class="text-field__label">Пол</label>
                         {{ form.gender }}
                     </div>
+                    <label class="input-file">
+                        <input type="file" name="image" accept="image/*" id="id_imgage" class="custom-file-input">
+                        <span>Загрузить изображение</span>
+                    </label>
                 </div>
                 <div class="form-group row">
                     <div>
                         <button type="submit" class="button-form">Сохранить</button>
                     </div>
                 </div>
+
                 <div class="form-error">{{form.errors}}</div>
 
             </div>

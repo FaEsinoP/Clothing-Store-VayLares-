@@ -52,9 +52,5 @@ class UserProfileForm(UserChangeForm):
             'username': forms.TextInput(attrs={'class': 'text-field__input'}),
             'gender': forms.Select(attrs={'class': 'gender-select'}),
             'email': forms.TextInput(attrs={'class': 'text-field__input'}),
+            'image': forms.FileInput(attrs={'class': 'custom-file-input'}),
         }
-
-    def clean_first_name(self):
-        if self.cleaned_data['first_name'] == 0:
-            raise ValidationError("Пустой first_name")
-        return self.cleaned_data['first_name']
