@@ -13,11 +13,19 @@
     {% for soc in clothes %}
     {% for ooc in ord_of_clothes %}
     {% if ooc.id_order.id == order.id and ooc.id_clothes_with_size.id == soc.id %}
-    <div> {{soc}}, {{ooc.count}} шт. </div>
+    <div> {{soc}}, {{ooc.count}} шт.</div>
     {% endif %}
     {% endfor %}
     {% endfor %}
-    <div> Итого: <b>{{ order.total_price }} ₽</b> Статус: <b style="color: #dcb518">{{order.status}}</b> </div>
+    <div> Итого: <b>{{ order.total_price }} ₽</b> Статус:
+        {% if order.status == 'In progress' %}
+        <b style="color: #dcb518">{{order.status}}</b>
+        {% elif order.status == 'Ok' %}
+        <b style="color: #66bc15">{{order.status}}</b>
+        {% elif order.status == 'Canceled' %}
+        <b style="color: #cf1717">{{order.status}}</b>
+        {% endif %}
+    </div>
 </div>
 {% endfor %}
 <a href="{% url 'logout' %}" class="logout">Выйти</a>

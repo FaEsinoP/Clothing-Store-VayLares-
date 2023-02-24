@@ -1,41 +1,34 @@
-{% extends 'clothes/base.html' %}
+{% load static %}
+<link type="text/css" href="{% static 'clothes/css/login.css' %}" rel="stylesheet"/>
 
-{% block content %}
-<div class="container">
-    <form method="post">
-        {% csrf_token %}
-        <div class="login-wrapper">
-            <div class="login-header">
-                <div class="login-header__text">Авторизация</div>
-            </div>
-            <div class="login-content">
-                <div class="form-error">{{ form.non_field_errors }}</div>
-                <div class="form-group row">
-                    <label for="username" class="col-sm-2 col-form-label">Логин</label>
-                    <div class="col-sm-10">
-                        <input class="form-control" id="username" name="username" placeholder="Введите логин">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="password" class="col-sm-2 col-form-label">Пароль</label>
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control" id="password" name="password"
-                               placeholder="Введите пароль">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <div class="'col-sm-10'">
-                        <a class="reg-link" href="{% url 'register' %}">Зарегистрируйтесь</a>, если у вас ещё нет аккаунта.
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <div class="'col-sm-10'">
-                        <button type="submit" class="button-form">Войти</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
 
-{% endblock %}
+<title>{{title}}</title>
+
+{% if form.non_field_errors %}
+<label>
+    <input type="checkbox" class="alertCheckbox" autocomplete="off"/>
+    <div class="alert error" role="alert">
+        <span class="alertClose"><b>x</b></span>
+        <span class="alertText">{{ form.non_field_errors}}
+        <br class="clear"/></span>
+    </div>
+</label>
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+    <a href="{% url 'home' %}">
+        <div class="logo"></div>
+    </a>
+    <h3>Авторизация</h3>
+    <label for="username">Логин</label>
+    <input type="text" placeholder="Логин" id="username" name="username">
+
+    <label for="password">Пароль</label>
+    <input type="password" placeholder="Пароль" id="password" name="password">
+    <div style="margin-top: 20px">
+        Впервые здесь? <a href="{% url 'register' %}">Создать аккаунт.</a>
+    </div>
+
+    <button class="button-login" type="submit">Войти</button>
+</form>

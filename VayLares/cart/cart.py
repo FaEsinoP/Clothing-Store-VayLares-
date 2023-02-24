@@ -17,7 +17,8 @@ class Cart:
 
     def __iter__(self):
         product_ids = self.cart.keys()
-        products = Sizes_of_Clothes.objects.filter(id__in=product_ids)
+        products = Sizes_of_Clothes.objects.filter(id__in=product_ids).select_related('id_clothes', 'id_size',
+                                                                                      'id_clothes__brand')
 
         cart = copy.deepcopy(self.cart)
 

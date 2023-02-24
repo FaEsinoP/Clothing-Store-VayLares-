@@ -16,7 +16,7 @@ class Favour:
 
     def __iter__(self):
         product_ids = self.fav.keys()
-        products = Clothes.objects.filter(id__in=product_ids)
+        products = Clothes.objects.filter(id__in=product_ids).select_related('brand')
 
         fav = copy.deepcopy(self.fav)
 

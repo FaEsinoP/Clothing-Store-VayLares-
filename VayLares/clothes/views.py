@@ -58,7 +58,6 @@ class ForMan(DataMixin, ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         c_def = self.get_user_context(title='Для мужчин', gender_selected='Для мужчин')
-        print(dict(list(context.items()) + list(c_def.items())))
         return dict(list(context.items()) + list(c_def.items()))
 
     def get_queryset(self):  # Указываем, что именно выбирать из модели
@@ -267,6 +266,7 @@ class ClothesOrders(LoginRequiredMixin, DataMixin, ListView):
         for ord in orders:
             dct[ord] = ord.product.all()
         lst = [ord.id for ord in orders]
-        ord_of_clothes = Orders_of_Clothes.objects.filter(id_order__in=lst)
+        ord_of_clothes = Orders_of_Clothes.objects.filter(id_order__in=lst).select_related(
+            'id_clothes_with_size', 'id_order').prefetch_related('id_order__product')
         c_def = self.get_user_context(title='Мои заказы', orders=dct, ord_of_clothes=ord_of_clothes)
         return dict(list(context.items()) + list(c_def.items()))
