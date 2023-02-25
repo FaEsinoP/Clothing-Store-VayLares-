@@ -261,12 +261,10 @@ class ClothesOrders(LoginRequiredMixin, DataMixin, ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        dct = {}  # Ключи - заказы, значения - инфа о вещах
-        orders = Orders.objects.filter(user_name=self.request.user.username)
-        for ord in orders:
-            dct[ord] = ord.product.all()
+        orders = Orders.objects.filter(user_name=self.request.user.username).prefetch_related('product__id_clothes',
+                                                                                              'product__id_size')
         lst = [ord.id for ord in orders]
-        ord_of_clothes = Orders_of_Clothes.objects.filter(id_order__in=lst).select_related(
-            'id_clothes_with_size', 'id_order').prefetch_related('id_order__product')
-        c_def = self.get_user_context(title='Мои заказы', orders=dct, ord_of_clothes=ord_of_clothes)
+        ord_of_clothes = Orders_of_Clothes.objects.filter(id_order__in=lst).select_related('id_clothes_with_size',
+                                                                                           'id_order')
+        c_def = self.get_user_context(title='Мои заказы', orders=orders, ord_of_clothes=ord_of_clothes)
         return dict(list(context.items()) + list(c_def.items()))
