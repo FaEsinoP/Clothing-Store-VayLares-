@@ -153,3 +153,15 @@ REST_FRAMEWORK = {
         # 'rest_framework.renderers.BrowsableAPIRenderer',
     ]
 }
+
+# SMTP Configuration
+
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+
+EMAIL_HOST_USER = 'aleksandr.shaturniy@yandex.ru'
+EMAIL_HOST_PASSWORD = 'psixkmugesuefypn'
+DEFAULT_FROM_EMAIL = 'aleksandr.shaturniy@yandex.ru'

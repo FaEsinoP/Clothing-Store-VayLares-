@@ -58,7 +58,7 @@
             </li>
             <li style="	margin: 18px 114px 0 0">
                 {% if request.user.is_authenticated %}
-                <a href="{% url 'profile' %}" class="submenu-link"><i class="fa fa-user-circle"></i></a>
+                <a href="{% url 'profile' %}" class="submenu-link">{{user.username}} <i class="fa fa-user-circle"></i></a>
                 <ul class="submenu">
                     {% for s_m in submenu %}
                     <li><a href="{% url s_m.url_name %}">{{s_m.title}}</a></li>

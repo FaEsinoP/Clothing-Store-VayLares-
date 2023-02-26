@@ -13,6 +13,8 @@ submenu = [{'title': "Профиль", 'url_name': 'profile'},
            {'title': "Выйти", 'url_name': 'logout'}
            ]
 
+gender_selected = None
+
 
 class DataMixin:
     def get_user_context(self, **kwargs):
@@ -54,5 +56,11 @@ class DataMixin:
         if 'subcat_selected' not in context:
             context['subcat_selected'] = 0
         if 'gender_selected' not in context:
-            context['gender_selected'] = 0
+            context['gender_selected'] = gender_selected
+
+        if context['gender_selected'] == 'Для мужчин':
+            context['gender'] = 'Man'
+        elif context['gender_selected'] == 'Для женщин':
+            context['gender'] = 'Woman'
+
         return context

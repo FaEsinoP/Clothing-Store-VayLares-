@@ -2,6 +2,8 @@ from django.urls import path, include
 from .views import *
 from rest_framework import routers
 
+from django.contrib.auth import views as auth_views
+
 router = routers.SimpleRouter()
 router.register(r'clothes', ClothesViewSet)
 
@@ -21,9 +23,16 @@ urlpatterns = [
     path('category/<slug:category_slug>/', ClothesCategory.as_view(), name='category'),
     path('subcategory/<slug:subcategory_slug>', ClothesSubCategory.as_view(), name='subcategory'),
     path('product/<slug:product_slug>/', ShowProduct.as_view(), name='product'),
+
     path('fav/', Favourites.as_view(), name='fav_detail'),
     path('fav/add/<int:product_id>/', fav_add, name='fav_add'),
     path('fav/remove/<int:product_id>/', fav_remove, name='fav_remove'),
+
     path('profile/', Profile.as_view(), name='profile'),
     path('orders/', ClothesOrders.as_view(), name='orders'),
+
+    path('reset_password/', ResetPassword.as_view(), name='reset_password'),
+    path('reset_password_sent/', ResetDone.as_view(), name='password_reset_done'),
+    path('reset/<uidb64>/<token>/', ConfirmNewPass.as_view(), name='password_reset_confirm'),
+    path('reset_password_complete/', ResetComplete.as_view(), name='password_reset_complete'),
 ]

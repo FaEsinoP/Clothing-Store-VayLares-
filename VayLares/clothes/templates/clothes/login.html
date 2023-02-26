@@ -15,6 +15,17 @@
 </label>
 {% endif %}
 
+{% if newpass %}
+<label>
+    <input type="checkbox" class="alertCheckbox" autocomplete="off"/>
+    <div class="alert success" style="height: 50px" role="alert">
+        <span class="alertClose" style="padding-top: 0"><b>x</b></span>
+        <span class="alertText">Пароль успешно изменен!
+            <br class="clear"/></span>
+    </div>
+</label>
+{% endif %}
+
 <form method="post">
     {% csrf_token %}
     <a href="{% url 'home' %}">
@@ -26,9 +37,13 @@
 
     <label for="password">Пароль</label>
     <input type="password" placeholder="Пароль" id="password" name="password">
-    <div style="margin-top: 20px">
-        Впервые здесь? <a href="{% url 'register' %}">Создать аккаунт.</a>
+    <div class="have">
+        <a href="{% url 'reset_password' %}">Забыли пароль?</a>
     </div>
 
-    <button class="button-login" type="submit">Войти</button>
+    <button type="submit">Войти</button>
+
+    <div class="create">
+        Впервые здесь? <a href="{% url 'register' %}">Создать аккаунт.</a>
+    </div>
 </form>

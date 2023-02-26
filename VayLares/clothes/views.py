@@ -1,5 +1,5 @@
 from django.contrib.auth import logout, login
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import *
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
@@ -36,11 +36,12 @@ class BrandAPIUpdate(generics.RetrieveUpdateDestroyAPIView):
 class ClothesHome(DataMixin, ListView):
     model = Clothes
     template_name = 'clothes/index.html'
-    context_object_name = 'goods'  # Имя коллекции, которая используется в шаблоне
+    context_object_name = 'goods'
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(title='Главная страница')
+        gender_selected = None
+        c_def = self.get_user_context(title='Главная страница', gender_selected=gender_selected)
         return dict(list(context.items()) + list(c_def.items()))
 
     def get_queryset(self):
@@ -53,11 +54,13 @@ class ForMan(DataMixin, ListView):
     paginate_by = 5
     model = Clothes
     template_name = 'clothes/man.html'
-    context_object_name = 'goods'  # Имя коллекции, которая используется в шаблоне
+    context_object_name = 'goods'
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(title='Для мужчин', gender_selected='Для мужчин')
+        global gender_selected
+        gender_selected = 'Для мужчин'
+        c_def = self.get_user_context(title='Для мужчин', gender_selected=gender_selected)
         return dict(list(context.items()) + list(c_def.items()))
 
     def get_queryset(self):  # Указываем, что именно выбирать из модели
@@ -69,14 +72,16 @@ class ForWoman(DataMixin, ListView):
     paginate_by = 5
     model = Clothes
     template_name = 'clothes/woman.html'
-    context_object_name = 'goods'  # Имя коллекции, которая используется в шаблоне
+    context_object_name = 'goods'
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        c_def = self.get_user_context(title='Для женщин', gender_selected='Для женщин')
+        global gender_selected
+        gender_selected = 'Для женщин'
+        c_def = self.get_user_context(title='Для женщин', gender_selected=gender_selected)
         return dict(list(context.items()) + list(c_def.items()))
 
-    def get_queryset(self):  # Указываем, что именно выбирать из модели
+    def get_queryset(self):
         return Clothes.objects.filter(gender='Woman', is_published=True).select_related(
             'brand') | Clothes.objects.filter(gender='All', is_published=True).select_related('brand')
 
@@ -119,36 +124,53 @@ class AddProduct(LoginRequiredMixin, DataMixin, CreateView):
 class ClothesCategory(DataMixin, ListView):
     model = Clothes
     template_name = 'clothes/index.html'
-    context_object_name = 'goods'  # Имя коллекции, которая используется в шаблоне
+    context_object_name = 'goods'
     allow_empty = False
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         c = Category.objects.get(slug=self.kwargs['category_slug'])
-        c_def = self.get_user_context(title='Категория - ' + str(c.category_name), cat_selected=c.pk)
-        print(dict(list(context.items()) + list(c_def.items())))
+        c_def = self.get_user_context(title='Категория - ' + str(c.category_name), cat_selected=c.pk,
+                                      gender_selected=gender_selected)
         return dict(list(context.items()) + list(c_def.items()))
 
-    def get_queryset(self):  # Указываем, что именно выбирать из модели
-        return Clothes.objects.filter(category__slug=self.kwargs['category_slug'],
+    def get_queryset(self):
+
+        if gender_selected == 'Для мужчин':
+            gender = 'Man'
+        elif gender_selected == 'Для женщин':
+            gender = 'Woman'
+
+        return Clothes.objects.filter(category__slug=self.kwargs['category_slug'], gender=gender,
+                                      is_published=True).select_related('brand') | \
+               Clothes.objects.filter(category__slug=self.kwargs['category_slug'], gender='All',
                                       is_published=True).select_related('brand')
 
 
 class ClothesSubCategory(DataMixin, ListView):
     model = Clothes
     template_name = 'clothes/index.html'
-    context_object_name = 'goods'  # Имя коллекции, которая используется в шаблоне
+    context_object_name = 'goods'
     allow_empty = False
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         sc = Subcategory.objects.get(slug=self.kwargs['subcategory_slug'])
         c_def = self.get_user_context(title='Подкатегория - ' + str(sc.subcategory_name),
-                                      cat_selected=context['goods'][0].category.pk, subcat_selected=sc.pk)
+                                      cat_selected=context['goods'][0].category.pk, subcat_selected=sc.pk,
+                                      gender_selected=gender_selected)
         return dict(list(context.items()) + list(c_def.items()))
 
-    def get_queryset(self):  # Указываем, что именно выбирать из модели
-        return Clothes.objects.filter(subcategory__slug=self.kwargs['subcategory_slug'],
+    def get_queryset(self):
+
+        if gender_selected == 'Для мужчин':
+            gender = 'Man'
+        elif gender_selected == 'Для женщин':
+            gender = 'Woman'
+
+        return Clothes.objects.filter(subcategory__slug=self.kwargs['subcategory_slug'], gender=gender,
+                                      is_published=True).select_related('brand') | \
+               Clothes.objects.filter(subcategory__slug=self.kwargs['subcategory_slug'], gender='All',
                                       is_published=True).select_related('brand')
 
 
@@ -165,7 +187,7 @@ class ShowProduct(DataMixin, DetailView):
         soc = Sizes_of_Clothes.objects.filter(id_clothes=context['good'].id, count__gt=0).values_list('id_size',
                                                                                                       flat=True)
 
-        c_def = self.get_user_context(title=context['good'], sizes=sizes, soc=soc)
+        c_def = self.get_user_context(title=context['good'], sizes=sizes, soc=soc, gender_selected=gender_selected)
         return dict(list(context.items()) + list(c_def.items()))
 
 
@@ -268,3 +290,28 @@ class ClothesOrders(LoginRequiredMixin, DataMixin, ListView):
                                                                                            'id_order')
         c_def = self.get_user_context(title='Мои заказы', orders=orders, ord_of_clothes=ord_of_clothes)
         return dict(list(context.items()) + list(c_def.items()))
+
+
+class ResetPassword(PasswordResetView):
+    template_name = 'clothes/password_reset_email.html'
+
+
+class ResetDone(PasswordResetDoneView):
+    template_name = 'clothes/password_reset_done.html'
+
+
+class ConfirmNewPass(PasswordResetConfirmView):
+    template_name = 'clothes/password_reset_confirm.html'
+
+
+class ResetComplete(DataMixin, PasswordResetCompleteView, LoginView):
+    form_class = LoginUserForm
+    template_name = 'clothes/login.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title="Авторизация", newpass=True)
+        return dict(list(context.items()) + list(c_def.items()))
+
+    def get_success_url(self):
+        return reverse_lazy('home')
