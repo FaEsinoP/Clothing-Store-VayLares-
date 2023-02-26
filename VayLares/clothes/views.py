@@ -40,6 +40,7 @@ class ClothesHome(DataMixin, ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
+        global gender_selected
         gender_selected = None
         c_def = self.get_user_context(title='Главная страница', gender_selected=gender_selected)
         return dict(list(context.items()) + list(c_def.items()))
@@ -141,9 +142,12 @@ class ClothesCategory(DataMixin, ListView):
         elif gender_selected == 'Для женщин':
             gender = 'Woman'
 
-        return Clothes.objects.filter(category__slug=self.kwargs['category_slug'], gender=gender,
-                                      is_published=True).select_related('brand') | \
-               Clothes.objects.filter(category__slug=self.kwargs['category_slug'], gender='All',
+        if gender_selected:
+            return Clothes.objects.filter(category__slug=self.kwargs['category_slug'], gender=gender,
+                                          is_published=True).select_related('brand') | \
+                   Clothes.objects.filter(category__slug=self.kwargs['category_slug'], gender='All',
+                                          is_published=True).select_related('brand')
+        return Clothes.objects.filter(category__slug=self.kwargs['category_slug'],
                                       is_published=True).select_related('brand')
 
 
@@ -168,9 +172,13 @@ class ClothesSubCategory(DataMixin, ListView):
         elif gender_selected == 'Для женщин':
             gender = 'Woman'
 
-        return Clothes.objects.filter(subcategory__slug=self.kwargs['subcategory_slug'], gender=gender,
-                                      is_published=True).select_related('brand') | \
-               Clothes.objects.filter(subcategory__slug=self.kwargs['subcategory_slug'], gender='All',
+        if gender_selected:
+            return Clothes.objects.filter(subcategory__slug=self.kwargs['subcategory_slug'], gender=gender,
+                                          is_published=True).select_related('brand') | \
+                   Clothes.objects.filter(subcategory__slug=self.kwargs['subcategory_slug'], gender='All',
+                                          is_published=True).select_related('brand')
+
+        return Clothes.objects.filter(subcategory__slug=self.kwargs['subcategory_slug'],
                                       is_published=True).select_related('brand')
 
 
