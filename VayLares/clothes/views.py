@@ -12,25 +12,25 @@ from rest_framework.views import APIView
 from cart.forms import CartAddProductForm
 from .Favourites import Favour
 from .forms import *
-from .serializers import ClothesSerializer
+from .serializers import BrandSerializer
 from .utils import *
 
 from rest_framework import generics, viewsets
 
 
-class ClothesViewSet(viewsets.ModelViewSet):
+class BrandViewSet(viewsets.ModelViewSet):
     queryset = Brand.objects.all()
-    serializer_class = ClothesSerializer
+    serializer_class = BrandSerializer
 
 
 class BrandAPIlist(generics.ListCreateAPIView):
     queryset = Brand.objects.all()
-    serializer_class = ClothesSerializer
+    serializer_class = BrandSerializer
 
 
 class BrandAPIUpdate(generics.RetrieveUpdateDestroyAPIView):
     queryset = Brand.objects.all()
-    serializer_class = ClothesSerializer
+    serializer_class = BrandSerializer
 
 
 class ClothesHome(DataMixin, ListView):

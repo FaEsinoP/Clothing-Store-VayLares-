@@ -2,10 +2,9 @@ from django.urls import path, include
 from .views import *
 from rest_framework import routers
 
-from django.contrib.auth import views as auth_views
 
 router = routers.SimpleRouter()
-router.register(r'clothes', ClothesViewSet)
+router.register(r'brand', BrandViewSet)
 
 urlpatterns = [
     # path('api/v1/clotheslist', ClothesViewSet.as_view({'get': 'list'})),
