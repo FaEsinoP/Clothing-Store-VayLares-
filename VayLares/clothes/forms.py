@@ -1,7 +1,5 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UserChangeForm
-from django.core.exceptions import ValidationError
-from captcha.fields import CaptchaField
 
 from .models import *
 

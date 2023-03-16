@@ -1,3 +1,4 @@
+import MySQLdb as mysql
 from django.shortcuts import redirect, get_object_or_404
 from django.views.decorators.http import require_POST
 from django.views.generic import CreateView
@@ -7,8 +8,6 @@ from clothes.models import *
 from clothes.utils import DataMixin
 from .cart import Cart
 from .forms import *
-
-import sqlite3 as lite
 
 
 @require_POST
@@ -41,7 +40,11 @@ class Basket(DataMixin, CreateView):
     allow_empty = False
 
     def post(self, request, *args, **kwargs):
-        con = lite.connect('db.sqlite3')
+
+        con = mysql.connect(user="root",
+                            passwd="5555555555A",
+                            db="clothes_store")
+
         cart = Cart(self.request)
 
         order = Orders(status='In progress', user_name=request.user.username)
@@ -53,17 +56,16 @@ class Basket(DataMixin, CreateView):
 
         with con:
             cur = con.cursor()
-            cur.execute('''UPDATE clothes_orders SET total_price = ? WHERE id = ?''',
-                        (cart.get_total_price(), order.id))
+            cur.execute("UPDATE clothes_orders SET total_price = %s WHERE id = %s", (cart.get_total_price(), order.id))
 
-        with con:
-            cur = con.cursor()
             for item in cart:
-                cur.execute('''UPDATE clothes_sizes_of_clothes SET count = ? WHERE id = ?''',
+                cur.execute("UPDATE clothes_sizes_of_clothes SET count = %s WHERE id = %s",
                             (item['product'].count - int(item['quantity']), item['product'].id))
                 cur.execute(
-                    '''UPDATE clothes_orders_of_clothes SET count = ? WHERE id_order_id = ? AND id_clothes_with_size_id = ?''',
+                    "UPDATE clothes_orders_of_clothes SET count = %s WHERE id_order_id = %s AND id_clothes_with_size_id = %s",
                     (int(item['quantity']), order.id, item['product'].id))
+
+            con.commit()
 
         cart.clear()
         return redirect('home')

@@ -1,4 +1,4 @@
-from .Favourites import Favour
+from .favourites import Favour
 
 
 def fav(request):

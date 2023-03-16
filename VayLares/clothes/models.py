@@ -3,6 +3,7 @@ import datetime
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.urls import reverse
+from django.utils import timezone
 
 
 class Brand(models.Model):
@@ -12,7 +13,7 @@ class Brand(models.Model):
     def __str__(self):
         return self.brand_name
 
-    class Meta:  # Используется в админ-панели
+    class Meta:
         verbose_name = 'Брэнды'
         verbose_name_plural = 'Брэнды'
         ordering = ['id']
@@ -28,7 +29,7 @@ class Category(models.Model):
     def get_absolute_url(self):
         return reverse('category', kwargs={'category_slug': self.slug})
 
-    class Meta:  # Используется в админ-панели
+    class Meta:
         verbose_name = 'Категории'
         verbose_name_plural = 'Категории'
         ordering = ['id']
@@ -45,7 +46,7 @@ class Subcategory(models.Model):
     def get_absolute_url(self):
         return reverse('subcategory', kwargs={'subcategory_slug': self.slug})
 
-    class Meta:  # Используется в админ-панели
+    class Meta:
         verbose_name = 'Подкатегории'
         verbose_name_plural = 'Подкатегории'
         ordering = ['id']
@@ -62,7 +63,7 @@ class Sizes(models.Model):
     # def get_absolute_url(self):
     #     return reverse('size', kwargs={'size_slug': self.slug})
 
-    class Meta:  # Используется в админ-панели
+    class Meta:
         verbose_name = 'Размеры'
         verbose_name_plural = 'Размеры'
         ordering = ['id']
@@ -132,7 +133,7 @@ class Orders(models.Model):
     user_name = models.CharField(max_length=255, default=None, verbose_name='Пользователь')
     time_create = models.DateTimeField(auto_now_add=True, verbose_name='Принят в исполнение')
     status = models.CharField(max_length=11, choices=STATUS, default=PROGRESS, verbose_name='Статус')
-    time_accept = models.DateTimeField(auto_now_add=False, default=datetime.datetime.now() + datetime.timedelta(days=1),
+    time_accept = models.DateTimeField(auto_now_add=False, default=timezone.now() + datetime.timedelta(days=1),
                                        verbose_name='Принят в пункте выдачи')
     product = models.ManyToManyField(Sizes_of_Clothes, through='Orders_of_Clothes', verbose_name='Товар')
     total_price = models.IntegerField(verbose_name='Общая стоимость', default=0)

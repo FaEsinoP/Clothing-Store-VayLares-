@@ -10,7 +10,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from cart.forms import CartAddProductForm
-from .Favourites import Favour
+from .favourites import Favour
 from .forms import *
 from .serializers import BrandSerializer
 from .utils import *
@@ -40,9 +40,8 @@ class ClothesHome(DataMixin, ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        global gender_selected
-        gender_selected = None
-        c_def = self.get_user_context(title='Главная страница', gender_selected=gender_selected)
+        self.request.session['gender_selected'] = None
+        c_def = self.get_user_context(title='Главная страница', gender_selected=self.request.session['gender_selected'])
         return dict(list(context.items()) + list(c_def.items()))
 
     def get_queryset(self):
@@ -59,12 +58,11 @@ class ForMan(DataMixin, ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        global gender_selected
-        gender_selected = 'Для мужчин'
-        c_def = self.get_user_context(title='Для мужчин', gender_selected=gender_selected)
+        self.request.session['gender_selected'] = 'Для мужчин'
+        c_def = self.get_user_context(title='Для мужчин', gender_selected=self.request.session['gender_selected'])
         return dict(list(context.items()) + list(c_def.items()))
 
-    def get_queryset(self):  # Указываем, что именно выбирать из модели
+    def get_queryset(self):
         return Clothes.objects.filter(gender='Man', is_published=True).select_related('brand') | Clothes.objects.filter(
             gender='All', is_published=True).select_related('brand')
 
@@ -77,9 +75,8 @@ class ForWoman(DataMixin, ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        global gender_selected
-        gender_selected = 'Для женщин'
-        c_def = self.get_user_context(title='Для женщин', gender_selected=gender_selected)
+        self.request.session['gender_selected'] = 'Для женщин'
+        c_def = self.get_user_context(title='Для женщин', gender_selected=self.request.session['gender_selected'])
         return dict(list(context.items()) + list(c_def.items()))
 
     def get_queryset(self):
@@ -132,17 +129,17 @@ class ClothesCategory(DataMixin, ListView):
         context = super().get_context_data(**kwargs)
         c = Category.objects.get(slug=self.kwargs['category_slug'])
         c_def = self.get_user_context(title='Категория - ' + str(c.category_name), cat_selected=c.pk,
-                                      gender_selected=gender_selected)
+                                      gender_selected=self.request.session['gender_selected'])
         return dict(list(context.items()) + list(c_def.items()))
 
     def get_queryset(self):
 
-        if gender_selected == 'Для мужчин':
+        if self.request.session['gender_selected'] == 'Для мужчин':
             gender = 'Man'
-        elif gender_selected == 'Для женщин':
+        elif self.request.session['gender_selected'] == 'Для женщин':
             gender = 'Woman'
 
-        if gender_selected:
+        if self.request.session['gender_selected']:
             return Clothes.objects.filter(category__slug=self.kwargs['category_slug'], gender=gender,
                                           is_published=True).select_related('brand') | \
                    Clothes.objects.filter(category__slug=self.kwargs['category_slug'], gender='All',
@@ -162,17 +159,17 @@ class ClothesSubCategory(DataMixin, ListView):
         sc = Subcategory.objects.get(slug=self.kwargs['subcategory_slug'])
         c_def = self.get_user_context(title='Подкатегория - ' + str(sc.subcategory_name),
                                       cat_selected=context['goods'][0].category.pk, subcat_selected=sc.pk,
-                                      gender_selected=gender_selected)
+                                      gender_selected=self.request.session['gender_selected'])
         return dict(list(context.items()) + list(c_def.items()))
 
     def get_queryset(self):
 
-        if gender_selected == 'Для мужчин':
+        if self.request.session['gender_selected'] == 'Для мужчин':
             gender = 'Man'
-        elif gender_selected == 'Для женщин':
+        elif self.request.session['gender_selected'] == 'Для женщин':
             gender = 'Woman'
 
-        if gender_selected:
+        if self.request.session['gender_selected']:
             return Clothes.objects.filter(subcategory__slug=self.kwargs['subcategory_slug'], gender=gender,
                                           is_published=True).select_related('brand') | \
                    Clothes.objects.filter(subcategory__slug=self.kwargs['subcategory_slug'], gender='All',

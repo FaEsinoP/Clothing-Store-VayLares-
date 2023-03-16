@@ -3,7 +3,7 @@
     "model": "clothes.category",
     "pk": 1,
     "fields": {
-      "category_name": "╨Ю╨▒╤Г╨▓╤М",
+      "category_name": "Обувь",
       "slug": "obuv"
     }
   },
@@ -11,7 +11,7 @@
     "model": "clothes.category",
     "pk": 2,
     "fields": {
-      "category_name": "╨Ю╨┤╨╡╨╢╨┤╨░",
+      "category_name": "Одежда",
       "slug": "odezhda"
     }
   },
@@ -19,7 +19,7 @@
     "model": "clothes.category",
     "pk": 3,
     "fields": {
-      "category_name": "╨Р╨║╤Б╨╡╤Б╤Б╤Г╨░╤А╤Л",
+      "category_name": "Аксессуары",
       "slug": "aksessuary"
     }
   }

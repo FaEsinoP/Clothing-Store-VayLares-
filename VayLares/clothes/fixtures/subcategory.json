@@ -3,7 +3,7 @@
     "model": "clothes.subcategory",
     "pk": 1,
     "fields": {
-      "subcategory_name": "╨Ъ╤А╨╛╤Б╤Б╨╛╨▓╨║╨╕",
+      "subcategory_name": "Кроссовки",
       "slug": "krossovki",
       "category": 1
     }
@@ -12,7 +12,7 @@
     "model": "clothes.subcategory",
     "pk": 2,
     "fields": {
-      "subcategory_name": "╨Ъ╨╡╨┤╤Л",
+      "subcategory_name": "Кеды",
       "slug": "kedy",
       "category": 1
     }
@@ -21,7 +21,7 @@
     "model": "clothes.subcategory",
     "pk": 3,
     "fields": {
-      "subcategory_name": "╨С╨╛╤В╨╕╨╜╨║╨╕",
+      "subcategory_name": "Ботинки",
       "slug": "botinki",
       "category": 1
     }
@@ -30,7 +30,7 @@
     "model": "clothes.subcategory",
     "pk": 4,
     "fields": {
-      "subcategory_name": "╨б╨╗╨░╨╜╤Ж╤Л",
+      "subcategory_name": "Сланцы",
       "slug": "slancy",
       "category": 1
     }
@@ -39,7 +39,7 @@
     "model": "clothes.subcategory",
     "pk": 5,
     "fields": {
-      "subcategory_name": "╨в╨╛╨╗╤Б╤В╨╛╨▓╨║╨╕",
+      "subcategory_name": "Толстовки",
       "slug": "tolstovki",
       "category": 2
     }
@@ -48,7 +48,7 @@
     "model": "clothes.subcategory",
     "pk": 6,
     "fields": {
-      "subcategory_name": "╨С╤А╤О╨║╨╕",
+      "subcategory_name": "Брюки",
       "slug": "bryuki",
       "category": 2
     }
@@ -57,7 +57,7 @@
     "model": "clothes.subcategory",
     "pk": 7,
     "fields": {
-      "subcategory_name": "╨д╤Г╤В╨▒╨╛╨╗╨║╨╕ ╨╕ ╨╝╨░╨╣╨║╨╕",
+      "subcategory_name": "Футболки и майки",
       "slug": "futbolki-i-majki",
       "category": 2
     }
@@ -66,7 +66,7 @@
     "model": "clothes.subcategory",
     "pk": 8,
     "fields": {
-      "subcategory_name": "╨Ъ╤Г╤А╤В╨║╨╕",
+      "subcategory_name": "Куртки",
       "slug": "kurtki",
       "category": 2
     }
@@ -75,7 +75,7 @@
     "model": "clothes.subcategory",
     "pk": 9,
     "fields": {
-      "subcategory_name": "╨а╤О╨║╨╖╨░╨║╨╕ ╨╕ ╤Б╤Г╨╝╨║╨╕",
+      "subcategory_name": "Рюкзаки и сумки",
       "slug": "ryukzaki-i-sumki",
       "category": 3
     }
@@ -84,7 +84,7 @@
     "model": "clothes.subcategory",
     "pk": 10,
     "fields": {
-      "subcategory_name": "╨Ъ╨╡╨┐╨║╨╕",
+      "subcategory_name": "Кепки",
       "slug": "kepki",
       "category": 3
     }
@@ -93,7 +93,7 @@
     "model": "clothes.subcategory",
     "pk": 11,
     "fields": {
-      "subcategory_name": "╨а╨╡╨╝╨╜╨╕",
+      "subcategory_name": "Ремни",
       "slug": "remni",
       "category": 3
     }
@@ -102,7 +102,7 @@
     "model": "clothes.subcategory",
     "pk": 12,
     "fields": {
-      "subcategory_name": "╨Э╨╛╤Б╨║╨╕",
+      "subcategory_name": "Носки",
       "slug": "noski",
       "category": 3
     }
@@ -111,7 +111,7 @@
     "model": "clothes.subcategory",
     "pk": 13,
     "fields": {
-      "subcategory_name": "╨о╨▒╨║╨╕",
+      "subcategory_name": "Юбки",
       "slug": "yubki",
       "category": 2
     }
@@ -120,7 +120,7 @@
     "model": "clothes.subcategory",
     "pk": 14,
     "fields": {
-      "subcategory_name": "╨Я╨╗╨░╤В╤М╤П",
+      "subcategory_name": "Платья",
       "slug": "platya",
       "category": 2
     }
