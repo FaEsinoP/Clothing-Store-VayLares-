@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+
+  db:
+    image: mysql:8.0.30
+    container_name: vaylares_mysql
+    volumes:
+      - db_django:/var/lib/mysql
+    env_file:
+      - .env
+
+  shop:
+    build: .
+    container_name: vaylares_django
+    volumes:
+      - .:/shop
+    command: >
+      bash -c "python /shop/VayLares/manage.py migrate &&
+               python /shop/VayLares/manage.py loaddata /shop/VayLares/clothes/fixtures/brand.json &&
+               python /shop/VayLares/manage.py loaddata /shop/VayLares/clothes/fixtures/category.json &&
+               python /shop/VayLares/manage.py loaddata /shop/VayLares/clothes/fixtures/subcategory.json &&
+               python /shop/VayLares/manage.py loaddata /shop/VayLares/clothes/fixtures/sizes.json &&
+               python /shop/VayLares/manage.py loaddata /shop/VayLares/clothes/fixtures/clothes.json &&
+               python /shop/VayLares/manage.py loaddata /shop/VayLares/clothes/fixtures/sizes_of_clothes.json &&
+               python /shop/VayLares/manage.py loaddata /shop/VayLares/clothes/fixtures/orders.json &&
+               python /shop/VayLares/manage.py loaddata /shop/VayLares/clothes/fixtures/orders_of_clothes.json &&
+               python /shop/VayLares/manage.py runserver 0.0.0.0:8000"
+    ports:
+      - '8000:8000'
+    depends_on:
+      - db
+    env_file:
+      - .env
+
+volumes:
+  db_django:

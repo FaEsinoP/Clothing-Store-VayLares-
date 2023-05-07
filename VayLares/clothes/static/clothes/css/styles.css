@@ -1197,16 +1197,14 @@ select option:disabled {
 	text-decoration: none;
 	font-size: 14px;
 	vertical-align: middle;
-	color: rgb(255 255 255);
+	color: rgb(0 0 0);
 	text-align: center;
-	border: 1px solid #bdbdbd;
+	border: 1px solid black;
 	border-radius: 0.55rem;
-	background-color: #adadad;
 	line-height: 22px;
     height: calc(2.25rem + 2px);
 	padding: 8.5px 10px;
 	box-sizing: border-box;
-	border: none;
 	margin-top: 1.35rem;
 	margin-left: 1.35rem;
 	transition: background-color 0.2s;

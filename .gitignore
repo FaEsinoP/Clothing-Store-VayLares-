@@ -8,6 +8,7 @@ db.sqlite3
 media
 vaylares_cache
 *.db
+pytest.ini
 
 # Distribution / packaging
 .Python
@@ -26,6 +27,7 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+.env
 
 # PyInstaller
 #  Usually these files are written by a python script from a template

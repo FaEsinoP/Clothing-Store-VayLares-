@@ -9,7 +9,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('cart/', include('cart.urls', namespace='cart')),
     path('', include('clothes.urls')),
-    path('captcha/', include('captcha.urls')),
+    # path('captcha/', include('captcha.urls')),
 ]
 handler404 = PageNotFound
 

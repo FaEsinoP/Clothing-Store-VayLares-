@@ -3,6 +3,7 @@ from django.shortcuts import redirect, get_object_or_404
 from django.views.decorators.http import require_POST
 from django.views.generic import CreateView
 
+from VayLares import settings
 from clothes.forms import AddGoodForm
 from clothes.models import *
 from clothes.utils import DataMixin
@@ -41,9 +42,9 @@ class Basket(DataMixin, CreateView):
 
     def post(self, request, *args, **kwargs):
 
-        con = mysql.connect(user="root",
-                            passwd="5555555555A",
-                            db="clothes_store")
+        con = mysql.connect(user=settings.DATABASES['default']['USER'],
+                            passwd=settings.DATABASES['default']['PASSWORD'],
+                            db=settings.DATABASES['default']['NAME'])
 
         cart = Cart(self.request)
 
@@ -62,12 +63,13 @@ class Basket(DataMixin, CreateView):
                 cur.execute("UPDATE clothes_sizes_of_clothes SET count = %s WHERE id = %s",
                             (item['product'].count - int(item['quantity']), item['product'].id))
                 cur.execute(
-                    "UPDATE clothes_orders_of_clothes SET count = %s WHERE id_order_id = %s AND id_clothes_with_size_id = %s",
+                    "UPDATE clothes_orders_of_clothes SET count = %s "
+                    "WHERE id_order_id = %s AND id_clothes_with_size_id = %s",
                     (int(item['quantity']), order.id, item['product'].id))
 
             con.commit()
-
         cart.clear()
+
         return redirect('home')
 
     def get_context_data(self, *, object_list=None, **kwargs):

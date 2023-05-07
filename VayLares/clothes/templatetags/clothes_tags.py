@@ -1,7 +1,7 @@
 from django import template
 from clothes.models import *
 
-# Нужно при использовании функций-представлений, чтобы убрать дублирование кода
+# Используется в функциях-представлениях, чтобы убрать дублирование кода
 
 register = template.Library()
 

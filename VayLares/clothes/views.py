@@ -142,8 +142,8 @@ class ClothesCategory(DataMixin, ListView):
         if self.request.session['gender_selected']:
             return Clothes.objects.filter(category__slug=self.kwargs['category_slug'], gender=gender,
                                           is_published=True).select_related('brand') | \
-                   Clothes.objects.filter(category__slug=self.kwargs['category_slug'], gender='All',
-                                          is_published=True).select_related('brand')
+                Clothes.objects.filter(category__slug=self.kwargs['category_slug'], gender='All',
+                                       is_published=True).select_related('brand')
         return Clothes.objects.filter(category__slug=self.kwargs['category_slug'],
                                       is_published=True).select_related('brand')
 
@@ -172,8 +172,8 @@ class ClothesSubCategory(DataMixin, ListView):
         if self.request.session['gender_selected']:
             return Clothes.objects.filter(subcategory__slug=self.kwargs['subcategory_slug'], gender=gender,
                                           is_published=True).select_related('brand') | \
-                   Clothes.objects.filter(subcategory__slug=self.kwargs['subcategory_slug'], gender='All',
-                                          is_published=True).select_related('brand')
+                Clothes.objects.filter(subcategory__slug=self.kwargs['subcategory_slug'], gender='All',
+                                       is_published=True).select_related('brand')
 
         return Clothes.objects.filter(subcategory__slug=self.kwargs['subcategory_slug'],
                                       is_published=True).select_related('brand')

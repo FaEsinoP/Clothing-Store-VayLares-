@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-i@5ch=*tl0*r6qbxb52(lh78@silymehejm-mjl)qhddym(bt-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0']
 
 # Application definition
 
@@ -38,8 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'clothes.apps.ClothesConfig',
     'debug_toolbar',
+    'clothes.apps.ClothesConfig',
     'captcha',
     'rest_framework',
 ]
@@ -83,9 +83,12 @@ WSGI_APPLICATION = 'VayLares.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'clothes_store',
-        'USER': 'root',
-        'PASSWORD': '5555555555A',
+        'NAME': os.getenv('MYSQL_DATABASE', 'clothes_store'),
+        'USER': os.getenv('MYSQL_USER', 'shaturny'),  # shaturny
+        'PASSWORD': os.getenv('MYSQL_PASSWORD', '5555555555A'),
+        'ROOT_PASSWORD': os.getenv('MYSQL_ROOT_PASSWORD', '5555555555A'),
+        'HOST': os.getenv('MYSQL_HOST', '127.0.0.1'),  # 127.0.0.1
+        'PORT': os.getenv('MYSQL_PORT', 3306),
     }
 }
 
