@@ -8,6 +8,7 @@ db.sqlite3
 media
 vaylares_cache
 *.db
+db_django
 pytest.ini
 
 # Distribution / packaging
