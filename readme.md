@@ -1,6 +1,15 @@
 # Clothing store "VayLares"
-The project helps to solve such business tasks as expanding the audience, optimizing costs, as well as providing a convenient presentation of all products in the assortment.
+### The project helps to solve such business tasks as:
+- [x] expanding the audience;
+- [x] optimizing costs;
+- [x] providing a convenient presentation of all products in the assortment.
+___
 
-Each user is given the opportunity to add products both to the cart and to the favorites list, view the order history and change the data in the personal account after registration and authorization.
+### Each user is given the opportunity to:
+- [x] add products to the cart
+- [x] add products to the favorites list
+- [x] view the order histor
+- [x] change the data in the personal account after _registration_ and _authorization_.
 
-![FA diagram DB](https://github.com/ShatAlex/Clothing-Store-VayLares/blob/master/Clothes_DB.png)
+### The database schema used in the project
+![FA diagram DB](https://disk.yandex.ru/i/mo_Ay1nog5Gfgw)
