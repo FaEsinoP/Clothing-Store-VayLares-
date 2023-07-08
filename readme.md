@@ -13,9 +13,9 @@ ___
 
 ### The First glance of the store
 #### Welcome page
-![Welcome page](https://disk.yandex.ru/i/M39fF7oMi4tBFw)
+![Welcome page](https://github.com/ShatAlex/Clothing-Store-VayLares/ReadMeImages/welcome_page.png)
 #### Product review page
-![Welcome page](https://disk.yandex.ru/i/M39fF7oMi4tBFw)
+![Welcome page](https://github.com/ShatAlex/Clothing-Store-VayLares/ReadMeImages/review_page.png)
 
 ___
 
@@ -26,4 +26,4 @@ ___
 - [x] change the data in the personal account after _registration_ and _authorization_.
 
 ### The database schema used in the project
-![FA diagram DB](https://disk.yandex.ru/i/mo_Ay1nog5Gfgw)
+![FA diagram DB](https://github.com/ShatAlex/Clothing-Store-VayLares/ReadMeImages/Clothes_DB.png)
