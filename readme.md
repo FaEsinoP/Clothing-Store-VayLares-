@@ -35,5 +35,8 @@ ___
 
 ![Profile page](https://github.com/ShatAlex/Clothing-Store-VayLares/blob/master/ReadMeImages/profile_page.png)
 
+___
+
+
 ### The database schema used in the project
 ![FA diagram DB](https://github.com/ShatAlex/Clothing-Store-VayLares/blob/master/ReadMeImages/Clothes_DB.png)
