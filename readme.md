@@ -31,7 +31,7 @@ ___
 
 - [x] change the data in the personal account after _registration_ and _authorization_.
 
-![Auth page](https://github.com/ShatAlex/Clothing-Store-VayLares/blob/master/ReadMeImages/autorization_page.png) ![Reg page](https://github.com/ShatAlex/Clothing-Store-VayLares/blob/master/ReadMeImages/autorization_page.png)
+![Auth and Reg pages](https://github.com/ShatAlex/Clothing-Store-VayLares/blob/master/ReadMeImages/reg-and-auth-page.png)
 
 ![Profile page](https://github.com/ShatAlex/Clothing-Store-VayLares/blob/master/ReadMeImages/profile_page.png)
 
