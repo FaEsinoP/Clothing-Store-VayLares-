@@ -35,7 +35,5 @@ ___
 
 ![Auth and Reg pages](https://github.com/ShatAlex/Clothing-Store-VayLares/blob/master/ReadMeImages/reg-and-auth-page.png)
 
-![Profile page](https://github.com/ShatAlex/Clothing-Store-VayLares/blob/master/ReadMeImages/profile_page.png)
-
 ### :open_file_folder: The database schema used in the project
 ![FA diagram DB](https://github.com/ShatAlex/Clothing-Store-VayLares/blob/master/ReadMeImages/Clothes_DB.png)
